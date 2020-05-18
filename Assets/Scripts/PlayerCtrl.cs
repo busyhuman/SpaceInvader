@@ -7,12 +7,13 @@ public class PlayerCtrl : MonoBehaviour
     public float speed = 20.0f;
 
     Vector2 touchPosition;
-    Camera Camera;
+    Camera camera = null;
     bool isMove = false;
+
 
     void Awake()
     {
-        Camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        camera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
 
@@ -26,7 +27,7 @@ public class PlayerCtrl : MonoBehaviour
             if(t.phase == TouchPhase.Began)
             {
                 touchPosition = t.position;
-                touchPosition = Camera.ScreenToWorldPoint(touchPosition);
+                touchPosition = camera.ScreenToWorldPoint(touchPosition);
                 isMove = true;
             }
         }
