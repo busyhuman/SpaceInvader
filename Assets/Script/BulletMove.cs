@@ -22,7 +22,7 @@ public class BulletMove : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.right * Time.deltaTime * Speed);
-        if (transform.position.y > 7.5f) Destroy(gameObject);
+        if (transform.position.x > 10.5f) Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,6 +33,13 @@ public class BulletMove : MonoBehaviour
             GameMgr.GetComponent<SoundMgr>().PlayMonsterDamaged();
             ParticleMgr.GetInstance().CreateDestroyedParticles(collision.gameObject);
            
+            Destroy(gameObject);
+        }
+
+        if (collision.tag == "Boss")
+        {
+            Debug.Log(10);
+            collision.GetComponent<BossBehavior>().GetDamage(5);
             Destroy(gameObject);
         }
     }
