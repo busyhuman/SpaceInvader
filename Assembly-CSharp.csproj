@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\BossBehavior.cs" />
+    <Compile Include="Assets\Script\BossBullet.cs" />
     <Compile Include="Assets\Script\BulletMove.cs" />
     <Compile Include="Assets\Script\MonsterMove.cs" />
     <Compile Include="Assets\Script\MonsterMove2.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\Script\ScoreMgr.cs" />
     <Compile Include="Assets\Script\ScoreUnit.cs" />
     <Compile Include="Assets\Script\SoundMgr.cs" />
+    <Compile Include="Assets\Script\TetrisMgr.cs" />
     <Compile Include="Assets\Script\particlemove.cs" />
     <Compile Include="Assets\Wolv Interactive\Pixel Perfect Retro Camera\Scenes\Example\MoveCamera.cs" />
     <Compile Include="Assets\Wolv Interactive\Pixel Perfect Retro Camera\Scenes\Example\Spin.cs" />

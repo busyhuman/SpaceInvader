@@ -20,7 +20,6 @@ public class ScoreMgr : MonoBehaviour
 
     public void UpdateScore(int iGet)
     {
-        Debug.Log("1");
         iScore += iGet;
         ScoreObj.GetComponent<Score>().iScore = iScore;
         ScoreObj.GetComponent<Score>().StartCoroutine("UpdateScore");

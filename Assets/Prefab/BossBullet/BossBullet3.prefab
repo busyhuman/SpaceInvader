@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2357334451399108526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4704841145140739665}
+  m_Layer: 0
+  m_Name: BossBullet3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4704841145140739665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2357334451399108526}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.4929812, y: -0.09449056, z: -0.0661423}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3268229461460279745}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &818884616163419300
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4704841145140739665}
+    m_Modifications:
+    - target: {fileID: 2739972365109527909, guid: 8315c65d4310162458acc67bcb0092c0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739972365109527909, guid: 8315c65d4310162458acc67bcb0092c0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.09449056
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739972365109527909, guid: 8315c65d4310162458acc67bcb0092c0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0661423
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739972365109527909, guid: 8315c65d4310162458acc67bcb0092c0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739972365109527909, guid: 8315c65d4310162458acc67bcb0092c0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739972365109527909, guid: 8315c65d4310162458acc67bcb0092c0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739972365109527909, guid: 8315c65d4310162458acc67bcb0092c0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739972365109527909, guid: 8315c65d4310162458acc67bcb0092c0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739972365109527909, guid: 8315c65d4310162458acc67bcb0092c0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739972365109527909, guid: 8315c65d4310162458acc67bcb0092c0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739972365109527909, guid: 8315c65d4310162458acc67bcb0092c0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847070191792500957, guid: 8315c65d4310162458acc67bcb0092c0,
+        type: 3}
+      propertyPath: m_Name
+      value: BossBlock3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8315c65d4310162458acc67bcb0092c0, type: 3}
+--- !u!4 &3268229461460279745 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2739972365109527909, guid: 8315c65d4310162458acc67bcb0092c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 818884616163419300}
+  m_PrefabAsset: {fileID: 0}
