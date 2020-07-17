@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 774722397945605593}
+  - component: {fileID: 128990726877854534}
   m_Layer: 0
   m_Name: BossBullet6
   m_TagString: Untagged
@@ -26,83 +27,31 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2954731632281546743}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &5578480194427786439
-PrefabInstance:
+--- !u!114 &128990726877854534
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 774722397945605593}
-    m_Modifications:
-    - target: {fileID: 83870868437683848, guid: 4426aa9c1a3367b4ea61b1ecb8bbc346,
-        type: 3}
-      propertyPath: m_Name
-      value: BossBlock6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236139930184579888, guid: 4426aa9c1a3367b4ea61b1ecb8bbc346,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236139930184579888, guid: 4426aa9c1a3367b4ea61b1ecb8bbc346,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236139930184579888, guid: 4426aa9c1a3367b4ea61b1ecb8bbc346,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236139930184579888, guid: 4426aa9c1a3367b4ea61b1ecb8bbc346,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236139930184579888, guid: 4426aa9c1a3367b4ea61b1ecb8bbc346,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236139930184579888, guid: 4426aa9c1a3367b4ea61b1ecb8bbc346,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236139930184579888, guid: 4426aa9c1a3367b4ea61b1ecb8bbc346,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236139930184579888, guid: 4426aa9c1a3367b4ea61b1ecb8bbc346,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236139930184579888, guid: 4426aa9c1a3367b4ea61b1ecb8bbc346,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236139930184579888, guid: 4426aa9c1a3367b4ea61b1ecb8bbc346,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236139930184579888, guid: 4426aa9c1a3367b4ea61b1ecb8bbc346,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4426aa9c1a3367b4ea61b1ecb8bbc346, type: 3}
---- !u!4 &2954731632281546743 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7236139930184579888, guid: 4426aa9c1a3367b4ea61b1ecb8bbc346,
-    type: 3}
-  m_PrefabInstance: {fileID: 5578480194427786439}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3155303709349714498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95a20a50e45d414dbaa4aeb71021f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bStoped: 0
+  Tile: {fileID: 83870868437683848, guid: 4426aa9c1a3367b4ea61b1ecb8bbc346, type: 3}
+  TileSize: 1
+  interval: 1
+  rigid: {fileID: 0}
+  iTileX: 3
+  iTileY: 2
+  iType: 1
+  iTetrisYIndex: 0
+  iTiles: 010000000100000000000000000000000100000001000000
+  Center: {x: 0, y: 0, z: 0}
+  BlockArea: {x: 0, y: 0}

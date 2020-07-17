@@ -69,6 +69,7 @@
     <Compile Include="Assets\Script\MonsterMove.cs" />
     <Compile Include="Assets\Script\MonsterMove2.cs" />
     <Compile Include="Assets\Script\MosnterSpawner.cs" />
+    <Compile Include="Assets\Script\MoveBackground.cs" />
     <Compile Include="Assets\Script\ParticleMgr.cs" />
     <Compile Include="Assets\Script\PlayerMove.cs" />
     <Compile Include="Assets\Script\ReturnTex.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\Script\ScoreMgr.cs" />
     <Compile Include="Assets\Script\ScoreUnit.cs" />
     <Compile Include="Assets\Script\SoundMgr.cs" />
+    <Compile Include="Assets\Script\TetrisBlock.cs" />
     <Compile Include="Assets\Script\TetrisMgr.cs" />
     <Compile Include="Assets\Script\particlemove.cs" />
     <Compile Include="Assets\Wolv Interactive\Pixel Perfect Retro Camera\Scenes\Example\MoveCamera.cs" />

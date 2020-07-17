@@ -7,19 +7,22 @@ public class TetrisMgr : MonoBehaviour
     public Vector3[,] TetrisArray; // (x 위치, y위치, 쌓인 여부)
     public float fBlockSize = 1.1f;
     public GameObject pBlock;
-    public Vector3 TetrisPos; 
+    public bool CanBool = false;
+
+    public Vector3[,] TetrisPos;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        TetrisPos = new Vector3(-12.2f + 0.55f, -5,0);
-        TetrisArray = new Vector3[6,10];
-        for (int i = 0; i<6; i++)
+        TetrisPos = new Vector3[20, 11];
+        for (int i = 0; i < 20; i++)
         {
-            for(int j = 0; j < 10;  j++)
+            for (int j = 0; j < 11; j++)
             {
-                TetrisArray[i, j] = new Vector3(i * fBlockSize, j * fBlockSize, 0) + TetrisPos;
-                //GameObject block = Instantiate(pBlock);
-                //block.transform.position = TetrisArray[i, j];
+                TetrisPos[i, j].x = -12.75f + i * 1.05f;
+                TetrisPos[i, j].y = -5.55f + 1.05f * j;
             }
         }
 
@@ -29,5 +32,46 @@ public class TetrisMgr : MonoBehaviour
     void Update()
     {
         
+    }
+
+
+    public void CheckBomb()
+    {
+        bool bBomb = false;
+        int iBombRaw = 0;
+        for(int i = 0; i< 20; i++) 
+        {
+            int iRaw = 0;
+            for(int j = 0; j< 11; j++ )
+            {
+                if (TetrisPos[i, j].z != 0)
+                    iRaw++;
+            }
+            if (iRaw == 20)
+            {
+                iBombRaw = i;
+                bBomb = true;
+                break;
+            }
+            
+        }
+
+        if(bBomb)
+        {
+            for(int k = 0; k< transform.childCount; k++)
+            {
+                GameObject block = transform.GetChild(k).gameObject;
+                block.GetComponent<TetrisBlock>().BombRaw(iBombRaw);
+            }
+        }
+    }
+    public void SetStopTetris(int _X, int _Y)
+    {
+        TetrisPos[_X, _Y].z = 1;
+    }
+    public bool CheckStacked(int _X, int _Y)
+    {
+        if (TetrisPos[_X - 1, _Y].z == 1) return true;
+        else return false;
     }
 }

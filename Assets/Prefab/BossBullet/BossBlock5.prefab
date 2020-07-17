@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5044736407421483088}
   - component: {fileID: 7853166930551351677}
   - component: {fileID: 6406159024126077602}
-  - component: {fileID: 2170119567894149268}
+  - component: {fileID: -2990225506258778899}
   m_Layer: 0
   m_Name: BossBlock5
   m_TagString: MonsterBullet
@@ -117,8 +117,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!60 &2170119567894149268
-PolygonCollider2D:
+--- !u!61 &-2990225506258778899
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -134,19 +134,12 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
+    oldSize: {x: 1.024, y: 1.024}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -1.3, y: 1.9399999}
-      - {x: -1.3, y: -1.9399999}
-      - {x: 0.028186798, y: -1.94}
-      - {x: 0.021211624, y: -0.60250616}
-      - {x: 1.2459221, y: -0.6312053}
-      - {x: 1.2566509, y: 0.6393157}
-      - {x: -0.00046730042, y: 0.61419}
-      - {x: 0.011629105, y: 1.9399999}
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 0.7}
+  m_EdgeRadius: 0.1

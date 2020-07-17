@@ -30,9 +30,16 @@ public class PlayerMove : MonoBehaviour
         {
             Vector2 MousePosition = Input.mousePosition;
             MousePosition = camera.ScreenToWorldPoint(MousePosition);
+
+
             float inputY = (MousePosition.y  - transform.position.y) / 2.0f;
             float moveY= inputY * moveSpeed * Time.deltaTime;
-            transform.Translate(new Vector3(0,moveY,0),Space.World);
+
+            float inputX = (MousePosition.x - transform.position.x) / 2.0f;
+            float moveX = inputX * moveSpeed * Time.deltaTime;
+
+
+            transform.Translate(new Vector3(moveX, moveY,0),Space.World);
         }
 
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2212519591194884442}
   - component: {fileID: 3768103758317135991}
   - component: {fileID: 23024188514610088}
-  - component: {fileID: 8683380660992863406}
+  - component: {fileID: 7550310830946929734}
   m_Layer: 0
   m_Name: BossBlock3
   m_TagString: MonsterBullet
@@ -117,8 +117,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!60 &8683380660992863406
-PolygonCollider2D:
+--- !u!61 &7550310830946929734
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -134,19 +134,12 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
+    oldSize: {x: 1.024, y: 1.024}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.04, y: 1.9399999}
-      - {x: -0.034488678, y: -0.6560464}
-      - {x: -1.2714291, y: -0.6900923}
-      - {x: -1.3, y: -1.9399999}
-      - {x: 1.28, y: -1.9399999}
-      - {x: 1.3, y: -1.92}
-      - {x: 1.3, y: 1.92}
-      - {x: 1.28, y: 1.9399999}
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 0.7}
+  m_EdgeRadius: 0.1

@@ -6,14 +6,17 @@ public class BossBullet : MonoBehaviour
 {
     private float fMoveSpeed;
     float fAngle = 0;
-    bool bMove = true;
+    public bool bMove = true;
+    public int iXPos = 30;
+    public int iYPos = 00;
+    public int iStack = 0;
 
     // Start is called before the first frame update
 
     void Start()
     {
-        fMoveSpeed = 0.5f;
-        transform.parent = null;
+       
+        fMoveSpeed = 0.55f;
         StartCoroutine("Move");
     }
 
@@ -25,16 +28,27 @@ public class BossBullet : MonoBehaviour
 
     public IEnumerator Move()
     {
-        if(bMove)
-        {
 
-            float fDegree = 3.14f * fAngle / 180.0f;
-            float PosX = Mathf.Cos(fDegree) * fMoveSpeed + transform.position.x;
-            float PosY = Mathf.Sin(fDegree) * fMoveSpeed + transform.position.y;
+        GameObject TetrisMgr = GameObject.Find("ShootMgr");
+        Vector3[,] TetrisPos = TetrisMgr.GetComponent<TetrisMgr>().TetrisPos;
+
+        if (bMove)
+        {
+            //float fDegree = 3.14f * fAngle / 180.0f;
+
+            float PosX = TetrisPos[iXPos, iYPos].x;
+            float PosY = TetrisPos[iXPos, iYPos].y;
             transform.position = new Vector3(PosX, PosY, 0);
 
-            yield return new WaitForSeconds(0.1f);
-            StartCoroutine("Move");
+            iXPos--;
+            yield return new WaitForSeconds(0.3f);
+            if(iXPos <0)
+            {
+                bMove = false;
+            }
+            else
+                StartCoroutine("Move");
+            
         }
 
     }
@@ -43,14 +57,21 @@ public class BossBullet : MonoBehaviour
         fMoveSpeed = _fSpeed;
         fAngle = _fAngle;
     }
+
+    public void SetStop()
+    {
+        GameObject TetrisMgr = GameObject.Find("ShootMgr");
+        TetrisMgr.GetComponent<TetrisMgr>().SetStopTetris(iXPos, iYPos);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Wall")
             bMove = false;
         else if(collision.gameObject.tag == "MonsterBullet")
         {
-            if (transform.position.x > collision.transform.position.x)
-                bMove = false;
+            //if (transform.position.x > collision.transform.position.x)
+               // bMove = false;
         }
     }
 }

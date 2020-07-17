@@ -57,3 +57,6 @@ TagManager:
   - name: Object
     uniqueID: 3550316327
     locked: 0
+  - name: Frame
+    uniqueID: 2932309121
+    locked: 0

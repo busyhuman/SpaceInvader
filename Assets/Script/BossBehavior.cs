@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
-using UnityEditor.Rendering;
+//using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.XR.WSA.Input;
+//using UnityEngine.XR.WSA.Input;
 
 enum BossShoot
 {
@@ -47,20 +48,21 @@ public class BossBehavior : MonoBehaviour
 
     //임시 위치/방향/불렛
     bool bShoot = false;
-    int iCurrentMoveIndex = 2;
+    public int iCurrentMoveIndex = 2;
     int iDestMoveIndex = 0;
     int iBulletNum;
     Vector3 vTempPos;
     Vector3[] vMovingPos;
     private float fShootAngle = 180;
+    int iMoveNum = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        vMovingPos = new Vector3[10];
-        for(int i = 0; i< 10; i++)
+        vMovingPos = new Vector3[22];
+        for(int i = 0; i< 22; i++)
         {
-            vMovingPos[i] = new Vector3(5.5f, -5.0f + 1.1f * i, 0);
+            vMovingPos[i] = new Vector3(5.5f, -5.55f + 1.1f * i, 0);
         }
         Player = GameObject.Find("Player");
         iCurrentHP = iMaxHP;
@@ -136,9 +138,10 @@ public class BossBehavior : MonoBehaviour
             return;
         }
 
-        float Rand = Random.Range(0, 100.0f);
+        float Rand = UnityEngine.Random.Range(0, 100.0f);
         if (Rand < 75.0f)
         {
+            if(eShootPattern != BossShoot.BOSS_SHOOT1)
             eShootPattern = BossShoot.BOSS_SHOOT1;
         }
         else
@@ -164,7 +167,6 @@ public class BossBehavior : MonoBehaviour
 
     protected void Move_Idle() // 싸인함수그래프대로 둥둥 떠있음
     {
-        fPatternTick += Time.deltaTime;
         fMoveTick += Time.deltaTime * 100;
         float fDegree = 3.14f * fMoveTick / 180.0f;
         float yPos = (float)(vTempPos.y + Mathf.Sin(fDegree)) / 2.0f;
@@ -176,20 +178,26 @@ public class BossBehavior : MonoBehaviour
     {
 
         Vector3 CurrentPos = transform.position;
-        if (Mathf.Approximately(CurrentPos.y, vMovingPos[iDestMoveIndex].y))
+        if (iCurrentMoveIndex == iDestMoveIndex)
         {
-            iDestMoveIndex = Random.Range(0, 9);
-            UnityEngine.Debug.Log(iDestMoveIndex);
-            bShoot = true;
+            iDestMoveIndex = UnityEngine.Random.Range(0, 22);
+            iMoveNum++;
+            if(iMoveNum > 1)
+            {
+                bShoot = true;
+                iMoveNum = 0;
+            }
 
         }
-        else if (CurrentPos.y < vMovingPos[iDestMoveIndex].y)
+        else if (iCurrentMoveIndex < iDestMoveIndex)
         {
             transform.position = new Vector3(CurrentPos.x, CurrentPos.y + 0.55f, 0);
+            iCurrentMoveIndex++;
         }
         else 
         {
             transform.position = new Vector3(CurrentPos.x, CurrentPos.y - 0.55f, 0);
+            iCurrentMoveIndex--;
         }
 
         yield return new WaitForSeconds(0.2f);
@@ -198,8 +206,8 @@ public class BossBehavior : MonoBehaviour
 
     protected void ShootPattern1()
     {
-        if(bShoot)
-        { 
+        if (bShoot == true)
+        {
             Shoot();
             bShoot = false;
         }
@@ -221,9 +229,9 @@ public class BossBehavior : MonoBehaviour
 
     private void Shoot()
     {
-        iBulletNum = Random.Range(0, Bullets.Length);
+        iBulletNum = UnityEngine.Random.Range(0, Bullets.Length);
         GameObject bullet = Instantiate(Bullets[iBulletNum], shootPoint);
-        bullet.GetComponent<BossBullet>().Initialize(fShootAngle, 10);
+       // bullet.GetComponent<BossBullet>().Initialize(fShootAngle, 10);
     }
 
     protected void Move_Dying()
