@@ -2039,6 +2039,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1703774555 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7649921993692424500, guid: 76fb8ffce81319645b3338018ac22c1a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7649921993323611324}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1747737324
 GameObject:
   m_ObjectHideFlags: 0
@@ -2159,11 +2165,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1799226215}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.63, y: 1.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 1703774555}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1799226217
 MonoBehaviour:
@@ -2425,7 +2431,7 @@ PrefabInstance:
     - target: {fileID: 20000010728017760, guid: 6622b93cfd71148f88fa3b6097d487b6,
         type: 3}
       propertyPath: orthographic size
-      value: 7.5675673
+      value: 7.6190476
       objectReference: {fileID: 0}
     - target: {fileID: 20000010728017760, guid: 6622b93cfd71148f88fa3b6097d487b6,
         type: 3}
@@ -2440,7 +2446,7 @@ PrefabInstance:
     - target: {fileID: 20000010728017760, guid: 6622b93cfd71148f88fa3b6097d487b6,
         type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.0625
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 20000010728017760, guid: 6622b93cfd71148f88fa3b6097d487b6,
         type: 3}
@@ -2450,7 +2456,7 @@ PrefabInstance:
     - target: {fileID: 20000010728017760, guid: 6622b93cfd71148f88fa3b6097d487b6,
         type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.875
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 20000010728017760, guid: 6622b93cfd71148f88fa3b6097d487b6,
         type: 3}

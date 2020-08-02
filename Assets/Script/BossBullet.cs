@@ -9,21 +9,27 @@ public class BossBullet : MonoBehaviour
     public bool bMove = true;
     public int iXPos = 30;
     public int iYPos = 00;
+    public int iXPos2 = 0;
+    public int iYPos2 = 0;
     public int iStack = 0;
-
+    public bool bHold = true;
     // Start is called before the first frame update
 
     void Start()
     {
        
         fMoveSpeed = 0.55f;
-        StartCoroutine("Move");
     }
 
+    public void Launch()
+    {
+        bHold = false;
+        StartCoroutine("Move");
+    }
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public IEnumerator Move()
@@ -68,10 +74,13 @@ public class BossBullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Wall")
             bMove = false;
-        else if(collision.gameObject.tag == "MonsterBullet")
+    }
+    public void DestroyBullet()
+    {
+    
+        if (!bHold)
         {
-            //if (transform.position.x > collision.transform.position.x)
-               // bMove = false;
+            GameObject.Destroy(gameObject.transform.parent.gameObject);
         }
     }
 }

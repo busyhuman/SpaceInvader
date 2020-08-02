@@ -19,6 +19,7 @@ public class TetrisBlock : MonoBehaviour
     public int iTetrisYIndex = 0;
     public int[] iTiles;
     private Vector3[,] TetrisPos;
+    public bool bHold = true;
 
     public Vector3 Center;
     public Vector2 BlockArea; //블록 범위
@@ -47,6 +48,11 @@ public class TetrisBlock : MonoBehaviour
                     GameObject block = Instantiate(Tile, new Vector3(xPos, yPos, 0), Quaternion.identity, transform);
                     block.GetComponent<BossBullet>().iXPos = 19 - iTileX + x;
                     block.GetComponent<BossBullet>().iYPos = Ypos;
+
+
+                    block.GetComponent<BossBullet>().iXPos2 = x;
+                    block.GetComponent<BossBullet>().iYPos2 = (int)(y / iTileX);
+
                     block.GetComponent<BossBullet>().iStack = x;
                     block.transform.localScale = new Vector3(TileSize, TileSize, TileSize);
                     block.transform.SetParent(transform);
@@ -70,6 +76,24 @@ public class TetrisBlock : MonoBehaviour
         GetCenter();
         if (!bStoped)
             CheckStop();
+    }
+
+    public void Launch()
+    {
+        transform.parent = null;
+        int nChilds = gameObject.transform.GetChildCount();
+        int iCurrentY = GameObject.Find("BOSS").GetComponent<BossBehavior>().iCurrentMoveIndex / 2;
+
+        for (int i = 0; i < nChilds; i++)
+        {
+             GameObject child = transform.GetChild(i).gameObject;
+            int iY = child.GetComponent<BossBullet>().iYPos2;
+             int Ypos = iCurrentY - iY;
+             child.GetComponent<BossBullet>().iYPos = Ypos;
+            child.GetComponent<BossBullet>().Launch();
+
+        }
+
     }
 
     public void CheckStop()

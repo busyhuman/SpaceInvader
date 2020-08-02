@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -2990225506258778899}
   m_Layer: 0
   m_Name: BossBlock5
-  m_TagString: MonsterBullet
+  m_TagString: BossBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,6 +96,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad0471270a2dc0b4c82afb9db415557a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bMove: 1
+  iXPos: 30
+  iYPos: 0
+  iXPos2: 0
+  iYPos2: 0
+  iStack: 0
+  bHold: 1
 --- !u!50 &6406159024126077602
 Rigidbody2D:
   serializedVersion: 4

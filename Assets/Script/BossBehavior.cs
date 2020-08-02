@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
@@ -40,7 +41,6 @@ public class BossBehavior : MonoBehaviour
     public int iMaxHP = 1500;
     public float fShootSpeed = 1;
     public Transform shootPoint;
-
     //상태값
     private int iPhase = 1;
     private BossShoot eShootPattern = BossShoot.BOSS_SHOOT_NONE;
@@ -55,6 +55,8 @@ public class BossBehavior : MonoBehaviour
     Vector3[] vMovingPos;
     private float fShootAngle = 180;
     int iMoveNum = 0;
+
+    public GameObject CurrentBullet;
 
     // Start is called before the first frame update
     void Start()
@@ -180,35 +182,57 @@ public class BossBehavior : MonoBehaviour
         Vector3 CurrentPos = transform.position;
         if (iCurrentMoveIndex == iDestMoveIndex)
         {
-            iDestMoveIndex = UnityEngine.Random.Range(0, 22);
-            iMoveNum++;
-            if(iMoveNum > 1)
+            Vector3 PlayerPos = Player.transform.position;
+            for(int k  =0; k < 18; k++)
             {
-                bShoot = true;
-                iMoveNum = 0;
+                float distance = Math.Abs(vMovingPos[k].y - PlayerPos.y);
+                if(distance < 0.275)
+                {
+                    iDestMoveIndex = k + 4;
+                    break;
+                }    
             }
+           
+            iMoveNum++;
+            if (iMoveNum % 2 == 0 && fShootTick > 50)
+            {
+                if(!CurrentBullet)
+                {
+                    fShootTick = 0;
+                    bShoot = true;
+                }
+            }
+            if (iMoveNum % 4 == 0 && fShootTick > 60)
+            {
+                if (CurrentBullet)
+                {
+                    fShootTick = 0;
+                    CurrentBullet.GetComponent<TetrisBlock>().Launch();
+                    CurrentBullet = null;
+                }
 
+            }
         }
         else if (iCurrentMoveIndex < iDestMoveIndex)
         {
             transform.position = new Vector3(CurrentPos.x, CurrentPos.y + 0.55f, 0);
             iCurrentMoveIndex++;
         }
-        else 
+        else
         {
             transform.position = new Vector3(CurrentPos.x, CurrentPos.y - 0.55f, 0);
             iCurrentMoveIndex--;
         }
-
-        yield return new WaitForSeconds(0.2f);
-        StartCoroutine("Move_Shoot1");
-    }
-
+        fShootTick += 5;
+            yield return new WaitForSeconds(0.2f);
+            StartCoroutine("Move_Shoot1");
+ }
+   
     protected void ShootPattern1()
     {
         if (bShoot == true)
         {
-            Shoot();
+            CreateBullet();
             bShoot = false;
         }
         if (fPatternTick > 5.0f)
@@ -227,10 +251,10 @@ public class BossBehavior : MonoBehaviour
             SetShootPattern();
     }
 
-    private void Shoot()
+    private void CreateBullet()
     {
         iBulletNum = UnityEngine.Random.Range(0, Bullets.Length);
-        GameObject bullet = Instantiate(Bullets[iBulletNum], shootPoint);
+        CurrentBullet = Instantiate(Bullets[iBulletNum], shootPoint);
        // bullet.GetComponent<BossBullet>().Initialize(fShootAngle, 10);
     }
 

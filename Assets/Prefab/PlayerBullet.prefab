@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1018957960665680835}
   m_Layer: 0
   m_Name: PlayerBullet
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.125, y: 0.25}
+    oldSize: {x: 0.25, y: 0.125}
     newSize: {x: 0.02, y: 0.04}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

@@ -42,5 +42,10 @@ public class BulletMove : MonoBehaviour
             collision.GetComponent<BossBehavior>().GetDamage(5);
             Destroy(gameObject);
         }
+
+        if (collision.tag == "BossBullet")
+        {
+            collision.GetComponent<BossBullet>().DestroyBullet();
+        }
     }
 }
