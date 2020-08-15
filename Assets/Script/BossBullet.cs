@@ -80,7 +80,8 @@ public class BossBullet : MonoBehaviour
     
         if (!bHold)
         {
-            GameObject.Destroy(gameObject.transform.parent.gameObject);
+            gameObject.transform.parent.GetComponent<TetrisBlock>().GetDamage(10);
+
         }
     }
 }

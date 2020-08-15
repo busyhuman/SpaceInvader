@@ -15,7 +15,7 @@ public class TetrisBlock : MonoBehaviour
     public int iTileX = 3;
     public int iTileY = 2;      //블록 위치
     public int iType = 1;    // 블록 타입
-
+    public int iHP = 100;
     public int iTetrisYIndex = 0;
     public int[] iTiles;
     private Vector3[,] TetrisPos;
@@ -24,6 +24,7 @@ public class TetrisBlock : MonoBehaviour
     public Vector3 Center;
     public Vector2 BlockArea; //블록 범위
 
+    
     public virtual void CreateBlock()
     {
         TetrisPos = GameObject.Find("ShootMgr").GetComponent<TetrisMgr>().TetrisPos;
@@ -77,7 +78,12 @@ public class TetrisBlock : MonoBehaviour
         if (!bStoped)
             CheckStop();
     }
-
+    public void GetDamage(int iDam)
+    {
+        iHP -= iDam;
+        if (iHP < 0)
+            GameObject.Destroy(gameObject);
+    }
     public void Launch()
     {
         transform.parent = null;

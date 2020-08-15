@@ -65,7 +65,9 @@
   <ItemGroup>
     <Compile Include="Assets\Script\BossBehavior.cs" />
     <Compile Include="Assets\Script\BossBullet.cs" />
+    <Compile Include="Assets\Script\BossBullet2.cs" />
     <Compile Include="Assets\Script\BulletMove.cs" />
+    <Compile Include="Assets\Script\MakeDiamondShape.cs" />
     <Compile Include="Assets\Script\MonsterMove.cs" />
     <Compile Include="Assets\Script\MonsterMove2.cs" />
     <Compile Include="Assets\Script\MosnterSpawner.cs" />

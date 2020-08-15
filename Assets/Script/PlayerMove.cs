@@ -6,7 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     private bool canShoot = true;
     private float shootTimer = 0.0f;
-    private float shootDelay = 0.4f;
+    private float shootDelay = 0.2f;
     private Camera camera;
 
     public GameObject Bullet;

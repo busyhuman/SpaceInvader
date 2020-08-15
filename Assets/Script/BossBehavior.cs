@@ -3,10 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
+using Unity.UNetWeaver;
 //using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UIElements;
 //using UnityEngine.XR.WSA.Input;
 
 enum BossShoot
@@ -30,7 +34,7 @@ public class BossBehavior : MonoBehaviour
     public GameObject[] Bullets;
     public GameObject Player;
     public float fMoveSpeed = 5.0f;
-
+    public GameObject Barrier;
     // 움직임/공격 타이머
     private float fShootTick = 0;
     private float fPatternTick = 0;
@@ -47,6 +51,8 @@ public class BossBehavior : MonoBehaviour
     private BossMoveState eMoveState;
 
     //임시 위치/방향/불렛
+    public GameObject Pattern2Bullet;
+    public bool bShiled = false;
     bool bShoot = false;
     public int iCurrentMoveIndex = 2;
     int iDestMoveIndex = 0;
@@ -83,7 +89,8 @@ public class BossBehavior : MonoBehaviour
                 Move_Idle();
                 break;
             case BossMoveState.BOSS_MOVE_SHOOTMOVE:
-                Move_Shoot1();
+                if(eShootPattern == BossShoot.BOSS_SHOOT1)
+                    Move_Shoot1();
                 break;
             case BossMoveState.BOSS_MOVE_DYING:
                 Move_Dying();
@@ -111,6 +118,8 @@ public class BossBehavior : MonoBehaviour
                 {
                     iPhase = 2;
                 }
+                if (!bShiled)
+                    CheckBarrier();
                 break;
             case 2:
                 if (iCurrentHP < 33)
@@ -129,6 +138,7 @@ public class BossBehavior : MonoBehaviour
     }
     protected void SetShootPattern()
     {
+        fPatternTick = 0;
         float DistanceToPlayer;
         Vector3 pos = transform.position;
         Vector3 playerPos = Player.GetComponent<Transform>().position;
@@ -140,18 +150,30 @@ public class BossBehavior : MonoBehaviour
             return;
         }
 
-        float Rand = UnityEngine.Random.Range(0, 100.0f);
+        float Rand = UnityEngine.Random.Range(0, 200.0f);
         if (Rand < 75.0f)
         {
             if(eShootPattern != BossShoot.BOSS_SHOOT1)
-            eShootPattern = BossShoot.BOSS_SHOOT1;
+                  eShootPattern = BossShoot.BOSS_SHOOT1;
         }
         else
         {
             eShootPattern = BossShoot.BOSS_SHOOT2;
+            bShoot = true;
         }
     }
+    void CheckBarrier()
+    {
+        Vector3 PlayerPos = Player.transform.position;
+        float distance = Vector3.Distance(PlayerPos, transform.position);
 
+        if(distance < 8)
+        {
+
+            Instantiate(Barrier,this.transform);
+            bShiled = true;
+        }
+    }
     protected void Move_Appear()
     {
         transform.Translate(new Vector3(0, -fMoveSpeed * Time.deltaTime * 1.5f, 0), Space.Self);
@@ -234,14 +256,23 @@ public class BossBehavior : MonoBehaviour
         {
             CreateBullet();
             bShoot = false;
-        }
-        if (fPatternTick > 5.0f)
             SetShootPattern();
+            fPatternTick = 0;
+        }
     }
 
     protected void ShootPattern2()
     {
-        if (fPatternTick > 5.0f)
+        if(bShoot)
+        {
+            for(int i  = 0; i< 5; i++)
+            {
+                GameObject pbullet = Instantiate(Pattern2Bullet,transform.position, Quaternion.identity);
+                pbullet.GetComponent<BossBullet2>().fShootAngle = 160 + i * 10;
+            }
+            bShoot = false;
+        }
+        if (fPatternTick > 8.0f)
             SetShootPattern();
     }
 

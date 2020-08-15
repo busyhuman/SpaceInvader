@@ -46,6 +46,12 @@ public class BulletMove : MonoBehaviour
         if (collision.tag == "BossBullet")
         {
             collision.GetComponent<BossBullet>().DestroyBullet();
+            Destroy(gameObject);
+        }
+
+        if (collision.tag == "Barrier")
+        {
+            Destroy(gameObject);
         }
     }
 }
