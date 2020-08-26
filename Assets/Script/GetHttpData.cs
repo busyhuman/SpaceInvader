@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-public class Rank : MonoBehaviour
+public class GetHttpData : MonoBehaviour
 {
     // URL
     string url = "https://busyhuman.pythonanywhere.com/users/busyhuman/";

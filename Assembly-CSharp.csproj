@@ -66,6 +66,7 @@
     <Compile Include="Assets\Script\BossBehavior.cs" />
     <Compile Include="Assets\Script\BossBullet.cs" />
     <Compile Include="Assets\Script\BulletMove.cs" />
+    <Compile Include="Assets\Script\GetHttpData.cs" />
     <Compile Include="Assets\Script\MonsterMove.cs" />
     <Compile Include="Assets\Script\MonsterMove2.cs" />
     <Compile Include="Assets\Script\MosnterSpawner.cs" />
@@ -73,7 +74,7 @@
     <Compile Include="Assets\Script\ParticleMgr.cs" />
     <Compile Include="Assets\Script\PlayerData.cs" />
     <Compile Include="Assets\Script\PlayerMove.cs" />
-    <Compile Include="Assets\Script\Rank.cs" />
+    <Compile Include="Assets\Script\PostHttpData.cs" />
     <Compile Include="Assets\Script\ReturnTex.cs" />
     <Compile Include="Assets\Script\Score.cs" />
     <Compile Include="Assets\Script\ScoreMgr.cs" />
