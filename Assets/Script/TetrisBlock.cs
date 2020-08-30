@@ -87,7 +87,7 @@ public class TetrisBlock : MonoBehaviour
     public void Launch()
     {
         transform.parent = null;
-        int nChilds = gameObject.transform.GetChildCount();
+        int nChilds = gameObject.transform.childCount;
         int iCurrentY = GameObject.Find("BOSS").GetComponent<BossBehavior>().iCurrentMoveIndex / 2;
 
         for (int i = 0; i < nChilds; i++)

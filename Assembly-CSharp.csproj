@@ -63,6 +63,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AudioController.cs" />
+    <Compile Include="Assets\LoadingText.cs" />
+    <Compile Include="Assets\MenuAssets\BlinkText.cs" />
+    <Compile Include="Assets\MenuAssets\CharacterChanger.cs" />
+    <Compile Include="Assets\PlayerSpawn.cs" />
+    <Compile Include="Assets\Scenes\SceneChanger.cs" />
+    <Compile Include="Assets\Script\BaseBullet.cs" />
     <Compile Include="Assets\Script\BossBehavior.cs" />
     <Compile Include="Assets\Script\BossBullet.cs" />
     <Compile Include="Assets\Script\BossBullet2.cs" />

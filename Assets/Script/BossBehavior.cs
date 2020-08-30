@@ -7,7 +7,6 @@ using System.Globalization;
 using System.Linq.Expressions;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
-using Unity.UNetWeaver;
 //using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -40,6 +39,8 @@ public class BossBehavior : MonoBehaviour
     private float fPatternTick = 0;
     public float fMoveTick = 0;
 
+    private Animator animator;
+
     // 전투 스펙
     public int iCurrentHP;
     public int iMaxHP = 1500;
@@ -67,6 +68,7 @@ public class BossBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         vMovingPos = new Vector3[22];
         for(int i = 0; i< 22; i++)
         {
@@ -230,6 +232,7 @@ public class BossBehavior : MonoBehaviour
                 {
                     fShootTick = 0;
                     CurrentBullet.GetComponent<TetrisBlock>().Launch();
+                    animator.SetTrigger("BossLaunch");
                     CurrentBullet = null;
                 }
 
@@ -286,7 +289,8 @@ public class BossBehavior : MonoBehaviour
     {
         iBulletNum = UnityEngine.Random.Range(0, Bullets.Length);
         CurrentBullet = Instantiate(Bullets[iBulletNum], shootPoint);
-       // bullet.GetComponent<BossBullet>().Initialize(fShootAngle, 10);
+        animator.SetTrigger("BossAttack");
+        // bullet.GetComponent<BossBullet>().Initialize(fShootAngle, 10);
     }
 
     protected void Move_Dying()
