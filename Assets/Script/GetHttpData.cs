@@ -5,7 +5,12 @@ using UnityEngine.Networking;
 public class GetHttpData : MonoBehaviour
 {
     // URL
-    string url = "https://busyhuman.pythonanywhere.com/users/busyhuman/";
+    string url = "https://busyhuman.pythonanywhere.com/records/";
+    string fixJson(string value)
+    {
+        value = "{\"Items\":" + value + "}";
+        return value;
+    }
 
     IEnumerator getRequest()
     {
@@ -22,9 +27,10 @@ public class GetHttpData : MonoBehaviour
             }
             else
             {
-                string jsonString = request.downloadHandler.text;
+                string jsonString = fixJson(request.downloadHandler.text);
                 Debug.Log(jsonString);
-                Debug.Log(JsonUtility.FromJson<PlayerData>(jsonString).ID);
+                RecordData[] record = JsonHelper.FromJson<RecordData>(jsonString);
+                Debug.Log(record[0].Date);
             }
         }
     }
