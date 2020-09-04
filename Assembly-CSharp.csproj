@@ -74,8 +74,10 @@
     <Compile Include="Assets\Script\BossBullet.cs" />
     <Compile Include="Assets\Script\BossBullet2.cs" />
     <Compile Include="Assets\Script\BulletMove.cs" />
+    <Compile Include="Assets\Script\DestroyThis.cs" />
     <Compile Include="Assets\Script\GetHttpData.cs" />
     <Compile Include="Assets\Script\JsonHelper.cs" />
+    <Compile Include="Assets\Script\JsonParser.cs" />
     <Compile Include="Assets\Script\MakeDiamondShape.cs" />
     <Compile Include="Assets\Script\MonsterMove.cs" />
     <Compile Include="Assets\Script\MonsterMove2.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="Assets\Script\ScoreMgr.cs" />
     <Compile Include="Assets\Script\ScoreUnit.cs" />
     <Compile Include="Assets\Script\SoundMgr.cs" />
+    <Compile Include="Assets\Script\Test.cs" />
     <Compile Include="Assets\Script\TetrisBlock.cs" />
     <Compile Include="Assets\Script\TetrisMgr.cs" />
     <Compile Include="Assets\Script\particlemove.cs" />

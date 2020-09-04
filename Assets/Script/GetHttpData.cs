@@ -1,23 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Networking;
 public class GetHttpData : MonoBehaviour
 {
-    // URL
-    string url = "https://busyhuman.pythonanywhere.com/records/";
+    string url;
+    public bool isDone = false;
+    public string jsonString;
+
     string fixJson(string value)
     {
         value = "{\"Items\":" + value + "}";
         return value;
     }
 
-    IEnumerator getRequest()
+    IEnumerator GetRequest()
     {
         UnityWebRequest request = new UnityWebRequest();
         using (request = UnityWebRequest.Get(url))
         {
-            // HTTP Request 
             yield return request.SendWebRequest();
 
             // Check Network Error
@@ -27,16 +29,20 @@ public class GetHttpData : MonoBehaviour
             }
             else
             {
-                string jsonString = fixJson(request.downloadHandler.text);
-                Debug.Log(jsonString);
-                RecordData[] record = JsonHelper.FromJson<RecordData>(jsonString);
-                Debug.Log(record[0].Date);
+                jsonString = fixJson(request.downloadHandler.text);
+         //       Debug.Log(jsonString);
+        //        RecordData[] record = JsonHelper.FromJson<RecordData>(jsonString);
+         //       Debug.Log(record[0].Date);
             }
+            isDone = true;
         }
+
     }
 
-    void Start()
+    public string GetData(string url)
     {
-        StartCoroutine(getRequest());
+        this.url = url;
+        StartCoroutine(GetRequest());
+        return jsonString;
     }
 }
