@@ -67,6 +67,7 @@
     <Compile Include="Assets\LoadingText.cs" />
     <Compile Include="Assets\MenuAssets\BlinkText.cs" />
     <Compile Include="Assets\MenuAssets\CharacterChanger.cs" />
+    <Compile Include="Assets\ParticleDestroyer.cs" />
     <Compile Include="Assets\PlayerSpawn.cs" />
     <Compile Include="Assets\Scenes\SceneChanger.cs" />
     <Compile Include="Assets\Script\BaseBullet.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets\Script\BossBullet.cs" />
     <Compile Include="Assets\Script\BossBullet2.cs" />
     <Compile Include="Assets\Script\BulletMove.cs" />
+    <Compile Include="Assets\Script\CameraFade.cs" />
     <Compile Include="Assets\Script\GetHttpData.cs" />
     <Compile Include="Assets\Script\MakeDiamondShape.cs" />
     <Compile Include="Assets\Script\MonsterMove.cs" />

@@ -32,18 +32,20 @@ public class BossBehavior : MonoBehaviour
     // 속도
     public GameObject[] Bullets;
     public GameObject Player;
+    public GameObject DyingParticle;
     public float fMoveSpeed = 5.0f;
     public GameObject Barrier;
     // 움직임/공격 타이머
     private float fShootTick = 0;
     private float fPatternTick = 0;
     public float fMoveTick = 0;
+    private Vector3 DyingPos;
 
     private Animator animator;
 
     // 전투 스펙
     public int iCurrentHP;
-    public int iMaxHP = 1500;
+    public int iMaxHP = 1000;
     public float fShootSpeed = 1;
     public Transform shootPoint;
     //상태값
@@ -70,49 +72,65 @@ public class BossBehavior : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         vMovingPos = new Vector3[22];
-        for(int i = 0; i< 22; i++)
+        for (int i = 0; i < 22; i++)
         {
             vMovingPos[i] = new Vector3(5.5f, -5.55f + 1.1f * i, 0);
         }
         Player = GameObject.Find("Player");
         iCurrentHP = iMaxHP;
         eMoveState = BossMoveState.BOSS_MOVE_APPEAR;
-        eShootPattern = BossShoot.BOSS_SHOOT_NONE ;
+        eShootPattern = BossShoot.BOSS_SHOOT_NONE;
     }
     // Update is called once per frame
     void Update()
     {
-        switch(eMoveState)
+        switch (eMoveState)
         {
             case BossMoveState.BOSS_MOVE_APPEAR:
                 Move_Appear();
+
                 break;
             case BossMoveState.BOSS_MOVE_IDLE:
                 Move_Idle();
+
+                switch (eShootPattern)
+                {
+                    case BossShoot.BOSS_SHOOT1:
+                        ShootPattern1();
+                        break;
+                    case BossShoot.BOSS_SHOOT2:
+                        ShootPattern2();
+                        break;
+                    case BossShoot.BOSS_SHOOT3:
+                        ShootPattern3();
+                        break;
+                }
                 break;
             case BossMoveState.BOSS_MOVE_SHOOTMOVE:
-                if(eShootPattern == BossShoot.BOSS_SHOOT1)
+                if (eShootPattern == BossShoot.BOSS_SHOOT1)
                     Move_Shoot1();
+
+                switch (eShootPattern)
+                {
+                    case BossShoot.BOSS_SHOOT1:
+                        ShootPattern1();
+                        break;
+                    case BossShoot.BOSS_SHOOT2:
+                        ShootPattern2();
+                        break;
+                    case BossShoot.BOSS_SHOOT3:
+                        ShootPattern3();
+                        break;
+                }
                 break;
             case BossMoveState.BOSS_MOVE_DYING:
                 Move_Dying();
                 break;
         }
-        switch (eShootPattern)
-        {     
-            case BossShoot.BOSS_SHOOT1:
-                ShootPattern1();
-                break;
-            case BossShoot.BOSS_SHOOT2:
-                ShootPattern2();
-                break;
-            case BossShoot.BOSS_SHOOT3:
-                ShootPattern3();
-                break;
-        }
+
 
         fPatternTick += Time.deltaTime;
-        
+
         switch (iPhase)
         {
             case 1:
@@ -146,7 +164,7 @@ public class BossBehavior : MonoBehaviour
         Vector3 playerPos = Player.GetComponent<Transform>().position;
         DistanceToPlayer = Vector3.Distance(pos, playerPos);
 
-        if(DistanceToPlayer < 4.0f)
+        if (DistanceToPlayer < 4.0f)
         {
             eShootPattern = BossShoot.BOSS_SHOOT3;
             return;
@@ -155,8 +173,8 @@ public class BossBehavior : MonoBehaviour
         float Rand = UnityEngine.Random.Range(0, 200.0f);
         if (Rand < 75.0f)
         {
-            if(eShootPattern != BossShoot.BOSS_SHOOT1)
-                  eShootPattern = BossShoot.BOSS_SHOOT1;
+            if (eShootPattern != BossShoot.BOSS_SHOOT1)
+                eShootPattern = BossShoot.BOSS_SHOOT1;
         }
         else
         {
@@ -169,10 +187,10 @@ public class BossBehavior : MonoBehaviour
         Vector3 PlayerPos = Player.transform.position;
         float distance = Vector3.Distance(PlayerPos, transform.position);
 
-        if(distance < 8)
+        if (distance < 8)
         {
 
-            Instantiate(Barrier,this.transform);
+            Instantiate(Barrier, this.transform);
             bShiled = true;
         }
     }
@@ -207,20 +225,20 @@ public class BossBehavior : MonoBehaviour
         if (iCurrentMoveIndex == iDestMoveIndex)
         {
             Vector3 PlayerPos = Player.transform.position;
-            for(int k  =0; k < 18; k++)
+            for (int k = 0; k < 18; k++)
             {
                 float distance = Math.Abs(vMovingPos[k].y - PlayerPos.y);
-                if(distance < 0.275)
+                if (distance < 0.275)
                 {
                     iDestMoveIndex = k + 4;
                     break;
-                }    
+                }
             }
-           
+
             iMoveNum++;
             if (iMoveNum % 2 == 0 && fShootTick > 50)
             {
-                if(!CurrentBullet)
+                if (!CurrentBullet)
                 {
                     fShootTick = 0;
                     bShoot = true;
@@ -232,7 +250,7 @@ public class BossBehavior : MonoBehaviour
                 {
                     fShootTick = 0;
                     CurrentBullet.GetComponent<TetrisBlock>().Launch();
-                    animator.SetTrigger("BossLaunch");
+                    GetComponent<Animator>().SetTrigger("Launch");
                     CurrentBullet = null;
                 }
 
@@ -249,10 +267,10 @@ public class BossBehavior : MonoBehaviour
             iCurrentMoveIndex--;
         }
         fShootTick += 5;
-            yield return new WaitForSeconds(0.2f);
-            StartCoroutine("Move_Shoot1");
- }
-   
+        yield return new WaitForSeconds(0.2f);
+        StartCoroutine("Move_Shoot1");
+    }
+
     protected void ShootPattern1()
     {
         if (bShoot == true)
@@ -266,11 +284,11 @@ public class BossBehavior : MonoBehaviour
 
     protected void ShootPattern2()
     {
-        if(bShoot)
+        if (bShoot)
         {
-            for(int i  = 0; i< 5; i++)
+            for (int i = 0; i < 5; i++)
             {
-                GameObject pbullet = Instantiate(Pattern2Bullet,transform.position, Quaternion.identity);
+                GameObject pbullet = Instantiate(Pattern2Bullet, transform.position, Quaternion.identity);
                 pbullet.GetComponent<BossBullet2>().fShootAngle = 160 + i * 10;
             }
             bShoot = false;
@@ -289,17 +307,34 @@ public class BossBehavior : MonoBehaviour
     {
         iBulletNum = UnityEngine.Random.Range(0, Bullets.Length);
         CurrentBullet = Instantiate(Bullets[iBulletNum], shootPoint);
-        animator.SetTrigger("BossAttack");
+        animator.SetTrigger("Attack");
         // bullet.GetComponent<BossBullet>().Initialize(fShootAngle, 10);
     }
 
     protected void Move_Dying()
     {
+        fMoveTick += Time.deltaTime;
+        float yPos = -2.0f * fMoveTick * fMoveTick + 10 * fMoveTick;
+        transform.position = new Vector3(DyingPos.x, DyingPos.y + yPos, 0);
+        if(fMoveTick * 40 < 180)
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, fMoveTick*40));
+        if (transform.position.y < -10)
+            Player.GetComponent<PlayerMove>().TurnToWin2Mode();
     }
 
     public void GetDamage(int iGetDamage)
     {
-        iCurrentHP -= (int)(iGetDamage * fShootSpeed);
+        if (eMoveState == BossMoveState.BOSS_MOVE_DYING || eMoveState == BossMoveState.BOSS_MOVE_APPEAR) return;
+        iCurrentHP -= 1;
+        if (iCurrentHP <= 0)
+        {
+            eMoveState = BossMoveState.BOSS_MOVE_DYING;
+            DyingParticle.SetActive(true);
+            DyingPos = transform.position;
+            fMoveTick = 0;
+            Player.GetComponent<PlayerMove>().TurnToWinMode();
+            if (CurrentBullet) Destroy(CurrentBullet);
+        }
 
     }
 }

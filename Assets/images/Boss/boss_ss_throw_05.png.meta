@@ -1,0 +1,536 @@
+fileFormatVersion: 2
+guid: 4ae2f361154c6c749893958ca552f78d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5349114196305852969
+    second: boss_ss_throw_05_0
+  - first:
+      213: 5190846414939915387
+    second: boss_ss_throw_05_1
+  - first:
+      213: 1251643040437124520
+    second: boss_ss_throw_05_2
+  - first:
+      213: -6013309025916383716
+    second: boss_ss_throw_05_3
+  - first:
+      213: -1159697345811000390
+    second: boss_ss_throw_05_4
+  - first:
+      213: 8660932971538947950
+    second: boss_ss_throw_05_5
+  - first:
+      213: 5123925306030918882
+    second: boss_ss_throw_05_6
+  - first:
+      213: 6823693094390940041
+    second: boss_ss_throw_05_7
+  - first:
+      213: 7864328162698571838
+    second: boss_ss_throw_05_8
+  - first:
+      213: 2217768576375152599
+    second: boss_ss_throw_05_9
+  - first:
+      213: 7481036171924975013
+    second: boss_ss_throw_05_10
+  - first:
+      213: -4311074171581682729
+    second: boss_ss_throw_05_11
+  - first:
+      213: 1053336165659070705
+    second: boss_ss_throw_05_12
+  - first:
+      213: -1413220297470547750
+    second: boss_ss_throw_05_13
+  - first:
+      213: 2125946471700548857
+    second: boss_ss_throw_05_14
+  - first:
+      213: -4232655831663687723
+    second: boss_ss_throw_05_15
+  - first:
+      213: 471795024805479308
+    second: boss_ss_throw_05_16
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 30
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: boss_ss_throw_05_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 292
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d5c032baf024c5b0800000000000000
+      internalID: -5349114196305852969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_ss_throw_05_1
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 292
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b748a16ef47990840800000000000000
+      internalID: 5190846414939915387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_ss_throw_05_2
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 292
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ad38dab6babe5110800000000000000
+      internalID: 1251643040437124520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_ss_throw_05_3
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 296
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1e8a910d4f6c8ca0800000000000000
+      internalID: -6013309025916383716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_ss_throw_05_4
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 296
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab3d8f7886de7efe0800000000000000
+      internalID: -1159697345811000390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_ss_throw_05_5
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 296
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6f1c0866a0d13870800000000000000
+      internalID: 8660932971538947950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_ss_throw_05_6
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 296
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ec8b990be6db1740800000000000000
+      internalID: 5123925306030918882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_ss_throw_05_7
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 148
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 981457347b0a2be50800000000000000
+      internalID: 6823693094390940041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_ss_throw_05_8
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 148
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e30bfb60cc4b32d60800000000000000
+      internalID: 7864328162698571838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_ss_throw_05_9
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 152
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7df5ddc15c817ce10800000000000000
+      internalID: 2217768576375152599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_ss_throw_05_10
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 152
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5adaf6b13caf1d760800000000000000
+      internalID: 7481036171924975013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_ss_throw_05_11
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 156
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7db238ac1ecfb24c0800000000000000
+      internalID: -4311074171581682729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_ss_throw_05_12
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 156
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f05e2f69a33e9e00800000000000000
+      internalID: 1053336165659070705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_ss_throw_05_13
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 156
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad865e380ab336ce0800000000000000
+      internalID: -1413220297470547750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_ss_throw_05_14
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 12
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fcc4316d01e08d10800000000000000
+      internalID: 2125946471700548857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_ss_throw_05_15
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 12
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d7433952f59245c0800000000000000
+      internalID: -4232655831663687723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_ss_throw_05_16
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 28
+        width: 4
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c83c35c43172c8600800000000000000
+      internalID: 471795024805479308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
