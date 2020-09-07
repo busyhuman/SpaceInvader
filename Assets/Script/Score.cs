@@ -22,7 +22,7 @@ public class Score : MonoBehaviour
     }
     IEnumerator UpdateScore()
     {
-        while(iIndex <6)
+        while(iIndex <7)
         {
             transform.GetChild(iIndex).GetComponent<ScoreUnit>().bJump = true;
             iIndex++;

@@ -69,6 +69,7 @@
     <Compile Include="Assets\MenuAssets\CharacterChanger.cs" />
     <Compile Include="Assets\ParticleDestroyer.cs" />
     <Compile Include="Assets\PlayerSpawn.cs" />
+    <Compile Include="Assets\RenderUserRank.cs" />
     <Compile Include="Assets\Scenes\SceneChanger.cs" />
     <Compile Include="Assets\Script\BaseBullet.cs" />
     <Compile Include="Assets\Script\BossBehavior.cs" />
@@ -76,7 +77,11 @@
     <Compile Include="Assets\Script\BossBullet2.cs" />
     <Compile Include="Assets\Script\BulletMove.cs" />
     <Compile Include="Assets\Script\CameraFade.cs" />
+    <Compile Include="Assets\Script\DestroyThis.cs" />
+    <Compile Include="Assets\Script\GetDataExample.cs" />
     <Compile Include="Assets\Script\GetHttpData.cs" />
+    <Compile Include="Assets\Script\JsonHelper.cs" />
+    <Compile Include="Assets\Script\JsonParser.cs" />
     <Compile Include="Assets\Script\MakeDiamondShape.cs" />
     <Compile Include="Assets\Script\MonsterMove.cs" />
     <Compile Include="Assets\Script\MonsterMove2.cs" />
@@ -86,6 +91,8 @@
     <Compile Include="Assets\Script\PlayerData.cs" />
     <Compile Include="Assets\Script\PlayerMove.cs" />
     <Compile Include="Assets\Script\PostHttpData.cs" />
+    <Compile Include="Assets\Script\RankingUI\InputName.cs" />
+    <Compile Include="Assets\Script\RecordData.cs" />
     <Compile Include="Assets\Script\ReturnTex.cs" />
     <Compile Include="Assets\Script\Score.cs" />
     <Compile Include="Assets\Script\ScoreMgr.cs" />
@@ -94,6 +101,8 @@
     <Compile Include="Assets\Script\TetrisBlock.cs" />
     <Compile Include="Assets\Script\TetrisMgr.cs" />
     <Compile Include="Assets\Script\particlemove.cs" />
+    <Compile Include="Assets\SortRank.cs" />
+    <Compile Include="Assets\UserInfo.cs" />
     <Compile Include="Assets\Wolv Interactive\Pixel Perfect Retro Camera\Scenes\Example\MoveCamera.cs" />
     <Compile Include="Assets\Wolv Interactive\Pixel Perfect Retro Camera\Scenes\Example\Spin.cs" />
     <Compile Include="Assets\Wolv Interactive\Pixel Perfect Retro Camera\Scripts\PixelCamera.cs" />

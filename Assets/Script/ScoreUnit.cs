@@ -7,7 +7,6 @@ public class ScoreUnit : MonoBehaviour
 {
     public int idigit;
     public GameObject parent;
-    public Text text;
     private float time = 0.0f;
     public bool bJump = false;
     private float posX, posY ;

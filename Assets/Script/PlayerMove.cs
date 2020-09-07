@@ -67,6 +67,7 @@ public class PlayerMove : MonoBehaviour
     public void TurnToWin3Mode()
     {
         iWinState = 3;
+        GameObject.Find("GameManager").GetComponent<ScoreMgr>().UpdateScore(200000);
         winText.GetComponent<Text>().enabled = true ;
     }
 

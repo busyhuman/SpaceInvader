@@ -5,11 +5,11 @@ using UnityEngine;
 public class ScoreMgr : MonoBehaviour
 {
     public GameObject ScoreObj;
+    public GameObject UserInfo;
     public int iScore = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -23,5 +23,6 @@ public class ScoreMgr : MonoBehaviour
         iScore += iGet;
         ScoreObj.GetComponent<Score>().iScore = iScore;
         ScoreObj.GetComponent<Score>().StartCoroutine("UpdateScore");
+        UserInfo.GetComponent<UserInfo>().SetScore(iScore);
     }
 }

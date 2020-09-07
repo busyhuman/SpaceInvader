@@ -40,4 +40,8 @@ public class SceneChanger : MonoBehaviour
         }
         SceneManager.LoadScene("Loading");
     }
+    public void TurnToRanking()
+    {
+        SceneManager.LoadScene("Ranking");
+    }
 }

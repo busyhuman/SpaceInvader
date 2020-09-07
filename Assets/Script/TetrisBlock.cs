@@ -7,6 +7,7 @@ public class TetrisBlock : MonoBehaviour
 {
     public bool bStoped = false;
     public GameObject Tile;
+    private ScoreMgr ScoreMgr;
 
     public float TileSize; //타일 사이즈
     public float interval; // 타일 간격
@@ -67,7 +68,7 @@ public class TetrisBlock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        ScoreMgr = GameObject.Find("GameManager").GetComponent<ScoreMgr>();
         CreateBlock();
     }
 
@@ -82,7 +83,10 @@ public class TetrisBlock : MonoBehaviour
     {
         iHP -= iDam;
         if (iHP < 0)
+        {
             GameObject.Destroy(gameObject);
+            ScoreMgr.UpdateScore(323);
+        }
     }
     public void Launch()
     {

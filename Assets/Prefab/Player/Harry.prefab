@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4421370703459312309}
   - component: {fileID: 4421370703459312311}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Harry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,8 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13872ac44e2eecf468048d03a5fe9177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bDie: 1
   Bullet: {fileID: 1018957960665680832, guid: 3ac8b35a3eee9fb42bfb593f65549788, type: 3}
   moveSpeed: 5
+  winText: {fileID: 0}
+  overText: {fileID: 0}
 --- !u!50 &4421370703459312308
 Rigidbody2D:
   serializedVersion: 4
@@ -145,14 +148,18 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.15625, y: 0.4375}
-      - {x: -0.21875, y: 0.4375}
-      - {x: -0.4375, y: 0.3125}
-      - {x: -0.4375, y: -0.40625}
-      - {x: 0.40625, y: -0.40625}
-      - {x: 0.4375, y: -0.34375}
-      - {x: 0.4375, y: 0.21875}
-      - {x: 0.375, y: 0.375}
+    - - {x: 0.45843887, y: 0.60997295}
+      - {x: 0.4035759, y: 0.82026803}
+      - {x: 0.12195301, y: 0.9865619}
+      - {x: -0.2444725, y: 0.9779825}
+      - {x: -0.7204485, y: 0.58703077}
+      - {x: -0.6809387, y: -0.19909799}
+      - {x: -0.39462948, y: -0.8780998}
+      - {x: 0.354805, y: -0.80088806}
+      - {x: 0.24886799, y: -0.5153318}
+      - {x: 0.34712505, y: -0.19309673}
+      - {x: 0.626132, y: 0.31311998}
+      - {x: 0.495039, y: 0.41789544}
 --- !u!82 &4421370703459312311
 AudioSource:
   m_ObjectHideFlags: 0

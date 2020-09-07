@@ -134,15 +134,13 @@ public class BossBehavior : MonoBehaviour
         switch (iPhase)
         {
             case 1:
-                if (iCurrentHP < 66)
+                if ((float)(iCurrentHP / iMaxHP) < 0.66)
                 {
                     iPhase = 2;
                 }
-                if (!bShiled)
-                    CheckBarrier();
                 break;
             case 2:
-                if (iCurrentHP < 33)
+                if ((float)(iCurrentHP / iMaxHP) < 0.33)
                 {
                     iPhase = 3;
                 }
@@ -155,6 +153,8 @@ public class BossBehavior : MonoBehaviour
                 }
                 break;
         }
+                if (!bShiled)
+                    CheckBarrier();
     }
     protected void SetShootPattern()
     {
@@ -286,10 +286,10 @@ public class BossBehavior : MonoBehaviour
     {
         if (bShoot)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 GameObject pbullet = Instantiate(Pattern2Bullet, transform.position, Quaternion.identity);
-                pbullet.GetComponent<BossBullet2>().fShootAngle = 160 + i * 10;
+                pbullet.GetComponent<BossBullet2>().fShootAngle = 160 + i * 15;
             }
             bShoot = false;
         }

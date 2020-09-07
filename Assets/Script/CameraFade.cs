@@ -39,6 +39,7 @@ public class CameraFade : MonoBehaviour
                 {
                     bTrigger = false;
                     FadeIn_Out = true;
+                    GameObject.Find("GameManager").GetComponent<SceneChanger>().TurnToRanking();
 
                 }
                Black.color = new Color(0,0,0, alpha);
