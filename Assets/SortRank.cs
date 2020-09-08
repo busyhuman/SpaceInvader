@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 struct userInfo
 {
@@ -12,19 +10,20 @@ struct userInfo
 public class SortRank : MonoBehaviour
 {
     private userInfo[] infos;
-    public GameObject FST; // 123등 오브젝트
+    public GameObject First;    // 1등 오브젝트
+    public GameObject Second;    // 2등 오브젝트
+    public GameObject Third;    // 3등 오브젝트
 
-    // Start is called  before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        
+        run();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void run()
     {
-        
+
     }
+
     public void FindUserRank()
     {
         // 유저 랭크 찾기
@@ -34,4 +33,6 @@ public class SortRank : MonoBehaviour
     {
         // 1등, 2등, 3등   
     }
+
+
 }

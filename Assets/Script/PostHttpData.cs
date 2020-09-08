@@ -4,16 +4,9 @@ using UnityEngine.Networking;
 
 public class PostHttpData : MonoBehaviour
 {
-    // URL
-    string url = "https://busyhuman.pythonanywhere.com/records/";
-    IEnumerator postRequest()
+    IEnumerator postRequest(string url, WWWForm form)
     {
         UnityWebRequest request = new UnityWebRequest();
-
-        WWWForm form = new WWWForm();
-        form.AddField("Stage", "2");
-        form.AddField("Score", "13");
-        form.AddField("user", "busyhuman");
 
         using (request = UnityWebRequest.Post(url, form))
         {
@@ -21,18 +14,14 @@ public class PostHttpData : MonoBehaviour
 
             if (request.isNetworkError)
             {
-                Debug.Log(request.error);
-            }
-            else
-            {
-                Debug.Log(request.downloadHandler.text);
+                Debug.LogError(request.error);
             }
         }
     
     }
-
-    void Start()
+    public void PostData(string url, WWWForm form)
     {
-        StartCoroutine(postRequest());
+        StartCoroutine(postRequest(url, form));
+        return;
     }
 }

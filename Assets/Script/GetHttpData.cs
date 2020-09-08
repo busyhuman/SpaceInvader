@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 public class GetHttpData : MonoBehaviour
 {
-    string url;
     public bool isDone = false;
     public string jsonString;
 
@@ -15,7 +14,7 @@ public class GetHttpData : MonoBehaviour
         return value;
     }
 
-    IEnumerator GetRequest()
+    IEnumerator GetRequest(string url)
     {
         UnityWebRequest request = new UnityWebRequest();
         using (request = UnityWebRequest.Get(url))
@@ -26,14 +25,13 @@ public class GetHttpData : MonoBehaviour
             if (request.isNetworkError)
             {
                 Debug.Log(request.error);
+                jsonString = request.error;
             }
             else
             {
                 jsonString = fixJson(request.downloadHandler.text);
-         //       Debug.Log(jsonString);
-        //        RecordData[] record = JsonHelper.FromJson<RecordData>(jsonString);
-         //       Debug.Log(record[0].Date);
             }
+
             isDone = true;
         }
 
@@ -41,8 +39,7 @@ public class GetHttpData : MonoBehaviour
 
     public string GetData(string url)
     {
-        this.url = url;
-        StartCoroutine(GetRequest());
+        StartCoroutine(GetRequest(url));
         return jsonString;
     }
 }
