@@ -19,6 +19,8 @@ public class SceneChanger : MonoBehaviour
     public void TurnToStage1Boss()
     {
 
+        GameObject audiosource = GameObject.Find("AudioController");
+        audiosource.GetComponent<AudioController>().SetBGM(1);
         SceneManager.LoadScene("StageBoss1");
 
     }
@@ -33,11 +35,8 @@ public class SceneChanger : MonoBehaviour
     }
     public void TurnToLoading()
     {
-        GameObject audiosource = GameObject.Find("Audio Source");
-        if(audiosource)
-        {
-            Destroy(audiosource);
-        }
+        GameObject audiosource = GameObject.Find("AudioController");
+        audiosource.GetComponent<AudioController>().SetBGM(0);
         SceneManager.LoadScene("Loading");
     }
     public void TurnToRanking()

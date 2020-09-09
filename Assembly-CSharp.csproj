@@ -63,7 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AudioController.cs" />
     <Compile Include="Assets\LoadingText.cs" />
     <Compile Include="Assets\MenuAssets\BlinkText.cs" />
     <Compile Include="Assets\MenuAssets\CharacterChanger.cs" />
@@ -102,6 +101,9 @@
     <Compile Include="Assets\Script\TetrisMgr.cs" />
     <Compile Include="Assets\Script\particlemove.cs" />
     <Compile Include="Assets\SortRank.cs" />
+    <Compile Include="Assets\Sound\AudioController.cs" />
+    <Compile Include="Assets\Sound\SoundVolumeControl.cs" />
+    <Compile Include="Assets\Sound\UISFX.cs" />
     <Compile Include="Assets\UserInfo.cs" />
     <Compile Include="Assets\Wolv Interactive\Pixel Perfect Retro Camera\Scenes\Example\MoveCamera.cs" />
     <Compile Include="Assets\Wolv Interactive\Pixel Perfect Retro Camera\Scenes\Example\Spin.cs" />
