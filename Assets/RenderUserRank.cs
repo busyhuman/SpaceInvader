@@ -22,7 +22,6 @@ public class RenderUserRank : MonoBehaviour
 
     public void SetText(string _rank, string _ID, string _score)
     {
-        int j = 0;
         string ScoreStr = "";
         for (int i = 0; i < 7 - _score.Length; i++)
             ScoreStr += "0";

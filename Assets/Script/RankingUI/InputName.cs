@@ -37,6 +37,8 @@ public class InputName : MonoBehaviour
           서버 작업
         */
         rankMgr.SetId(name);
+
+        rankMgr.SetScore((int)(Random.Range(0,100)));   // 나중에 랜덤부분 삭제
         rankMgr.RunRankingList();
 
 

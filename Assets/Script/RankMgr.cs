@@ -1,9 +1,17 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class RankMgr : MonoBehaviour
 {
+    public GameObject First;
+    public GameObject Second;
+    public GameObject Third;
+
+    public GameObject[] Near = new GameObject[9];
+
+
+
     private string id = "";
     private int score = 0;
     private int stage = 1;
@@ -11,6 +19,27 @@ public class RankMgr : MonoBehaviour
     public void RunRankingList()
     {
         StartCoroutine(RegisterAccount());
+    }
+
+
+    int Upper_Bound(RecordData[] records, int target)
+    {
+        int start = 0, end = records.Length - 1;
+
+        while (end > start)
+        {
+            int mid = (start + end) / 2;
+
+            if (records[mid].Score >= target)
+            {
+                end = mid;
+            }
+            else
+            {
+                start = mid + 1;
+            }
+        }
+        return end;
     }
 
     IEnumerator RegisterAccount()
@@ -22,7 +51,7 @@ public class RankMgr : MonoBehaviour
         form.AddField("ID", id);
 
         postHttpData.PostData("https://busyhuman.pythonanywhere.com/users/", form);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.6f);
         yield return StartCoroutine(RegisterRecord());
     }
 
@@ -54,7 +83,6 @@ public class RankMgr : MonoBehaviour
             {
                 continue;
             }
-
             else
             {
                 break;
@@ -63,19 +91,46 @@ public class RankMgr : MonoBehaviour
         }
 
         RecordData[] records = JsonParser<RecordData>.ParseJsonData(getHttpData.jsonString);
-        yield return StartCoroutine(ShowRecords(records));
-    }
 
-    IEnumerator ShowRecords(RecordData[] records)
-    {
-        foreach (RecordData record in records)
+        int recordLen = records.Length;
+
+        if (recordLen >= 1)
         {
-            Debug.Log(record.user + "\n" + record.Date + "\n" + record.Stage + "\n" + record.Score);
+            First.GetComponent<RenderUserRank>().SetText("1st", records[recordLen - 1].user, records[recordLen - 1].Score.ToString());
         }
 
-        yield return null;
-    }
+        if (recordLen >= 2)
+        {
+            Second.GetComponent<RenderUserRank>().SetText("2nd", records[recordLen - 2].user, records[recordLen - 2].Score.ToString());
+        }
 
+        if (recordLen >= 3)
+        {
+            Third.GetComponent<RenderUserRank>().SetText("3rd", records[recordLen - 3].user, records[recordLen - 3].Score.ToString());
+        }
+
+        int currentPos = Upper_Bound(records, score), nearLen = Near.Length;
+        int maxPos = currentPos + nearLen / 2, minPos = currentPos - nearLen / 2;
+        int temp = nearLen / 2;
+        int rank = recordLen - currentPos;
+
+        Debug.Log(this.id + " " + this.score);
+        Near[nearLen / 2].GetComponent<RenderUserRank>().SetText((rank).ToString(), this.id, this.score.ToString());
+
+        for (int i = currentPos + 1; i < recordLen && i <= maxPos; i++)
+        {
+            Near[--temp].GetComponent<RenderUserRank>().SetText((--rank).ToString(), records[i].user, records[i].Score.ToString());
+        }
+
+        temp = nearLen / 2;
+        rank = recordLen - currentPos;
+
+        for (int i = currentPos - 1; i >= 0 && i >= minPos; i--)
+        {
+            Near[++temp].GetComponent<RenderUserRank>().SetText((++rank).ToString(), records[i].user, records[i].Score.ToString());
+        }
+
+    }
 
     // Setter
     public void SetId(string id)
