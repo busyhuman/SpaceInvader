@@ -28,6 +28,10 @@ public class PlayerMove : MonoBehaviour
         overText = GameObject.Find("OverText");
         Fade = GameObject.Find("Fade");
         audioSource = GetComponent<AudioSource>();
+        GameObject sfxvolume = GameObject.Find("AudioContorller");
+        if (sfxvolume)
+            audioSource.volume = sfxvolume.GetComponent<AudioController>().SFXVolume / 100.0f;
+
         camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         winText = GameObject.Find("WinText");
     }
