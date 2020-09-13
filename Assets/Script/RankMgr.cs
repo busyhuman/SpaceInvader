@@ -22,7 +22,7 @@ public class RankMgr : MonoBehaviour
     }
 
 
-    int Upper_Bound(RecordData[] records, int target)
+    int Lower_Bound(RecordData[] records, int target)
     {
         int start = 0, end = records.Length - 1;
 
@@ -51,7 +51,7 @@ public class RankMgr : MonoBehaviour
         form.AddField("ID", id);
 
         postHttpData.PostData("https://busyhuman.pythonanywhere.com/users/", form);
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(1.0f);
         yield return StartCoroutine(RegisterRecord());
     }
 
@@ -66,6 +66,7 @@ public class RankMgr : MonoBehaviour
         form.AddField("Score", score);
 
         postHttpData.PostData("https://busyhuman.pythonanywhere.com/records/", form);
+        yield return new WaitForSeconds(1.5f);
         yield return StartCoroutine(ConfirmRecords());
     }
 
@@ -109,12 +110,11 @@ public class RankMgr : MonoBehaviour
             Third.GetComponent<RenderUserRank>().SetText("3rd", records[recordLen - 3].user, records[recordLen - 3].Score.ToString());
         }
 
-        int currentPos = Upper_Bound(records, score), nearLen = Near.Length;
+        int currentPos = Lower_Bound(records, score), nearLen = Near.Length;
         int maxPos = currentPos + nearLen / 2, minPos = currentPos - nearLen / 2;
         int temp = nearLen / 2;
         int rank = recordLen - currentPos;
 
-        Debug.Log(this.id + " " + this.score);
         Near[nearLen / 2].GetComponent<RenderUserRank>().SetText((rank).ToString(), this.id, this.score.ToString());
 
         for (int i = currentPos + 1; i < recordLen && i <= maxPos; i++)
