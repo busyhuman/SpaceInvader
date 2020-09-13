@@ -38,7 +38,8 @@ public class InputName : MonoBehaviour
         */
         rankMgr.SetId(name);
 
-        rankMgr.SetScore((int)(Random.Range(0,100)));   // 나중에 랜덤부분 삭제
+        
+        rankMgr.SetScore(Score);   // 나중에 랜덤부분 삭제
         rankMgr.RunRankingList();
 
 

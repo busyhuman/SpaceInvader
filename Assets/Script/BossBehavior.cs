@@ -64,12 +64,14 @@ public class BossBehavior : MonoBehaviour
     Vector3[] vMovingPos;
     private float fShootAngle = 180;
     int iMoveNum = 0;
-
+    private BossSound sound;
+   
     public GameObject CurrentBullet;
 
     // Start is called before the first frame update
     void Start()
     {
+        sound = gameObject.GetComponent<BossSound>();
         animator = GetComponent<Animator>();
         vMovingPos = new Vector3[22];
         for (int i = 0; i < 22; i++)
@@ -109,18 +111,21 @@ public class BossBehavior : MonoBehaviour
             case BossMoveState.BOSS_MOVE_SHOOTMOVE:
                 if (eShootPattern == BossShoot.BOSS_SHOOT1)
                     Move_Shoot1();
-
-                switch (eShootPattern)
+                if(Player.GetComponent<PlayerMove>().iDieState == 0)
                 {
-                    case BossShoot.BOSS_SHOOT1:
-                        ShootPattern1();
-                        break;
-                    case BossShoot.BOSS_SHOOT2:
-                        ShootPattern2();
-                        break;
-                    case BossShoot.BOSS_SHOOT3:
-                        ShootPattern3();
-                        break;
+                    switch (eShootPattern)
+                    {
+                        case BossShoot.BOSS_SHOOT1:
+                            ShootPattern1();
+                            break;
+                        case BossShoot.BOSS_SHOOT2:
+                            ShootPattern2();
+                            break;
+                        case BossShoot.BOSS_SHOOT3:
+                            ShootPattern3();
+                            break;
+                    }
+
                 }
                 break;
             case BossMoveState.BOSS_MOVE_DYING:
@@ -251,6 +256,7 @@ public class BossBehavior : MonoBehaviour
                     fShootTick = 0;
                     CurrentBullet.GetComponent<TetrisBlock>().Launch();
                     GetComponent<Animator>().SetTrigger("Launch");
+                    sound.PlaySkill1();
                     CurrentBullet = null;
                 }
 
@@ -291,6 +297,7 @@ public class BossBehavior : MonoBehaviour
                 GameObject pbullet = Instantiate(Pattern2Bullet, transform.position, Quaternion.identity);
                 pbullet.GetComponent<BossBullet2>().fShootAngle = 160 + i * 15;
             }
+            sound.PlaySkill2();
             bShoot = false;
         }
         if (fPatternTick > 8.0f)
@@ -328,6 +335,7 @@ public class BossBehavior : MonoBehaviour
         iCurrentHP -= 1;
         if (iCurrentHP <= 0)
         {
+            sound.PlayHurt();
             eMoveState = BossMoveState.BOSS_MOVE_DYING;
             DyingParticle.SetActive(true);
             DyingPos = transform.position;

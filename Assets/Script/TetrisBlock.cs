@@ -8,6 +8,9 @@ public class TetrisBlock : MonoBehaviour
     public bool bStoped = false;
     public GameObject Tile;
     private ScoreMgr ScoreMgr;
+    private AudioSource audio;
+    public AudioClip ExplosionSound;
+    public AudioClip HitSound;
 
     public float TileSize; //타일 사이즈
     public float interval; // 타일 간격
@@ -68,6 +71,12 @@ public class TetrisBlock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audio = gameObject.GetComponent<AudioSource>();
+        GameObject sfxvolume = GameObject.Find("AudioController");
+        if (sfxvolume)
+            audio.volume = sfxvolume.GetComponent<AudioController>().SFXVolume / 100.0f;
+        audio.Play();
+
         ScoreMgr = GameObject.Find("GameManager").GetComponent<ScoreMgr>();
         CreateBlock();
     }
@@ -86,6 +95,15 @@ public class TetrisBlock : MonoBehaviour
         {
             GameObject.Destroy(gameObject);
             ScoreMgr.UpdateScore(323);
+            audio.clip = ExplosionSound;
+            audio.Play();
+        }
+        else
+        {
+
+            audio.clip = HitSound;
+            audio.Play();
+
         }
     }
     public void Launch()

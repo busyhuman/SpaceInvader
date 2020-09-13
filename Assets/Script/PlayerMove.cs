@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class PlayerMove : MonoBehaviour
 {
     private int iWinState = 0; // 0:idle, 1 : win, 2: winRight , 3: winCenter , 4: winLeft , 5 : 찐 끝
-    private int iDieState = 0;
+    public int iDieState = 0;
     private Vector3 DyingPos;
     public bool bDie = true;
-  
 
+
+    private float SceneElapsedTime = 0;
     private bool canShoot = true;
     private float shootTimer = 0.0f;
     private float shootDelay = 0.2f;
@@ -28,7 +29,7 @@ public class PlayerMove : MonoBehaviour
         overText = GameObject.Find("OverText");
         Fade = GameObject.Find("Fade");
         audioSource = GetComponent<AudioSource>();
-        GameObject sfxvolume = GameObject.Find("AudioContorller");
+        GameObject sfxvolume = GameObject.Find("AudioController");
         if (sfxvolume)
             audioSource.volume = sfxvolume.GetComponent<AudioController>().SFXVolume / 100.0f;
 
@@ -43,6 +44,7 @@ public class PlayerMove : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        SceneElapsedTime += Time.deltaTime;
         switch(iDieState)
         {
             case 0:
@@ -70,9 +72,11 @@ public class PlayerMove : MonoBehaviour
 
     public void TurnToWin3Mode()
     {
+        int WinnningScore = 18000 - (int)(SceneElapsedTime * 100);
         iWinState = 3;
-        GameObject.Find("GameManager").GetComponent<ScoreMgr>().UpdateScore(200000);
+        GameObject.Find("GameManager").GetComponent<ScoreMgr>().UpdateScore(20000 + WinnningScore);
         winText.GetComponent<Text>().enabled = true ;
+
     }
 
     private void WinUpdate()
@@ -181,7 +185,9 @@ public class PlayerMove : MonoBehaviour
             {
                 if(iDieState == 0 && iWinState == 0)
                 {
+                    GameObject.Find("BOSS").GetComponent<BossSound>().PlayLaugh();
                     iDieState = 1;
+
                     shootTimer = 0;
                     DyingPos = transform.position;
                 }

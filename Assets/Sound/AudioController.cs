@@ -51,6 +51,7 @@ public class AudioController : MonoBehaviour
 
     public void SetSFXVolume(int volume)
     {
+        SFXVolume = volume;
         SFXaudio.volume = volume / 100.0f;
     }
 
