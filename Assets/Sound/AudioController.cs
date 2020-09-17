@@ -7,6 +7,7 @@ public class AudioController : MonoBehaviour
     // Start is called before the first frame update
     public AudioClip LoadingBGM;
     public AudioClip Stage1BGM;
+    public AudioClip RankingBGM;
 
     public AudioSource BGMaudio;
     public AudioSource SFXaudio;
@@ -41,6 +42,11 @@ public class AudioController : MonoBehaviour
                 BGMaudio.clip = Stage1BGM;
                 BGMaudio.Play();
                 break;
+            case 2:
+                BGMaudio.clip = RankingBGM;
+                BGMaudio.Play();
+                break;
+
         }
     }
     public void SetBGMVolume(int volume)

@@ -57,7 +57,7 @@ public class BossBehavior : MonoBehaviour
     public GameObject Pattern2Bullet;
     public bool bShiled = false;
     bool bShoot = false;
-    public int iCurrentMoveIndex = 2;
+    public int iCurrentMoveIndex = 5;
     int iDestMoveIndex = 0;
     int iBulletNum;
     Vector3 vTempPos;
@@ -203,9 +203,9 @@ public class BossBehavior : MonoBehaviour
     {
         transform.Translate(new Vector3(0, -fMoveSpeed * Time.deltaTime * 1.5f, 0), Space.Self);
         fMoveTick += Time.deltaTime;
-        if (transform.position.y < -5.0f)
+        if (transform.position.y < -1.15f)
         {
-            transform.position = new Vector3(transform.position.x, -5.0f, 0);
+            transform.position = new Vector3(transform.position.x, -1.15f, 0);
             vTempPos = transform.position;
             eMoveState = BossMoveState.BOSS_MOVE_SHOOTMOVE;
             fMoveTick = 0;

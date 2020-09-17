@@ -32,10 +32,6 @@ public class InputName : MonoBehaviour
 
         RankingList.SetActive(true);
 
-
-        /*
-          서버 작업
-        */
         rankMgr.SetId(name);
 
         

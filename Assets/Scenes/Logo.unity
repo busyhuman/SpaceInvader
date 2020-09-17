@@ -628,8 +628,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51db989dc3dba246ad6611cd6ccabcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadingBGM: {fileID: 8300000, guid: e81b0afb3ade9954f804c52546390518, type: 3}
+  LoadingBGM: {fileID: 8300000, guid: 6a3b49a4948fa33479d86b26fa11f9f9, type: 3}
   Stage1BGM: {fileID: 8300000, guid: f68f268631d101d498b16c347645c53f, type: 3}
+  RankingBGM: {fileID: 8300000, guid: db049dc936349174e802964d34569ccd, type: 3}
   BGMaudio: {fileID: 0}
   SFXaudio: {fileID: 0}
   BGMVolume: 100

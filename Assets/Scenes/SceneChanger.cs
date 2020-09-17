@@ -41,6 +41,8 @@ public class SceneChanger : MonoBehaviour
     }
     public void TurnToRanking()
     {
+        GameObject audiosource = GameObject.Find("AudioController");
+        audiosource.GetComponent<AudioController>().SetBGM(2);
         SceneManager.LoadScene("Ranking");
     }
 }
