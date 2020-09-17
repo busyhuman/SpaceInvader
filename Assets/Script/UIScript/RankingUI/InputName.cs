@@ -35,11 +35,10 @@ public class InputName : MonoBehaviour
         rankMgr.SetId(name);
 
         
-        rankMgr.SetScore(Score);   // 나중에 랜덤부분 삭제
+        rankMgr.SetScore(10);   // 나중에 랜덤부분 삭제
         rankMgr.RunRankingList();
 
 
         gameObject.SetActive(false);
-        //  PlayerInfoRenderer.SetText(225.ToString(), name, Score.ToString());
     }
 }
