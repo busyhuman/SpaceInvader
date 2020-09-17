@@ -826,6 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a826ff0ce93ba546867e5e89bf675cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SFXSource: {fileID: 0}
   OriginBGMVolume: 100
   OriginSFXVolume: 100
   images:
@@ -2258,6 +2259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a826ff0ce93ba546867e5e89bf675cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SFXSource: {fileID: 0}
   OriginBGMVolume: 100
   OriginSFXVolume: 100
   images:

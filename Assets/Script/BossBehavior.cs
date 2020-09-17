@@ -341,6 +341,7 @@ public class BossBehavior : MonoBehaviour
             DyingPos = transform.position;
             fMoveTick = 0;
             Player.GetComponent<PlayerMove>().TurnToWinMode();
+            animator.SetTrigger("DIe");
             if (CurrentBullet) Destroy(CurrentBullet);
         }
 

@@ -34,7 +34,8 @@ public class PlayerMove : MonoBehaviour
             audioSource.volume = sfxvolume.GetComponent<AudioController>().SFXVolume / 100.0f;
 
         camera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        winText = GameObject.Find("WinText");
+        winText = GameObject.Find("youwin");
+        winText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -75,7 +76,7 @@ public class PlayerMove : MonoBehaviour
         int WinnningScore = 18000 - (int)(SceneElapsedTime * 100);
         iWinState = 3;
         GameObject.Find("GameManager").GetComponent<ScoreMgr>().UpdateScore(20000 + WinnningScore);
-        winText.GetComponent<Text>().enabled = true ;
+        winText.SetActive(true);
 
     }
 
