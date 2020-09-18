@@ -7683,13 +7683,18 @@ PrefabInstance:
     - target: {fileID: 7649921993692424501, guid: 76fb8ffce81319645b3338018ac22c1a,
         type: 3}
       propertyPath: iMaxHP
-      value: 30
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7649921993692424501, guid: 76fb8ffce81319645b3338018ac22c1a,
         type: 3}
       propertyPath: DyingParticle
       value: 
       objectReference: {fileID: 724523689}
+    - target: {fileID: 7649921993692424501, guid: 76fb8ffce81319645b3338018ac22c1a,
+        type: 3}
+      propertyPath: iCurrentMoveIndex
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7649921993692424503, guid: 76fb8ffce81319645b3338018ac22c1a,
         type: 3}
       propertyPath: m_Constraints

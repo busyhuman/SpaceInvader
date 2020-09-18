@@ -57,7 +57,7 @@ public class BossBehavior : MonoBehaviour
     public GameObject Pattern2Bullet;
     public bool bShiled = false;
     bool bShoot = false;
-    public int iCurrentMoveIndex = 5;
+    public int iCurrentMoveIndex = 0;
     int iDestMoveIndex = 0;
     int iBulletNum;
     Vector3 vTempPos;
