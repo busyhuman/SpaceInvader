@@ -116,7 +116,7 @@ public class TetrisBlock : MonoBehaviour
         {
              GameObject child = transform.GetChild(i).gameObject;
             int iY = child.GetComponent<BossBullet>().iYPos2;
-             int Ypos = iCurrentY - iY;
+             int Ypos = iCurrentY - iY + 1;
              child.GetComponent<BossBullet>().iYPos = Ypos;
             child.GetComponent<BossBullet>().Launch();
 

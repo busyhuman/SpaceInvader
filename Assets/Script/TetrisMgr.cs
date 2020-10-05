@@ -22,7 +22,7 @@ public class TetrisMgr : MonoBehaviour
             for (int j = 0; j < 11; j++)
             {
                 TetrisPos[i, j].x = -12.75f + i * 1.05f;
-                TetrisPos[i, j].y = -5.55f + 1.05f * j;
+                TetrisPos[i, j].y = -4.55f + 1.05f * j;
             }
         }
 
