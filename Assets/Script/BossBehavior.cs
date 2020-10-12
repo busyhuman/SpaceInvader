@@ -230,12 +230,12 @@ public class BossBehavior : MonoBehaviour
         if (iCurrentMoveIndex == iDestMoveIndex)
         {
             Vector3 PlayerPos = Player.transform.position;
-            for (int k = 0; k < 18; k++)
+            for (int k = 0; k < 22; k++)
             {
                 float distance = Math.Abs(vMovingPos[k].y - PlayerPos.y);
-                if (distance < 0.275)
+                if (distance < 0.2)
                 {
-                    iDestMoveIndex = k + 4;
+                    iDestMoveIndex = k;
                     break;
                 }
             }
