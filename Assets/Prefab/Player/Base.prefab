@@ -224,5 +224,10 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[13].y
       value: 0.86305916
       objectReference: {fileID: 0}
+    - target: {fileID: 4421370703459312311, guid: 684ee1dbc345a2f4fa5f3ce7064e83a9,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e95d67cf1393b3e449ad8931a2b675ea, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 684ee1dbc345a2f4fa5f3ce7064e83a9, type: 3}

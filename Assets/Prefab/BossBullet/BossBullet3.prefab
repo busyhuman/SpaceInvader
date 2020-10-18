@@ -48,7 +48,7 @@ MonoBehaviour:
   Tile: {fileID: 7510205764762199878, guid: 5bf4902cbe4967845af7e971245ecfb5, type: 3}
   ExplosionSound: {fileID: 8300000, guid: d27ba7fa6ff3fdf48a14f2634cff186d, type: 3}
   HitSound: {fileID: 8300000, guid: 85b282f021eda924bb794e81ce9a6726, type: 3}
-  TileSize: 1
+  TileSize: 0.85
   interval: 1
   rigid: {fileID: 0}
   iTileX: 2

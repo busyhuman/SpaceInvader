@@ -153,7 +153,9 @@ public class PlayerMove : MonoBehaviour
         {
             Vector2 MousePosition = Input.mousePosition;
             MousePosition = camera.ScreenToWorldPoint(MousePosition);
-
+            if (MousePosition.x < -13) MousePosition.x = -13;
+            if (MousePosition.y < -7.8) MousePosition.y = -7.8f;
+            if (MousePosition.y > 7.8) MousePosition.y = 7.8f;
 
             float inputY = (MousePosition.y - transform.position.y) / 2.0f;
             float moveY = inputY * moveSpeed * Time.deltaTime;

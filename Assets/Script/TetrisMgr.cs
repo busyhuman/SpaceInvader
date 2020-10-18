@@ -16,13 +16,13 @@ public class TetrisMgr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TetrisPos = new Vector3[20, 11];
+        TetrisPos = new Vector3[20, 13];
         for (int i = 0; i < 20; i++)
         {
-            for (int j = 0; j < 11; j++)
+            for (int j = 0; j < 13; j++)
             {
-                TetrisPos[i, j].x = -12.75f + i * 1.05f;
-                TetrisPos[i, j].y = -4.55f + 1.05f * j;
+                TetrisPos[i, j].x = -13.0f + i * 0.88f;
+                TetrisPos[i, j].y = -4.55f + 0.88f * j;
             }
         }
 
