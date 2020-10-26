@@ -40,8 +40,8 @@ public class TetrisBlock : MonoBehaviour
         {
             for (int x = 0; x < iTileX; x++)    
             {
-                xPos = (float)x * interval + transform.position.x;
-                yPos = -(int)(y / iTileX) * interval + transform.position.y;
+                xPos = (float)x * TileSize + transform.position.x;
+                yPos = -(int)(y / iTileX) * TileSize + transform.position.y;
 
                 int iType = iTiles[x + y];
 
@@ -59,7 +59,7 @@ public class TetrisBlock : MonoBehaviour
                     block.GetComponent<BossBullet>().iYPos2 = (int)(y / iTileX);
 
                     block.GetComponent<BossBullet>().iStack = x;
-                    block.transform.localScale = new Vector3(TileSize, TileSize, TileSize);
+                   // block.transform.localScale = new Vector3(TileSize, TileSize, TileSize);
                     block.transform.SetParent(transform);
                 }
             }

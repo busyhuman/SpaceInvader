@@ -73,10 +73,10 @@ public class BossBehavior : MonoBehaviour
     {
         sound = gameObject.GetComponent<BossSound>();
         animator = GetComponent<Animator>();
-        vMovingPos = new Vector3[22];
-        for (int i = 0; i < 22; i++)
+        vMovingPos = new Vector3[26];
+        for (int i = 0; i < 26; i++)
         {
-            vMovingPos[i] = new Vector3(5.5f, -5.55f + 1.1f * i, 0);
+            vMovingPos[i] = new Vector3(5.5f, -5.55f + 0.93f * i, 0);
         }
         Player = GameObject.Find("Player");
         iCurrentHP = iMaxHP;
@@ -230,7 +230,7 @@ public class BossBehavior : MonoBehaviour
         if (iCurrentMoveIndex == iDestMoveIndex)
         {
             Vector3 PlayerPos = Player.transform.position;
-            for (int k = 0; k < 22; k++)
+            for (int k = 0; k < 26; k++)
             {
                 float distance = Math.Abs(vMovingPos[k].y - PlayerPos.y);
                 if (distance < 0.2)
