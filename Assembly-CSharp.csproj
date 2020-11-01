@@ -68,6 +68,7 @@
     <Compile Include="Assets\MenuAssets\BlinkText.cs" />
     <Compile Include="Assets\MenuAssets\CharacterChanger.cs" />
     <Compile Include="Assets\ParticleDestroyer.cs" />
+    <Compile Include="Assets\PauseGame.cs" />
     <Compile Include="Assets\PlayerSpawn.cs" />
     <Compile Include="Assets\RenderUserRank.cs" />
     <Compile Include="Assets\Scenes\SceneChanger.cs" />
