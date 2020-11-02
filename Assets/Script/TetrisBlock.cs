@@ -16,9 +16,9 @@ public class TetrisBlock : MonoBehaviour
     public float interval; // 타일 간격
 
     public Rigidbody2D rigid;
-    public int iTileX = 3;
-    public int iTileY = 2;      //블록 위치
     public int iType = 1;    // 블록 타입
+
+    public Vector2[] Blocksize;
     public int iHP = 100;
     public int iTetrisYIndex = 0;
     public int[] iTiles;
@@ -31,10 +31,13 @@ public class TetrisBlock : MonoBehaviour
     
     public virtual void CreateBlock()
     {
+
         TetrisPos = GameObject.Find("ShootMgr").GetComponent<TetrisMgr>().TetrisPos;
         int iCurrentY = GameObject.Find("BOSS").GetComponent<BossBehavior>().iCurrentMoveIndex / 2;
         float xPos = 0;
         float yPos = 0;
+        int iTileX = (int)Blocksize[0].x;
+        int iTileY = (int)Blocksize[0].y;
 
         for (int y = 0; y < iTiles.Length; y += iTileX)
         {

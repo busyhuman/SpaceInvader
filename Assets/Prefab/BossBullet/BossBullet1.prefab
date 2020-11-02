@@ -51,9 +51,10 @@ MonoBehaviour:
   TileSize: 0.85
   interval: 1
   rigid: {fileID: 0}
-  iTileX: 3
-  iTileY: 2
   iType: 1
+  Blocksize:
+  - {x: 3, y: 2}
+  - {x: 2, y: 3}
   iHP: 100
   iTetrisYIndex: 0
   iTiles: 000000000100000001000000010000000100000000000000
