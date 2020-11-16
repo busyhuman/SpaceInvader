@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2001645695706893851}
   - component: {fileID: 2001645695706893850}
   - component: {fileID: 2001645695706893853}
-  - component: {fileID: 3927662661339440654}
+  - component: {fileID: 558927759283754895}
   m_Layer: 0
   m_Name: BaseBullet
   m_TagString: PlayerBullet
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001645695706893855}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.58, y: -4.0706267, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,7 +100,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.24, y: 10.24}
+    oldSize: {x: 5.12, y: 5.12}
     newSize: {x: 0.02, y: 0.04}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -112,7 +112,7 @@ PolygonCollider2D:
       - {x: -0.0625, y: -0.125}
       - {x: 0.0625, y: -0.125}
       - {x: 0.0625, y: 0.125}
---- !u!114 &3927662661339440654
+--- !u!114 &558927759283754895
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,6 +121,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2001645695706893855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1758be80087107449c089c2591f8ae1, type: 3}
+  m_Script: {fileID: 11500000, guid: c1786f789a6b8504ba0b4d3d7c076165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameMgr: {fileID: 0}
+  Speed: 10
+  bDeath: 0

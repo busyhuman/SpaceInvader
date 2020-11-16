@@ -39,7 +39,18 @@ public class CameraFade : MonoBehaviour
                 {
                     bTrigger = false;
                     FadeIn_Out = true;
-                    GameObject.Find("GameManager").GetComponent<SceneChanger>().TurnToRanking();
+                    GameObject userInfo = GameObject.Find("UserData");
+                    UserInfo unfo = userInfo.GetComponent<UserInfo>();
+                    if (unfo.GetStage() == 1)
+                    {
+                        unfo.SetStage(2);
+                        GameObject.Find("GameManager").GetComponent<SceneChanger>().TurnToLoading();
+
+                    }
+                    else
+                    {
+                        GameObject.Find("GameManager").GetComponent<SceneChanger>().TurnToRanking();
+                    }
 
                 }
                Black.color = new Color(0,0,0, alpha);

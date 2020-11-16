@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1018957960665680835}
   - component: {fileID: 614256606604303331}
   m_Layer: 0
-  m_Name: PlayerBullet
+  m_Name: HarryBullet
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1018957960665680832}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.58, y: -4.0706267, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameMgr: {fileID: 0}
   Speed: 10
+  bDeath: 0
 --- !u!95 &614256606604303331
 Animator:
   serializedVersion: 3

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1799226216}
-  - component: {fileID: 1799226217}
+  - component: {fileID: 1353722028652478603}
   m_Layer: 10
   m_Name: ShootMgr
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 7649921993692424500}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1799226217
+--- !u!114 &1353722028652478603
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,11 +40,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1799226215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af75c129f385d1046a73b573c4969b43, type: 3}
+  m_Script: {fileID: 11500000, guid: c24427c77a2daba459a0280bac55a8f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fBlockSize: 1.1
-  pBlock: {fileID: 75552969504258627, guid: c9fc9fbcd3eaa1d43a74f1cd8029ca3b, type: 3}
+  pBlock: {fileID: 0}
   CanBool: 0
 --- !u!1 &7649921993692424506
 GameObject:
@@ -56,9 +56,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7649921993692424500}
   - component: {fileID: 7649921993692424507}
-  - component: {fileID: 7649921993692424501}
   - component: {fileID: 7649921993692424503}
   - component: {fileID: 6559418314104999164}
+  - component: {fileID: 4239946374263399129}
   m_Layer: 10
   m_Name: BOSS
   m_TagString: Boss
@@ -120,49 +120,18 @@ SpriteRenderer:
   m_SortingLayerID: -744650969
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 924210782766633408, guid: 10869f53f0ae5a34cb749fed19fb9a3b, type: 3}
+  m_Sprite: {fileID: 1692278094670232735, guid: 16080bcf12b8af9418a6a843afee22b8,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.24, y: 10.24}
+  m_Size: {x: 4.5333333, y: 4.266667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7649921993692424501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7649921993692424506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 203edee57fec4ac48a43aa9ae496f39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Bullets:
-  - {fileID: 2260538854602198705, guid: 3b3cee7cc7e4afc42925438b534e2bbf, type: 3}
-  - {fileID: 835328819176979652, guid: fb45ec56cf04a4540a89e832acfa06d8, type: 3}
-  - {fileID: 2357334451399108526, guid: 4432cf48e636c3641b9c2b46b116e221, type: 3}
-  - {fileID: 625580457626871258, guid: 4e3659ed1e1eaca47ac3e4871297978d, type: 3}
-  - {fileID: 5675439805121319176, guid: fff2a775c4d344648ae2ab350155707b, type: 3}
-  - {fileID: 3155303709349714498, guid: 9e33030f913646945857163fd7532461, type: 3}
-  Player: {fileID: 0}
-  fMoveSpeed: 5
-  Barrier: {fileID: 7582442814476686520, guid: 3db58d189269160469e3e51fd16e06aa, type: 3}
-  fMoveTick: 0
-  iCurrentHP: 0
-  iMaxHP: 1500
-  fShootSpeed: 1
-  shootPoint: {fileID: 1799226216}
-  Pattern2Bullet: {fileID: 6941913281915438266, guid: b4d1b342575ed6f4298b43904d1fad31,
-    type: 3}
-  bShiled: 0
-  iCurrentMoveIndex: 2
-  CurrentBullet: {fileID: 0}
 --- !u!50 &7649921993692424503
 Rigidbody2D:
   serializedVersion: 4
@@ -201,8 +170,8 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.1833334, y: 5.044444}
-    newSize: {x: 10.24, y: 10.24}
+    oldSize: {x: 4.5333333, y: 4.266667}
+    newSize: {x: 4.5333333, y: 4.266667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -257,3 +226,19 @@ PolygonCollider2D:
       - {x: 0.6666667, y: -2.3777773}
       - {x: 1.0333334, y: -2.3444438}
       - {x: 1.2333333, y: -2.144444}
+--- !u!114 &4239946374263399129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649921993692424506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55598c2db2c686743a3f2c479624bdb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Laugh: {fileID: 8300000, guid: 9b0ec210014fe774f9a6e44bea82108d, type: 3}
+  Hurt: {fileID: 8300000, guid: 8cfd545c2381ced47bf328c46c6005c6, type: 3}
+  skill1: {fileID: 8300000, guid: 30ee032efdfa3bb4ab53907f764ec162, type: 3}
+  skill2: {fileID: 8300000, guid: 093cadd6a12c54847a998f062666fee3, type: 3}

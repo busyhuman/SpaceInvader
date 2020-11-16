@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6941913281915438264}
   - component: {fileID: 6941913281915438267}
   m_Layer: 0
-  m_Name: BossBullet
+  m_Name: BossDartBullet
   m_TagString: MonsterBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ae89cef52adc546acfb95da09bb74c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 30
   fShootAngle: 180
 --- !u!61 &6941913281915438267
 BoxCollider2D:
@@ -114,7 +114,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.024, y: 1.024}
+    oldSize: {x: 0.85333335, y: 0.85333335}
     newSize: {x: 1.024, y: 1.024}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

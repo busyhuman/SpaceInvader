@@ -72,12 +72,6 @@
     <Compile Include="Assets\PlayerSpawn.cs" />
     <Compile Include="Assets\RenderUserRank.cs" />
     <Compile Include="Assets\Scenes\SceneChanger.cs" />
-    <Compile Include="Assets\Script\BaseBullet.cs" />
-    <Compile Include="Assets\Script\BossBehavior.cs" />
-    <Compile Include="Assets\Script\BossBullet.cs" />
-    <Compile Include="Assets\Script\BossBullet2.cs" />
-    <Compile Include="Assets\Script\BossSound.cs" />
-    <Compile Include="Assets\Script\BulletMove.cs" />
     <Compile Include="Assets\Script\CameraFade.cs" />
     <Compile Include="Assets\Script\DestroyThis.cs" />
     <Compile Include="Assets\Script\Domain\GetHttpData.cs" />
@@ -88,12 +82,36 @@
     <Compile Include="Assets\Script\JsonParser.cs" />
     <Compile Include="Assets\Script\LogInMgr.cs" />
     <Compile Include="Assets\Script\MakeDiamondShape.cs" />
-    <Compile Include="Assets\Script\MonsterMove.cs" />
-    <Compile Include="Assets\Script\MonsterMove2.cs" />
+    <Compile Include="Assets\Script\Monster\Boss\BossBehavior.cs" />
+    <Compile Include="Assets\Script\Monster\Boss\BossBullet.cs" />
+    <Compile Include="Assets\Script\Monster\Boss\BossBullet2.cs" />
+    <Compile Include="Assets\Script\Monster\Boss\BossSound.cs" />
+    <Compile Include="Assets\Script\Monster\Boss\TetrisBlock.cs" />
+    <Compile Include="Assets\Script\Monster\Boss\TetrisMgr.cs" />
+    <Compile Include="Assets\Script\Monster\MonsterBehavior.cs" />
+    <Compile Include="Assets\Script\Monster\MonsterBullet\LInearMoveBullet.cs" />
+    <Compile Include="Assets\Script\Monster\MonsterBullet\MonsterBulletBehavior.cs" />
+    <Compile Include="Assets\Script\Monster\MonsterBullet\ParabolaMovingBullet.cs" />
+    <Compile Include="Assets\Script\Monster\MonsterMove.cs" />
+    <Compile Include="Assets\Script\Monster\MonsterMove2.cs" />
+    <Compile Include="Assets\Script\Monster\MonsterPointControl.cs" />
+    <Compile Include="Assets\Script\Monster\Stage1Normal\Meringue1.cs" />
+    <Compile Include="Assets\Script\Monster\Stage1Normal\Meringue2.cs" />
+    <Compile Include="Assets\Script\Monster\Stage1Normal\Meringue3.cs" />
+    <Compile Include="Assets\Script\Monster\Stage1Normal\Meringue4.cs" />
     <Compile Include="Assets\Script\MosnterSpawner.cs" />
     <Compile Include="Assets\Script\MoveBackground.cs" />
+    <Compile Include="Assets\Script\MovingCamera.cs" />
     <Compile Include="Assets\Script\ParticleMgr.cs" />
+<<<<<<< HEAD
     <Compile Include="Assets\Script\PlayerMove.cs" />
+=======
+    <Compile Include="Assets\Script\Player\BaseBullet.cs" />
+    <Compile Include="Assets\Script\Player\BulletMove.cs" />
+    <Compile Include="Assets\Script\Player\PlayerData.cs" />
+    <Compile Include="Assets\Script\Player\PlayerMove.cs" />
+    <Compile Include="Assets\Script\PostHttpData.cs" />
+>>>>>>> b2b04cdccc5cea3089d78612142bf267456a5fb1
     <Compile Include="Assets\Script\RankMgr.cs" />
     <Compile Include="Assets\Script\ReturnTex.cs" />
     <Compile Include="Assets\Script\Score.cs" />
@@ -101,9 +119,8 @@
     <Compile Include="Assets\Script\ScoreUnit.cs" />
     <Compile Include="Assets\Script\SignInMgr.cs" />
     <Compile Include="Assets\Script\SoundMgr.cs" />
-    <Compile Include="Assets\Script\TetrisBlock.cs" />
-    <Compile Include="Assets\Script\TetrisMgr.cs" />
     <Compile Include="Assets\Script\UIScript\RankingUI\InputName.cs" />
+    <Compile Include="Assets\Script\UIScript\TurnToNextLevel.cs" />
     <Compile Include="Assets\Script\particlemove.cs" />
     <Compile Include="Assets\SortRank.cs" />
     <Compile Include="Assets\Sound\AudioController.cs" />
