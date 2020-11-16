@@ -1,9 +1,12 @@
 ﻿using System.Collections;
+using System.Net.Http;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class PostHttpData : MonoBehaviour
 {
+    public string message = "";
+
     IEnumerator postRequest(string url, WWWForm form)
     {
         UnityWebRequest request = new UnityWebRequest();
@@ -14,8 +17,15 @@ public class PostHttpData : MonoBehaviour
 
             if (request.isNetworkError)
             {
-                Debug.LogError(request.error);
+                Debug.LogError("NetworkError: " + request.error + "\n" + request.downloadHandler.text);
             }
+
+            if (request.isHttpError)
+            {
+                Debug.LogError("HttpError: " + request.error + "\n" + request.downloadHandler.text);
+            }
+
+            message = request.downloadHandler.text;
         }
     
     }

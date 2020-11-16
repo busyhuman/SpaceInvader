@@ -26,7 +26,7 @@ public class RankMgr : MonoBehaviour
     IEnumerator RegisterAccount()
     {
         GameObject phd = (GameObject)Instantiate(Resources.Load("HttpData/PostHttpData"));
-        PostHttpData postHttpData = (Instantiate(phd) as GameObject).GetComponent<PostHttpData>();
+        PostHttpData postHttpData = phd.GetComponent<PostHttpData>();
         WWWForm form = new WWWForm();
 
         form.AddField("ID", id);
@@ -39,7 +39,7 @@ public class RankMgr : MonoBehaviour
     IEnumerator RegisterRecord()
     {
         GameObject phd = (GameObject)Instantiate(Resources.Load("HttpData/PostHttpData"));
-        PostHttpData postHttpData = (Instantiate(phd) as GameObject).GetComponent<PostHttpData>();
+        PostHttpData postHttpData = phd.GetComponent<PostHttpData>();
         WWWForm form = new WWWForm();
 
         form.AddField("user", id);
@@ -54,7 +54,7 @@ public class RankMgr : MonoBehaviour
     IEnumerator ConfirmRecords()
     {
         GameObject phd = (GameObject)Instantiate(Resources.Load("HttpData/GetHttpData"));
-        GetHttpData getHttpData = (Instantiate(phd) as GameObject).GetComponent<GetHttpData>();
+        GetHttpData getHttpData = phd.GetComponent<GetHttpData>();
         getHttpData.GetData("https://busyhuman.pythonanywhere.com/records/?format=json");
 
         while (true)
