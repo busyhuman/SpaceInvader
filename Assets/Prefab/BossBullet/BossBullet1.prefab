@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2008026987228292644}
-  - component: {fileID: 913532193064055959}
   - component: {fileID: -1781478487384792816}
+  - component: {fileID: 3824418209275754982}
   m_Layer: 0
   m_Name: BossBullet1
   m_TagString: Untagged
@@ -32,35 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &913532193064055959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2260538854602198705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f95a20a50e45d414dbaa4aeb71021f5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bStoped: 0
-  Tile: {fileID: 2013869315009819095, guid: 4c7d85d467f606e49917a0f3782c6793, type: 3}
-  ExplosionSound: {fileID: 8300000, guid: d27ba7fa6ff3fdf48a14f2634cff186d, type: 3}
-  HitSound: {fileID: 8300000, guid: 85b282f021eda924bb794e81ce9a6726, type: 3}
-  TileSize: 0.85
-  interval: 1
-  rigid: {fileID: 0}
-  iType: 1
-  Blocksize:
-  - {x: 3, y: 2}
-  - {x: 2, y: 3}
-  iHP: 100
-  iTetrisYIndex: 0
-  iTiles: 000000000100000001000000010000000100000000000000
-  bHold: 1
-  Center: {x: 0, y: 0, z: 0}
-  BlockArea: {x: 0, y: 0}
 --- !u!82 &-1781478487384792816
 AudioSource:
   m_ObjectHideFlags: 0
@@ -157,3 +128,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3824418209275754982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2260538854602198705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95a20a50e45d414dbaa4aeb71021f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bStoped: 0
+  Tile: {fileID: 3017686445412212284, guid: 05a1d8ba2e90336489a9bb835bd166d4, type: 3}
+  ExplosionSound: {fileID: 8300000, guid: d27ba7fa6ff3fdf48a14f2634cff186d, type: 3}
+  HitSound: {fileID: 8300000, guid: 85b282f021eda924bb794e81ce9a6726, type: 3}
+  TileSize: 0.85
+  interval: 1
+  rigid: {fileID: 0}
+  iType: 1
+  Blocksize: {x: 3, y: 2}
+  iHP: 100
+  iTetrisYIndex: 0
+  iTiles: 000000000100000000000000010000000100000001000000
+  bHold: 1
+  Center: {x: 0, y: 0, z: 0}
+  BlockArea: {x: 0, y: 0}

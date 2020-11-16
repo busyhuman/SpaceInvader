@@ -22,6 +22,6 @@ public class LoadingText : MonoBehaviour
         int index = (int)(fElapsedTime * 10) % 10;
         text.text = texts[index];
         if (fElapsedTime >3.5)
-            cameraobj.GetComponent<SceneChanger>().TurnToStage1Boss();
+            cameraobj.GetComponent<SceneChanger>().TurnToStage();
     }
 }

@@ -14,7 +14,7 @@ public class PlayerSpawn : MonoBehaviour
         {
             playerType = CC.GetComponent<CharacterChanger>().playertype;
         }
-        GameObject obj = Instantiate(playerObjects[playerType]);
+        GameObject obj = Instantiate(playerObjects[playerType],GameObject.Find("Main Camera").GetComponent<Transform>());
         obj.name = "Player";
 
     }
