@@ -6,7 +6,8 @@ public class AudioController : MonoBehaviour
 {
     // Start is called before the first frame update
     public AudioClip LoadingBGM;
-    public AudioClip Stage1BGM;
+    public AudioClip Stage1BossBGM;
+    public AudioClip Stage1NormalBGM;
     public AudioClip RankingBGM;
 
     public AudioSource BGMaudio;
@@ -39,11 +40,15 @@ public class AudioController : MonoBehaviour
                 BGMaudio.Play();
                 break;
             case 1:
-                BGMaudio.clip = Stage1BGM;
+                BGMaudio.clip = Stage1BossBGM;
                 BGMaudio.Play();
                 break;
             case 2:
                 BGMaudio.clip = RankingBGM;
+                BGMaudio.Play();
+                break;
+            case 3:
+                BGMaudio.clip = Stage1NormalBGM;
                 BGMaudio.Play();
                 break;
 

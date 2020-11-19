@@ -8,6 +8,7 @@ public class BulletMove : MonoBehaviour
     // Start is called before the first frame update
     public GameObject GameMgr;
     public float Speed = 10.0f;
+    public int att = 5;
     public bool bDeath = false;
     protected float fDeathTime = 0;
     public Transform player;
@@ -49,7 +50,7 @@ public class BulletMove : MonoBehaviour
             GameMgr.GetComponent<ScoreMgr>().UpdateScore(127);
             GameMgr.GetComponent<SoundMgr>().PlayMonsterDamaged();
             bDeath = true;
-            collision.gameObject.GetComponent<MonsterBehavior>().GetDamage(5);
+            collision.gameObject.GetComponent<MonsterBehavior>().GetDamage(att);
             GetComponent<Animator>().speed = 1;
         }
 
@@ -67,7 +68,7 @@ public class BulletMove : MonoBehaviour
             GetComponent<Animator>().speed = 1;
         }
 
-        if (collision.tag == "Barrier")
+        if (collision.tag == "Barrier" || collision.tag == "Obstacle")
         {
             bDeath = true;
             GetComponent<Animator>().speed = 1;

@@ -24,6 +24,7 @@ public class ScoreMgr : MonoBehaviour
         iScore += iGet;
         ScoreObj.GetComponent<Score>().iScore = iScore;
         ScoreObj.GetComponent<Score>().StartCoroutine("UpdateScore");
-        UserInfo.GetComponent<UserInfo>().SetScore(iScore);
+        if(UserInfo)
+            UserInfo.GetComponent<UserInfo>().SetScore(iScore);
     }
 }

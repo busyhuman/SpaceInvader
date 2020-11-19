@@ -17,6 +17,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PangBullet
       objectReference: {fileID: 0}
+    - target: {fileID: 1018957960665680835, guid: 3ac8b35a3eee9fb42bfb593f65549788,
+        type: 3}
+      propertyPath: att
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018957960665680835, guid: 3ac8b35a3eee9fb42bfb593f65549788,
+        type: 3}
+      propertyPath: Speed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1018957960665680836, guid: 3ac8b35a3eee9fb42bfb593f65549788,
         type: 3}
       propertyPath: m_LocalPosition.x

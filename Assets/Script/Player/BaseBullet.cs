@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseBullet : MonoBehaviour
+public class BaseBullet : BulletMove
 {
     // Start is called before the first frame update
-    public GameObject GameMgr;
-    public float Speed = 10.0f;
-    public bool bDeath = false;
-    protected float fDeathTime = 0;
     
     void Awake()
     {
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         GameMgr = GameObject.Find("GameManager");
     }
 
@@ -25,7 +22,8 @@ public class BaseBullet : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.right * Time.deltaTime * Speed);
-        if (transform.localPosition.x > 13.5f) Destroy(gameObject);
+        Vector3 ScreenPos = cam.WorldToScreenPoint(transform.position);
+        if (ScreenPos.x > 1280.0f) Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -35,14 +33,14 @@ public class BaseBullet : MonoBehaviour
         {
             GameMgr.GetComponent<ScoreMgr>().UpdateScore(127);
             GameMgr.GetComponent<SoundMgr>().PlayMonsterDamaged();
-            ParticleMgr.GetInstance().CreateDestroyedParticles(collision.gameObject);
+            collision.gameObject.GetComponent<MonsterBehavior>().GetDamage(att);
 
             Destroy(gameObject);
         }
 
         if (collision.tag == "Boss")
         {
-            collision.GetComponent<BossBehavior>().GetDamage(5);
+            collision.GetComponent<BossBehavior>().GetDamage(att);
             Destroy(gameObject);
         }
 
@@ -52,7 +50,7 @@ public class BaseBullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.tag == "Barrier")
+        if (collision.tag == "Obstacle" || collision.tag == "Obstacle")
         {
             Destroy(gameObject);
         }

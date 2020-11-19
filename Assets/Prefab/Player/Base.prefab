@@ -24,6 +24,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2001645695706893855, guid: 4c5e39e8c01111942b5f6cf1e9860221,
         type: 3}
+    - target: {fileID: 4421370703459312306, guid: 684ee1dbc345a2f4fa5f3ce7064e83a9,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421370703459312306, guid: 684ee1dbc345a2f4fa5f3ce7064e83a9,
+        type: 3}
+      propertyPath: shootDelay
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4421370703459312307, guid: 684ee1dbc345a2f4fa5f3ce7064e83a9,
         type: 3}
       propertyPath: m_LocalPosition.x

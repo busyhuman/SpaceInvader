@@ -99,8 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iDieState: 0
   bDie: 1
+  shootDelay: 0.15
   Bullet: {fileID: 1018957960665680832, guid: 3ac8b35a3eee9fb42bfb593f65549788, type: 3}
-  moveSpeed: 5
+  moveSpeed: 6
   winText: {fileID: 0}
   overText: {fileID: 0}
 --- !u!50 &4421370703459312308

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class CameraFade : MonoBehaviour
 {
     public float alpha = 0;
     public bool FadeIn_Out = false;
     public bool bTrigger = false;
+    public bool bWin = false; // false 면 진거
     private RawImage Black;    // Start is called before the first frame update
     void Start()
     {
@@ -39,12 +40,19 @@ public class CameraFade : MonoBehaviour
                 {
                     bTrigger = false;
                     FadeIn_Out = true;
+
                     GameObject userInfo = GameObject.Find("UserData");
                     UserInfo unfo = userInfo.GetComponent<UserInfo>();
-                    if (unfo.GetStage() == 1)
+                    if(bWin)
                     {
-                        unfo.SetStage(2);
-                        GameObject.Find("GameManager").GetComponent<SceneChanger>().TurnToLoading();
+                        if (unfo.GetStage() == 1)
+                        {
+                            unfo.SetStage(2);
+                            GameObject.Find("GameManager").GetComponent<SceneChanger>().TurnToLoading();
+                        }
+                        else
+                            GameObject.Find("GameManager").GetComponent<SceneChanger>().TurnToRanking();
+
 
                     }
                     else

@@ -5,6 +5,7 @@ using UnityEngine;
 abstract public class  MonsterBulletBehavior : MonoBehaviour
 {
     public float MovingSpeed = 1;
+    private float lifetime = 0;
     protected abstract void MovingBehavior();
     // Start is called before the first frame update
     void Start()
@@ -16,5 +17,8 @@ abstract public class  MonsterBulletBehavior : MonoBehaviour
     void Update()
     {
         MovingBehavior();
+        lifetime += Time.deltaTime;
+        if (lifetime > 5)
+            GameObject.Destroy(gameObject);
     }
 }

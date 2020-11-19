@@ -9,6 +9,7 @@ abstract public class MonsterBehavior : MonoBehaviour
     public int maxHP = 25;
     public float ShootingTick = 0;
     public float ShootingLoop = 0;
+    public float alertDist = 20;
     public GameObject player;
 
     protected float fAge = 0;
@@ -51,8 +52,8 @@ abstract public class MonsterBehavior : MonoBehaviour
         }
         else
         {
-          float dist =   Vector3.Distance(transform.position, player.transform.position);
-            if (dist < 20)
+          float dist =  transform.position.x - player.transform.position.x;
+            if (dist < alertDist)
                 bActiveByPlayer = true;
         }
     }

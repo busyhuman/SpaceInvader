@@ -126,8 +126,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameMgr: {fileID: 0}
-  Speed: 10
+  Speed: 12
+  att: 5
   bDeath: 0
+  player: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!95 &614256606604303331
 Animator:
   serializedVersion: 3

@@ -39,7 +39,7 @@ public class SceneChanger : MonoBehaviour
 
         GameObject audiosource = GameObject.Find("AudioController");
         if (audiosource)
-            audiosource.GetComponent<AudioController>().SetBGM(1);
+            audiosource.GetComponent<AudioController>().SetBGM(3);
         SceneManager.LoadScene("StageNormal1");
 
     }

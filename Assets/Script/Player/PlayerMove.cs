@@ -8,13 +8,13 @@ public class PlayerMove : MonoBehaviour
     private int iWinState = 0; // 0:idle, 1 : win, 2: winRight , 3: winCenter , 4: winLeft , 5 : 찐 끝
     public int iDieState = 0;
     private Vector3 DyingPos;
-    public bool bDie = true;
+    public bool bDie = false;
 
 
     private float SceneElapsedTime = 0;
     private bool canShoot = true;
     private float shootTimer = 0.0f;
-    private float shootDelay = 0.2f;
+    public float shootDelay = 0.2f;
     private Camera camera;
     private GameObject Fade;
 
@@ -63,6 +63,7 @@ public class PlayerMove : MonoBehaviour
                 {
                     iDieState = 2;
                     Fade.GetComponent<CameraFade>().SetTrigger();
+                    Fade.GetComponent<CameraFade>().bWin = false;
                     overText.GetComponent<Text>().enabled = true;
 
                 }
@@ -146,6 +147,7 @@ public class PlayerMove : MonoBehaviour
         if (Vector2.Distance(Centerpos, new Vector2(transform.position.x, transform.position.y)) < 0.2)
         {
             iWinState = 5;
+            Fade.GetComponent<CameraFade>().bWin = true;
             Fade.GetComponent<CameraFade>().SetTrigger();
         }
     }
@@ -154,6 +156,8 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector2 MousePosition = Input.mousePosition;
+            if (MousePosition.y < 200) return;
+            
             MousePosition = camera.ScreenToWorldPoint(MousePosition);
             if (MousePosition.x < -13) MousePosition.x = -13;
             if (MousePosition.y < -7.8) MousePosition.y = -7.8f;
@@ -200,7 +204,7 @@ public class PlayerMove : MonoBehaviour
                     DyingPos = transform.position;
                 }
             }
-            else if(collision.tag == "MonsterBullet2")
+            else if(collision.tag == "MonsterBullet2" || collision.tag =="Obstacle2" || collision.tag == "Monster2")
             {
                 if (iDieState == 0 && iWinState == 0)
                 {
