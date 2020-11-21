@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SignIn : MonoBehaviour
+public class SignInMgr : MonoBehaviour
 {
     public GameObject username;
     public GameObject password1;

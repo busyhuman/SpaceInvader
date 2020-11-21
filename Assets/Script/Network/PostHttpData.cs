@@ -10,22 +10,21 @@ public class PostHttpData : MonoBehaviour
     IEnumerator postRequest(string url, WWWForm form)
     {
         UnityWebRequest request = new UnityWebRequest();
-
         using (request = UnityWebRequest.Post(url, form))
         {
             yield return request.SendWebRequest();
 
             if (request.isNetworkError)
             {
-                Debug.LogError("NetworkError: " + request.error + "\n" + request.downloadHandler.text);
+                Debug.LogError("NetworkError: " + Translator.Translate(request.downloadHandler.text) + "\n" + request.error);
             }
 
             if (request.isHttpError)
             {
-                Debug.LogError("HttpError: " + request.error + "\n" + request.downloadHandler.text);
+                Debug.LogError("HttpError: " + Translator.Translate(request.downloadHandler.text) + "\n" + request.error);
             }
 
-            message = request.downloadHandler.text;
+            message = Translator.Translate(request.downloadHandler.text);
         }
     
     }
