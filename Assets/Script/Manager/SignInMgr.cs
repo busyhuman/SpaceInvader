@@ -25,6 +25,24 @@ public class SignInMgr : MonoBehaviour
 
         postHttpData.PostData("https://busyhuman.pythonanywhere.com/rest-auth/registration/", form);
 
+        if (postHttpData.getErrorMessage() == "")
+        {
+            yield return StartCoroutine(RegisterUserList());
+        }
+
+        yield return null;
+    }
+
+    IEnumerator RegisterUserList()
+    {
+        GameObject phd = (GameObject)Instantiate(Resources.Load("HttpData/PostHttpData"));
+        PostHttpData postHttpData = phd.GetComponent<PostHttpData>();
+        WWWForm form = new WWWForm();
+
+        form.AddField("ID", username.GetComponent<InputField>().text);
+
+        postHttpData.PostData("https://busyhuman.pythonanywhere.com/users/", form);
+
         yield return null;
     }
 }

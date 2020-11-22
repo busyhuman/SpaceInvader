@@ -856,7 +856,7 @@ GameObject:
   - component: {fileID: 543306151}
   - component: {fileID: 543306154}
   m_Layer: 0
-  m_Name: RankManager
+  m_Name: RankMgr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

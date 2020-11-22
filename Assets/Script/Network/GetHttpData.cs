@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 public class GetHttpData : MonoBehaviour
 {
-    public bool isDone = false;
     public string jsonString;
 
     string fixJson(string value)
@@ -32,7 +31,6 @@ public class GetHttpData : MonoBehaviour
                 jsonString = fixJson(request.downloadHandler.text);
             }
 
-            isDone = true;
         }
 
     }

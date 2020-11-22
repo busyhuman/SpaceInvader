@@ -13,27 +13,13 @@ public class RankMgr : MonoBehaviour
 
 
     private string id = "";
-    private int score = 0;
+    private int score = 10;
     private int stage = 1;
     private const int specialRankerLen = 3;
 
     public void RunRankingList()
     {
-        StartCoroutine(RegisterAccount());
-    }
-
-
-    IEnumerator RegisterAccount()
-    {
-        GameObject phd = (GameObject)Instantiate(Resources.Load("HttpData/PostHttpData"));
-        PostHttpData postHttpData = phd.GetComponent<PostHttpData>();
-        WWWForm form = new WWWForm();
-
-        form.AddField("ID", id);
-
-        postHttpData.PostData("https://busyhuman.pythonanywhere.com/users/", form);
-        yield return new WaitForSeconds(1.0f);
-        yield return StartCoroutine(RegisterRecord());
+        StartCoroutine(RegisterRecord());
     }
 
     IEnumerator RegisterRecord()
@@ -42,12 +28,11 @@ public class RankMgr : MonoBehaviour
         PostHttpData postHttpData = phd.GetComponent<PostHttpData>();
         WWWForm form = new WWWForm();
 
-        form.AddField("user", id);
         form.AddField("Stage", stage);
         form.AddField("Score", score);
 
         postHttpData.PostData("https://busyhuman.pythonanywhere.com/records/", form);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.0f);
         yield return StartCoroutine(ConfirmRecords());
     }
 
@@ -61,7 +46,7 @@ public class RankMgr : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
 
-            if (getHttpData.isDone == false)
+            if (getHttpData.jsonString == "")
             {
                 continue;
             }
@@ -72,7 +57,8 @@ public class RankMgr : MonoBehaviour
 
         }
 
-        RecordData[] records = JsonParser<RecordData>.ParseJsonData(getHttpData.jsonString);
+
+        RecordData[] records = JsonHelper.FromJson<RecordData>(getHttpData.jsonString);
 
         int recordLen = records.Length, nearLen = Near.Length;
 

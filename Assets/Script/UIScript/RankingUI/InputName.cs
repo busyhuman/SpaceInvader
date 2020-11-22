@@ -15,7 +15,7 @@ public class InputName : MonoBehaviour
     private RankMgr rankMgr;
     void Awake()
     {
-        rankMgr = GameObject.Find("RankManager").GetComponent<RankMgr>();
+        rankMgr = GameObject.Find("RankMgr").GetComponent<RankMgr>();
     }
     void Start()
     {
@@ -35,7 +35,7 @@ public class InputName : MonoBehaviour
         rankMgr.SetId(name);
 
         
-        rankMgr.SetScore(Score);   // 나중에 랜덤부분 삭제
+        rankMgr.SetScore(Score);
         rankMgr.RunRankingList();
 
 
