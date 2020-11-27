@@ -1,5 +1,5 @@
 ## 팀명
-<img src="https://user-images.githubusercontent.com/13173730/100437068-962a5c00-30e3-11eb-9ee9-1c886feb00b6.png" width="240px" height="120px">
+<img src="https://user-images.githubusercontent.com/13173730/100437068-962a5c00-30e3-11eb-9ee9-1c886feb00b6.png" width="240px" height="180px">
 
 
 ## 게임명
