@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4421370703459312308}
   - component: {fileID: 4421370703459312309}
   - component: {fileID: 4421370703459312311}
+  - component: {fileID: -7788252254863960859}
   m_Layer: 0
   m_Name: Harry
   m_TagString: Untagged
@@ -99,8 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iDieState: 0
   bDie: 1
-  shootDelay: 0.15
-  Bullet: {fileID: 1018957960665680832, guid: 3ac8b35a3eee9fb42bfb593f65549788, type: 3}
+  AttackBehavior: {fileID: 0}
   moveSpeed: 6
   winText: {fileID: 0}
   overText: {fileID: 0}
@@ -258,3 +258,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-7788252254863960859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421370703459312305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d15a40569ae3f4495d02dd516f10d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootDelay: 0.15
+  Bullet: {fileID: 1018957960665680832, guid: 3ac8b35a3eee9fb42bfb593f65549788, type: 3}

@@ -26,7 +26,6 @@ public class Meringue1 : MonsterBehavior
     public void  SubInvoke()
     {
         SubNum++;
-        Debug.Log(SubNum);
         Instantiate(Bullet, ShootingTransform);
         if (SubNum == 2)
         {

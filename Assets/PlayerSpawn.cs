@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSpawn : MonoBehaviour
 {
-    public int playerType = 0;
+    public int playerType = 2;
     public GameObject[] playerObjects;
     // Start is called before the first frame update
     private void Awake()

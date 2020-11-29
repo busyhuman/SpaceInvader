@@ -7,6 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 92107594351125968, guid: caa79f49efffdc64ea6c964e77cda4ad,
+        type: 3}
+      propertyPath: shootDelay
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 92107594351125968, guid: caa79f49efffdc64ea6c964e77cda4ad,
+        type: 3}
+      propertyPath: Bullet
+      value: 
+      objectReference: {fileID: 6045832150383553599, guid: a4f3f9df92e0ea74896107f4bc12e3d8,
+        type: 3}
     - target: {fileID: 1769383340053072744, guid: caa79f49efffdc64ea6c964e77cda4ad,
         type: 3}
       propertyPath: m_audioClip

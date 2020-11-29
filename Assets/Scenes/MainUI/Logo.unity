@@ -2548,7 +2548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadingBGM: {fileID: 8300000, guid: 6a3b49a4948fa33479d86b26fa11f9f9, type: 3}
-  Stage1BossBGM: {fileID: 8300000, guid: f68f268631d101d498b16c347645c53f, type: 3}
+  Stage1BossBGM: {fileID: 8300000, guid: a796132dc00b1ad48ac61021412aa583, type: 3}
   Stage1NormalBGM: {fileID: 8300000, guid: 30c32b8e101a85f44a77d5de2e68fa51, type: 3}
   RankingBGM: {fileID: 8300000, guid: db049dc936349174e802964d34569ccd, type: 3}
   BGMaudio: {fileID: 0}

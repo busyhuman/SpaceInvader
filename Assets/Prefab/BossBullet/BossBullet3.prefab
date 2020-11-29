@@ -148,10 +148,10 @@ MonoBehaviour:
   interval: 1
   rigid: {fileID: 0}
   iType: 1
-  Blocksize: {x: 2, y: 2}
+  Blocksize: {x: 3, y: 2}
   iHP: 100
   iTetrisYIndex: 0
-  iTiles: 01000000010000000100000001000000
+  iTiles: 010000000100000000000000000000000100000001000000
   bHold: 1
   Center: {x: 0, y: 0, z: 0}
   BlockArea: {x: 0, y: 0}

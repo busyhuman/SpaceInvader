@@ -9,16 +9,14 @@ public class PlayerMove : MonoBehaviour
     public int iDieState = 0;
     private Vector3 DyingPos;
     public bool bDie = false;
+    public PlayerAtt AttackBehavior;
 
+    private float MovingTimer = 0.0f;
 
     private float SceneElapsedTime = 0;
-    private bool canShoot = true;
-    private float shootTimer = 0.0f;
-    public float shootDelay = 0.2f;
     private Camera camera;
     private GameObject Fade;
 
-    public GameObject Bullet;
     public float moveSpeed = 5.0f;
     private AudioSource audioSource;
     public GameObject winText;
@@ -26,14 +24,13 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AttackBehavior = gameObject.GetComponent<PlayerAtt>();
         overText = GameObject.Find("OverText");
         Fade = GameObject.Find("Fade");
         audioSource = GetComponent<AudioSource>();
         GameObject sfxvolume = GameObject.Find("AudioController");
         if (sfxvolume)
             audioSource.volume = sfxvolume.GetComponent<AudioController>().SFXVolume / 100.0f;
-
-
 
          camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         winText = GameObject.Find("youwin");
@@ -54,11 +51,11 @@ public class PlayerMove : MonoBehaviour
                 WinUpdateProcess();
                 break;
             case 1:
-                shootTimer += Time.deltaTime;
-                float yPos = (-4.0f * shootTimer * shootTimer + 8 * shootTimer) ;
-                transform.position = new Vector3(DyingPos.x - shootTimer *2.5f, DyingPos.y + yPos, 0);
-                if (shootTimer * 40 < 180)
-                    transform.rotation = Quaternion.Euler(new Vector3(0, 0, shootTimer * 20));
+                MovingTimer += Time.deltaTime;
+                float yPos = (-4.0f * MovingTimer * MovingTimer + 8 * MovingTimer) ;
+                transform.position = new Vector3(DyingPos.x - MovingTimer *2.5f, DyingPos.y + yPos, 0);
+                if (MovingTimer * 40 < 180)
+                    transform.rotation = Quaternion.Euler(new Vector3(0, 0, MovingTimer * 20));
                 if (transform.position.y < -9)
                 {
                     iDieState = 2;
@@ -105,7 +102,7 @@ public class PlayerMove : MonoBehaviour
         if (Vector2.Distance(Centerpos, new Vector2(transform.position.x, transform.position.y)) < 0.2)
         {
             TurnToWin3Mode();
-            shootTimer = 0;
+            MovingTimer = 0;
         }
     }
 
@@ -123,8 +120,8 @@ public class PlayerMove : MonoBehaviour
                 Win2Update();
                 break;
             case 3:
-                shootTimer += Time.deltaTime;
-                if (shootTimer > 3)
+                MovingTimer += Time.deltaTime;
+                if (MovingTimer > 3)
                 {
                     iWinState = 4;
                     winText.SetActive(false);
@@ -156,7 +153,7 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector2 MousePosition = Input.mousePosition;
-            if (MousePosition.y < 200) return;
+            if (MousePosition.y < 100) return;
             
             MousePosition = camera.ScreenToWorldPoint(MousePosition);
             if (MousePosition.x < -13) MousePosition.x = -13;
@@ -174,19 +171,6 @@ public class PlayerMove : MonoBehaviour
         }
 
 
-        if (canShoot) // 쏠 수 있는 상태인지 검사합니다.
-        {
-            if (shootTimer > shootDelay) //쿨타임이 지났는지와, 공격키인 스페이스가 눌려있는지 검사합니다.
-            {
-                audioSource.Play();
-                GameObject pB = Instantiate(Bullet);
-                pB.transform.position = transform.position;
-                pB.GetComponent<Transform>().rotation = (Quaternion.identity); //레이저를 생성해줍니다.
-                pB.GetComponent<BulletMove>().player = transform;
-                shootTimer = 0; //쿨타임을 다시 카운트 합니다.
-            }
-            shootTimer += Time.deltaTime; //쿨타임을 카운트 합니다.
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -200,7 +184,7 @@ public class PlayerMove : MonoBehaviour
                     GameObject.Find("BOSS").GetComponent<BossSound>().PlayLaugh();
                     iDieState = 1;
 
-                    shootTimer = 0;
+                    MovingTimer = 0;
                     DyingPos = transform.position;
                 }
             }
@@ -210,7 +194,7 @@ public class PlayerMove : MonoBehaviour
                 {
                     iDieState = 1;
 
-                    shootTimer = 0;
+                    MovingTimer = 0;
                     DyingPos = transform.position;
                 }
             }
