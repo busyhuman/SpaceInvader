@@ -271,4 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootDelay: 0.15
+  Skilltime: 5
   Bullet: {fileID: 1018957960665680832, guid: 3ac8b35a3eee9fb42bfb593f65549788, type: 3}
+  skillbullet: {fileID: 1681236442068941663, guid: 93b90ce38522fa6428f0a497d88b63eb,
+    type: 3}
