@@ -7,7 +7,7 @@ public class PlayerAtt : MonoBehaviour
 
     protected float shootTimer = 0.0f;
     public float shootDelay = 0.2f;
-
+    public float Skilltime = 10;
     public GameObject Bullet;
     protected CooltimeRender CoolTimer;
     protected AudioSource audioSource;
@@ -16,7 +16,7 @@ public class PlayerAtt : MonoBehaviour
     {
         audioSource = gameObject.GetComponent<AudioSource>();
         CoolTimer = GameObject.Find("Cooltime").GetComponent<CooltimeRender>();
-
+        CoolTimer.Activetime = Skilltime;
     }
 
     public virtual void Skill()
