@@ -104,10 +104,15 @@
     <Compile Include="Assets\Script\Network\GetHttpData.cs" />
     <Compile Include="Assets\Script\Network\PostHttpData.cs" />
     <Compile Include="Assets\Script\ParticleMgr.cs" />
+    <Compile Include="Assets\Script\Player\BaseAtt.cs" />
     <Compile Include="Assets\Script\Player\BaseBullet.cs" />
     <Compile Include="Assets\Script\Player\BulletMove.cs" />
+    <Compile Include="Assets\Script\Player\HarryAtt.cs" />
+    <Compile Include="Assets\Script\Player\PangAtt.cs" />
+    <Compile Include="Assets\Script\Player\PlayerAtt.cs" />
     <Compile Include="Assets\Script\Player\PlayerData.cs" />
     <Compile Include="Assets\Script\Player\PlayerMove.cs" />
+    <Compile Include="Assets\Script\Production\BackgroundMoving.cs" />
     <Compile Include="Assets\Script\RecordData.cs" />
     <Compile Include="Assets\Script\ReturnTex.cs" />
     <Compile Include="Assets\Script\Score.cs" />
