@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HarryAtt : PlayerAtt
 {
-    private bool binstantiate = false;
     public GameObject skillbullet;
     public void Start()
     {

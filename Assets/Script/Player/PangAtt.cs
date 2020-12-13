@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PangAtt : PlayerAtt
 {
-    private bool binstantiate = false;
     public GameObject skillbullet;
     // Start is called before the first frame update
     public void Start()
@@ -24,7 +23,6 @@ public class PangAtt : PlayerAtt
         }
         else
         {
-
         }
     }
 

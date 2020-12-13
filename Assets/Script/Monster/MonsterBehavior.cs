@@ -4,6 +4,7 @@ using UnityEngine;
 
 abstract public class MonsterBehavior : MonoBehaviour
 {
+    public GameObject Obstacle;
     public float fMovingSpeed = 2.0f;
     public int iType = 0;
     public int maxHP = 25;
@@ -28,6 +29,10 @@ abstract public class MonsterBehavior : MonoBehaviour
         {
             ParticleMgr.GetInstance().CreateDestroyedParticles(gameObject);
             GameObject.Destroy(gameObject);
+            if(Obstacle)
+            {
+                GameObject.Destroy(Obstacle);
+            }
         }
     }
     private void Awake()

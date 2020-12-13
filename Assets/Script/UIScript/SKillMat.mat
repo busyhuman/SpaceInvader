@@ -30,7 +30,8 @@ Material:
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
-    - _TimeSpeed: 64.47126
+    - _TimeSpeed: 113.01754
     - _UseUIAlphaClip: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8929345275767586391}
   m_Layer: 0
   m_Name: Base
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,6 +51,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -272,5 +273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293f69f1d9ff2644eb4efd6ed33e3fd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  att: 7
   shootDelay: 0.2
+  Skilltime: 10
+  bulletSpeed: 10
   Bullet: {fileID: 2001645695706893855, guid: 4c5e39e8c01111942b5f6cf1e9860221, type: 3}

@@ -13,6 +13,7 @@ TagManager:
   - Barrier
   - MonsterPoint
   - Obstacle
+  - Item
   layers:
   - Default
   - TransparentFX
