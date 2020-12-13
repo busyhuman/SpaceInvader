@@ -21,6 +21,8 @@ public static class EngToKor
             "{\"username\":[\"A user with that username already exists.\"],\"password1\":[\"This password is too short. It must contain at least 8 characters.\"]}",
             "{\"username\":[\"A user with that username already exists.\"]}",
             "{\"ID\":[\"user with this ID already exists.\"]}",
+            "{\"username\":[\"Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.\"],\"password1\":[\"This field may not be blank.\"],\"password2\":[\"This field may not be blank.\"]}",
+
         };
 
         string[] KOR =
@@ -37,6 +39,7 @@ public static class EngToKor
             "이미 존재하는 아이디입니다",
             "이미 존재하는 아이디입니다",
             "이미 존재하는 아이디입니다",
+            "아이디에 특수 문자는 사용할 수 없습니다",
         };
 
         for (int i= 0;i<ENG.Length;i++)

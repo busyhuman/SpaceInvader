@@ -5,6 +5,9 @@ using UnityEngine.Networking;
 
 public class PostHttpData : MonoBehaviour
 {
+    public string DefaultMessage = "No Message";
+    public string DefaultErrorMessage = "No ErrorMessage";
+    
     public string Message;
     public string ErrorMessage;
 
@@ -39,6 +42,9 @@ public class PostHttpData : MonoBehaviour
     }
     public void PostData(string url, WWWForm form)
     {
+        Message = DefaultMessage;
+        ErrorMessage = DefaultErrorMessage;
+
         StartCoroutine(postRequest(url, form));
         return;
     }

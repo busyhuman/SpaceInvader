@@ -23,10 +23,11 @@ public class LogInMgr : MonoBehaviour
 
         postHttpData.PostData("https://busyhuman.pythonanywhere.com/rest-auth/login/", form);
 
-        yield return StartCoroutine(WaitToken(postHttpData));
+        yield return StartCoroutine(WaitMessage(postHttpData, 5.0f));
 
         string msg = postHttpData.getMessage();
-        if(postHttpData.getErrorMessage() == "")
+
+        if (postHttpData.getErrorMessage() == postHttpData.DefaultErrorMessage && postHttpData.getMessage() != postHttpData.DefaultMessage)
         {
             TokenMgr.Instance.SetToken(JsonUtility.FromJson<TokenData>(msg).key);
             Debug.Log(msg);
@@ -35,20 +36,25 @@ public class LogInMgr : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator WaitToken(PostHttpData postHttpData)
+    IEnumerator WaitMessage(PostHttpData postHttpData, float time)
     {
-        int WAITING_TIME = 50;
-        int CURRENT_TIME = 0;
+        float WAITING_TIME = time;
+        float CURRENT_TIME = 0.0f;
+        float CHECK_CYCLE_TIME = 0.5f;
+        string defaultMessage = postHttpData.DefaultMessage;
 
-        // 5초 동안 메시지가 오지 않으면 탈출
-        while (CURRENT_TIME++ < WAITING_TIME)
+        // time시간동안 메시지가 오는 지 체크
+        while (CURRENT_TIME < WAITING_TIME)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(CHECK_CYCLE_TIME);
+            CURRENT_TIME += CHECK_CYCLE_TIME;
 
-            if (postHttpData.getMessage() != "")
+            if (postHttpData.getMessage() != defaultMessage)
             {
                 break;
             }
         }
+
+        yield return null;
     }
 }
