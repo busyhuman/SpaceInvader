@@ -50,6 +50,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -165,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameMgr: {fileID: 0}
   Speed: 10
-  att: 100
+  att: 30
   bDeath: 0
   player: {fileID: 0}
   cam: {fileID: 0}

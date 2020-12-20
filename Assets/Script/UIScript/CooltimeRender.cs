@@ -30,6 +30,7 @@ public class CooltimeRender : MonoBehaviour
             {
                 bActivating = false;
                 CurActivetime = 0;
+                GameObject.Find("Player").GetComponent<PlayerAtt>().TurntoNormalState();
             }
         }
         else

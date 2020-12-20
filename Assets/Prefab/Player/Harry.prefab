@@ -173,7 +173,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 51792a066a2c8fd4e9be204d49dd0142, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7481342a00512994996ac22a5a792d69, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.322
   m_Pitch: 1
@@ -271,9 +271,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90d15a40569ae3f4495d02dd516f10d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  att: 5
+  skillSFX: {fileID: 8300000, guid: 602f2a91dea2e3a49a465437dd7f1a5e, type: 3}
+  AttSFX: {fileID: 8300000, guid: 7481342a00512994996ac22a5a792d69, type: 3}
+  att: 4
   shootDelay: 0.15
-  Skilltime: 5
+  Skilltime: 6
+  BulletScale: 1
   bulletSpeed: 12
   Bullet: {fileID: 1018957960665680832, guid: 3ac8b35a3eee9fb42bfb593f65549788, type: 3}
   skillbullet: {fileID: 1681236442068941663, guid: 93b90ce38522fa6428f0a497d88b63eb,

@@ -15,6 +15,8 @@ public class HarryAtt : PlayerAtt
     {
         if (!binstantiate)
         {
+            audioSource.clip = skillSFX;
+            audioSource.Play();
         Transform cam = GameObject.Find("Main Camera").transform;
             for(int i = 0; i< 20; i ++)
             {

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerAtt : MonoBehaviour
 {
-
+    public AudioClip skillSFX;
+    public AudioClip AttSFX;
     protected bool binstantiate = false;
     protected float shootTimer = 0.0f;
     public int att = 1;
@@ -19,6 +20,7 @@ public class PlayerAtt : MonoBehaviour
     void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = AttSFX;
         CoolTimer = GameObject.Find("Cooltime").GetComponent<CooltimeRender>();
         CoolTimer.Activetime = Skilltime;
     }
@@ -26,6 +28,11 @@ public class PlayerAtt : MonoBehaviour
     public virtual void Skill()
     {
       
+    }
+    public void TurntoNormalState()
+    {
+        binstantiate = false;
+        audioSource.clip = AttSFX;
     }
     // Update is called once per frame
     void Update()
@@ -36,9 +43,10 @@ public class PlayerAtt : MonoBehaviour
         }
         else
         {
-            binstantiate = false;
+            
             if (shootTimer > shootDelay) //쿨타임이 지났는지와, 공격키인 스페이스가 눌려있는지 검사합니다.
             {
+                 
                 audioSource.Play();
                 GameObject pB = Instantiate(Bullet);
                 pB.transform.position = transform.position;

@@ -117,9 +117,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c640f291d32734c97560a5888be1ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  att: 8
+  skillSFX: {fileID: 0}
+  AttSFX: {fileID: 8300000, guid: 956f1ae8ecf306947bcd6953a63575d4, type: 3}
+  att: 15
   shootDelay: 0.5
-  Skilltime: 5
+  Skilltime: 6
+  BulletScale: 1
   bulletSpeed: 8
   Bullet: {fileID: 6045832150383553599, guid: a4f3f9df92e0ea74896107f4bc12e3d8, type: 3}
   skillbullet: {fileID: 2085274099806946862, guid: 3ffeb2ae2a96bc943be0da82b3bbfbcb,
