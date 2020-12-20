@@ -21,57 +21,52 @@ public class TetrisBlock : MonoBehaviour
     public Vector2 Blocksize;
     public int iHP = 100;
     public int iTetrisYIndex = 0;
-    public int[] iTiles;
     private Vector3[,] TetrisPos;
     public bool bHold = true;
 
     public Vector3 Center;
-    public Vector2 BlockArea; //블록 범위
 
-    
+
     public virtual void CreateBlock()
     {
 
+        GameObject mgr = GameObject.Find("ShootMgr");
         TetrisPos = GameObject.Find("ShootMgr").GetComponent<TetrisMgr>().TetrisPos;
         int iCurrentY = GameObject.Find("BOSS").GetComponent<BossBehavior>().iCurrentMoveIndex / 2;
         float xPos = 0;
         float yPos = 0;
-        int iTileX = (int)Blocksize.x;
-        int iTileY = (int)Blocksize.y;
-
-        for (int y = 0; y < iTiles.Length; y += iTileX)
+        for (int i = 0; i < transform.childCount; i++)
         {
-            for (int x = 0; x < iTileX; x++)    
-            {
-                xPos = (float)x * TileSize + transform.position.x;
-                yPos = -(int)(y / iTileX) * TileSize + transform.position.y;
+            BossBullet pbullet = transform.GetChild(i).GetComponent<BossBullet>();
+            pbullet.iXPos = 25 - (int)(Blocksize.x) + pbullet.iXPos2;
+            pbullet.iYPos = 4 - (int)(Blocksize.y) + pbullet.iYPos2;
+            pbullet.TetMgr = mgr.GetComponent<TetrisMgr>();
+        }
 
-                int iType = iTiles[x + y];
-
-                if (iType != 0)
-                {
-                    int Ypos = iCurrentY + -(int)(y / iTileX) + iTileY;
-                    if (iCurrentY + iTileY > 10)
-                        Ypos -= iTileY;
-                    GameObject block = Instantiate(Tile, new Vector3(xPos, yPos, 0), Quaternion.identity, transform);
-                    block.GetComponent<BossBullet>().iXPos = 19 - iTileX + x;
-                    block.GetComponent<BossBullet>().iYPos = Ypos;
-
-
-                    block.GetComponent<BossBullet>().iXPos2 = x;
-                    block.GetComponent<BossBullet>().iYPos2 = (int)(y / iTileX);
-
-                    block.GetComponent<BossBullet>().iStack = x;
-                   // block.transform.localScale = new Vector3(TileSize, TileSize, TileSize);
-                    block.transform.SetParent(transform);
-                }
+    }
+    public IEnumerator Move()
+    {
+        bool bS = false;
+        if(!bStoped)
+        {
+            
+            for(int i = 0; i< transform.childCount; i++)
+          {
+                bS =  transform.GetChild(i).GetComponent<BossBullet>().Move();
             }
         }
-        BlockArea.x = xPos - transform.position.x;
-        BlockArea.y = yPos - transform.position.y;
+    
+        if(bS)
+        {
+            bStoped = true;
+            SetStop();
+        }
+        yield return new WaitForSeconds(0.3f);
+        StartCoroutine("Move");
+
     }
 
-    // Start is called before the first frame update
+        // Start is called before the first frame update
     void Start()
     {
         audio = gameObject.GetComponent<AudioSource>();
@@ -79,17 +74,14 @@ public class TetrisBlock : MonoBehaviour
         if (sfxvolume)
             audio.volume = sfxvolume.GetComponent<AudioController>().SFXVolume / 100.0f;
         audio.Play();
-
         ScoreMgr = GameObject.Find("GameManager").GetComponent<ScoreMgr>();
         CreateBlock();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetCenter();
-        if (!bStoped)
-            CheckStop();
     }
     public void GetDamage(int iDam)
     {
@@ -119,50 +111,25 @@ public class TetrisBlock : MonoBehaviour
         {
              GameObject child = transform.GetChild(i).gameObject;
             int iY = child.GetComponent<BossBullet>().iYPos2;
-             int Ypos = iCurrentY - iY + 1;
+           
+             int Ypos = iCurrentY - iY + (int)(Blocksize.y);
              child.GetComponent<BossBullet>().iYPos = Ypos;
             child.GetComponent<BossBullet>().Launch();
 
         }
 
+        StartCoroutine("Move");
     }
-
-    public void CheckStop()
+    public void SetStop()
     {
-        GameObject mgr = GameObject.Find("ShootMgr");
-        bool bTemp = false ;
+        
         for (int i = 0; i < gameObject.transform.childCount; i++)
         {
-            GameObject child = gameObject.transform.GetChild(i).gameObject;
-            int xIndex = child.GetComponent<BossBullet>().iXPos;
-            int yIndex = child.GetComponent<BossBullet>().iYPos;
-            if (child.GetComponent<BossBullet>().iStack == 0 )
-            {
-                if(xIndex == 0)
-                {
-                    bTemp = true;
-                    bStoped = true;
-                    break;
-                }
-            }
-            if (mgr.GetComponent<TetrisMgr>().CheckStacked(xIndex, yIndex))
-            {
-                bTemp = true;
-                bStoped = true;
-                break;
-            }
-        }
-
-        if(bTemp)
-        {
-            for (int i = 0; i < gameObject.transform.childCount; i++)
-            {
-                GameObject child = gameObject.transform.GetChild(i).gameObject;
-                child.GetComponent<BossBullet>().bMove = false;
-                child.GetComponent<BossBullet>().SetStop();
-            }
+            GameObject child = transform.GetChild(i).gameObject;
+            child.GetComponent<BossBullet>().SetStop();
         }
     }
+
 
     
     public void BombRaw(int Raw)
@@ -173,12 +140,5 @@ public class TetrisBlock : MonoBehaviour
             if (child.GetComponent<BossBullet>().iXPos == Raw)
                 Destroy(child);
         }
-    }
-    virtual public void GetCenter()
-    {
-        Vector3 position = transform.position;
-
-        Center.x = position.x + BlockArea.x / 2.0f;
-        Center.y = position.y + BlockArea.y / 2.0f;
     }
 }

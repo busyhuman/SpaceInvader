@@ -21,7 +21,7 @@ public class BossBullet2 : MonoBehaviour
         posX += speed * Time.deltaTime * (float)Math.Cos(fShootAngle * Math.PI / 180);
         posY += speed * Time.deltaTime * (float)Math.Sin(fShootAngle * Math.PI / 180);
 
-        if (posX < -12)
+        if (posX < -14)
             Destroy(gameObject);
 
         transform.position = new Vector3(posX, posY, 0);

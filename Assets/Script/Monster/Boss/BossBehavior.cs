@@ -57,8 +57,8 @@ public class BossBehavior : MonoBehaviour
     public GameObject Pattern2Bullet;
     public bool bShiled = false;
     bool bShoot = false;
-    public int iCurrentMoveIndex = 0;
-    int iDestMoveIndex = 0;
+    public int iCurrentMoveIndex = 12;
+    int iDestMoveIndex = 12;
     int iBulletNum;
     Vector3 vTempPos;
     Vector3[] vMovingPos;
@@ -81,7 +81,7 @@ public class BossBehavior : MonoBehaviour
         vMovingPos = new Vector3[26];
         for (int i = 0; i < 26; i++)
         {
-            vMovingPos[i] = new Vector3(5.5f, -5.55f + 0.93f * i, 0);
+            vMovingPos[i] = new Vector3(5.5f, -4.6f + 0.35f * i, 0);
         }
         Player = GameObject.Find("Player");
         iCurrentHP = iMaxHP;
@@ -215,6 +215,7 @@ public class BossBehavior : MonoBehaviour
             eMoveState = BossMoveState.BOSS_MOVE_SHOOTMOVE;
             fMoveTick = 0;
             eShootPattern = BossShoot.BOSS_SHOOT1;
+            CheckPlayerPosRow();
             StartCoroutine("Move_Shoot1");
         }
     }
@@ -224,27 +225,32 @@ public class BossBehavior : MonoBehaviour
         fMoveTick += Time.deltaTime * 100;
         float fDegree = 3.14f * fMoveTick / 180.0f;
         float yPos = (float)(vTempPos.y + Mathf.Sin(fDegree)) / 2.0f;
+
         Vector3 vPos = new Vector3(vTempPos.x, yPos, vTempPos.z);
         transform.position = vPos;
     }
+    protected void CheckPlayerPosRow()
+    {
+        Vector3 CurrentPos = transform.position;
+        Vector3 PlayerPos = Player.transform.position;
+        for (int k = 0; k < 26; k++)
+        {
+            float distance = Math.Abs(vMovingPos[k].y - PlayerPos.y);
+            if (distance < 0.127)
+            {
+                iDestMoveIndex = k;
+                break;
+            }
+        }
 
+    }
     protected IEnumerator Move_Shoot1()
     {
 
         Vector3 CurrentPos = transform.position;
         if (iCurrentMoveIndex == iDestMoveIndex)
         {
-            Vector3 PlayerPos = Player.transform.position;
-            for (int k = 0; k < 26; k++)
-            {
-                float distance = Math.Abs(vMovingPos[k].y - PlayerPos.y);
-                if (distance < 0.2)
-                {
-                    iDestMoveIndex = k;
-                    break;
-                }
-            }
-
+            CheckPlayerPosRow();
             iMoveNum++;
             if (iMoveNum % 2 == 0 && fShootTick > 50)
             {
@@ -269,16 +275,15 @@ public class BossBehavior : MonoBehaviour
         }
         else if (iCurrentMoveIndex < iDestMoveIndex)
         {
-            transform.position = new Vector3(CurrentPos.x, CurrentPos.y + 0.55f, 0);
             iCurrentMoveIndex++;
         }
         else
         {
-            transform.position = new Vector3(CurrentPos.x, CurrentPos.y - 0.55f, 0);
             iCurrentMoveIndex--;
         }
+        transform.position = new Vector3(CurrentPos.x, vMovingPos[iCurrentMoveIndex].y, 0);
         fShootTick += 5;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.15f);
         StartCoroutine("Move_Shoot1");
     }
 

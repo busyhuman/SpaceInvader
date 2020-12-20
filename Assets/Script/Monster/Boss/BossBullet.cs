@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossBullet : MonoBehaviour
 {
+    public TetrisMgr TetMgr;
     private float fMoveSpeed;
     float fAngle = 0;
     public bool bMove = true;
@@ -24,7 +25,6 @@ public class BossBullet : MonoBehaviour
     public void Launch()
     {
         bHold = false;
-        StartCoroutine("Move");
     }
     // Update is called once per frame
     void Update()
@@ -32,7 +32,7 @@ public class BossBullet : MonoBehaviour
         
     }
 
-    public IEnumerator Move()
+    public  bool Move()
     {
 
         GameObject TetrisMgr = GameObject.Find("ShootMgr");
@@ -41,21 +41,21 @@ public class BossBullet : MonoBehaviour
         if (bMove)
         {
             //float fDegree = 3.14f * fAngle / 180.0f;
-
             float PosX = TetrisPos[iXPos, iYPos].x;
             float PosY = TetrisPos[iXPos, iYPos].y;
             transform.position = new Vector3(PosX, PosY, 0);
-
             iXPos--;
-            yield return new WaitForSeconds(0.3f);
-            if(iXPos <0)
+
+            if (TetMgr.GetComponent<TetrisMgr>().CheckStacked(iXPos, iYPos) || iXPos <= 1)
             {
+                SetStop();
                 bMove = false;
+                return true;
             }
-            else
-                StartCoroutine("Move");
-            
+            else return false;
+
         }
+        else return true;
 
     }
     public void Initialize(float _fAngle, float _fSpeed)
@@ -66,6 +66,7 @@ public class BossBullet : MonoBehaviour
 
     public void SetStop()
     {
+        bMove = false;
         GameObject TetrisMgr = GameObject.Find("ShootMgr");
         TetrisMgr.GetComponent<TetrisMgr>().SetStopTetris(iXPos, iYPos);
     }

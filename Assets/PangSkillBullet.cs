@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PangSkillBullet : BulletMove
+public class pblullet : BulletMove
 {
     private float elpsedtime = 0;
     // Start is called before the first frame update
