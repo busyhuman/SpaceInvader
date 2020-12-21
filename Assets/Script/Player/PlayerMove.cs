@@ -68,7 +68,15 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    public void TurnToWinMode(){     if(iWinState == 0 )   iWinState = 1; }
+    public void TurnToWinMode()
+    {
+        if (iWinState == 0)
+        {
+
+            GetComponent<PlayerAtt>().bWin = true;
+            iWinState = 1;
+        }
+    }
     public void TurnToWin2Mode() { if (iWinState == 1) iWinState = 2; }
 
     public void TurnToWin3Mode()

@@ -620,17 +620,20 @@ MonoBehaviour:
   - {fileID: 3155303709349714498, guid: 9e33030f913646945857163fd7532461, type: 3}
   Player: {fileID: 0}
   DyingParticle: {fileID: 724523689}
+  TeddyJunior: {fileID: 5200427780734807259, guid: 9898ecf327aed6e468b5501b3612998b,
+    type: 3}
   fMoveSpeed: 5
   Barrier: {fileID: 7582442814476686520, guid: 3db58d189269160469e3e51fd16e06aa, type: 3}
+  fPatternTick: 0
   fMoveTick: 0
   iCurrentHP: 0
-  iMaxHP: 10000
+  iMaxHP: 2000
   fShootSpeed: 1
   shootPoint: {fileID: 1232511418}
+  iPhase: 1
   Pattern2Bullet: {fileID: 6941913281915438266, guid: b4d1b342575ed6f4298b43904d1fad31,
     type: 3}
-  bShiled: 0
-  iCurrentMoveIndex: 0
+  iCurrentMoveIndex: 10
   CurrentBullet: {fileID: 0}
 --- !u!95 &216336503
 Animator:
@@ -6545,7 +6548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92701fee1b5075448a80e736b3381f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerType: 0
+  playerType: 1
   playerObjects:
   - {fileID: 1224331364783198144, guid: 78ce2676738567748abf32775202d75a, type: 3}
   - {fileID: 4421370703459312305, guid: 684ee1dbc345a2f4fa5f3ce7064e83a9, type: 3}
@@ -7207,7 +7210,7 @@ GameObject:
   - component: {fileID: 1503832207}
   - component: {fileID: 1503832208}
   m_Layer: 5
-  m_Name: Score
+  m_Name: iScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -27,7 +27,7 @@ public class MakeDiamondShape : MonoBehaviour
         {
             if(BiggerTick > 5.0f)
             {
-                transform.parent.gameObject.GetComponent<BossBehavior>().bShiled = false;
+                transform.parent.gameObject.GetComponent<BossBehavior>().SetShild(false);
                Destroy(gameObject);
             }
         }

@@ -15,9 +15,12 @@ using UnityEngine.UIElements;
 enum BossShoot
 {
     BOSS_SHOOT_NONE,
-    BOSS_SHOOT1,
-    BOSS_SHOOT2,
-    BOSS_SHOOT3
+    BOSS_SHOOT1, // 테트리스
+    BOSS_SHOOT2, // 표창
+    BOSS_SHOOT3, // 베리어
+    BOSS_SHOOT4, // 광선
+    BOSS_SHOOT5, // 몹 소환
+    BOSS_SHOOT6 // 돌진
 }
 enum BossMoveState
 {
@@ -33,11 +36,12 @@ public class BossBehavior : MonoBehaviour
     public GameObject[] Bullets;
     public GameObject Player;
     public GameObject DyingParticle;
+    public GameObject TeddyJunior;
     public float fMoveSpeed = 5.0f;
     public GameObject Barrier;
     // 움직임/공격 타이머
     private float fShootTick = 0;
-    private float fPatternTick = 0;
+    public float fPatternTick = 0;
     public float fMoveTick = 0;
     private Vector3 DyingPos;
 
@@ -49,16 +53,16 @@ public class BossBehavior : MonoBehaviour
     public float fShootSpeed = 1;
     public Transform shootPoint;
     //상태값
-    private int iPhase = 1;
+    public int iPhase = 1;
     private BossShoot eShootPattern = BossShoot.BOSS_SHOOT_NONE;
     private BossMoveState eMoveState;
 
     //임시 위치/방향/불렛
     public GameObject Pattern2Bullet;
-    public bool bShiled = false;
+    private bool bShiled = false;
     bool bShoot = false;
-    public int iCurrentMoveIndex = 12;
-    int iDestMoveIndex = 12;
+    public int iCurrentMoveIndex = 20;
+    int iDestMoveIndex = 20;
     int iBulletNum;
     Vector3 vTempPos;
     Vector3[] vMovingPos;
@@ -111,11 +115,16 @@ public class BossBehavior : MonoBehaviour
                     case BossShoot.BOSS_SHOOT3:
                         ShootPattern3();
                         break;
+                    case BossShoot.BOSS_SHOOT4:
+                        ShootPattern3();
+                        break;
+                    case BossShoot.BOSS_SHOOT5:
+                        ShootPattern3();
+                        break;
                 }
                 break;
             case BossMoveState.BOSS_MOVE_SHOOTMOVE:
-                if (eShootPattern == BossShoot.BOSS_SHOOT1)
-                    Move_Shoot1();
+                fPatternTick += Time.deltaTime;
                 if(Player.GetComponent<PlayerMove>().iDieState == 0)
                 {
                     switch (eShootPattern)
@@ -129,6 +138,15 @@ public class BossBehavior : MonoBehaviour
                         case BossShoot.BOSS_SHOOT3:
                             ShootPattern3();
                             break;
+                        case BossShoot.BOSS_SHOOT4:
+                            ShootPattern4();
+                            break;
+                        case BossShoot.BOSS_SHOOT5:
+                            ShootPattern5();
+                            break;
+                        case BossShoot.BOSS_SHOOT6:
+                            ShootPattern6();
+                            break;
                     }
 
                 }
@@ -139,18 +157,17 @@ public class BossBehavior : MonoBehaviour
         }
 
 
-        fPatternTick += Time.deltaTime;
-
         switch (iPhase)
         {
+           
             case 1:
-                if ((float)(iCurrentHP / iMaxHP) < 0.66)
+                if ((float)(iCurrentHP) / (float)(iMaxHP) < 0.8f)
                 {
                     iPhase = 2;
                 }
                 break;
             case 2:
-                if ((float)(iCurrentHP / iMaxHP) < 0.33)
+                if ((float)(iCurrentHP) / (float)(iMaxHP) < 0.3f)
                 {
                     iPhase = 3;
                 }
@@ -166,6 +183,41 @@ public class BossBehavior : MonoBehaviour
                 if (!bShiled)
                     CheckBarrier();
     }
+
+    public void SetShild(bool b)
+    {
+        bShiled = b;
+    }
+    private void SetShootPatternByPhase(float[] percentage)
+    {
+        float Rand = UnityEngine.Random.Range(0, 100.0f);
+        if (Rand < percentage[0])
+        {
+            if (eShootPattern != BossShoot.BOSS_SHOOT1)
+                eShootPattern = BossShoot.BOSS_SHOOT1;
+        }
+        else if (Rand < percentage[1])
+        {
+            eShootPattern = BossShoot.BOSS_SHOOT2;
+            bShoot = true;
+        }
+        else if (Rand < percentage[2])
+        {
+            eShootPattern = BossShoot.BOSS_SHOOT4;
+           // bShoot = true;
+        }
+        else if(Rand < percentage[3])
+        {
+            eShootPattern = BossShoot.BOSS_SHOOT5;
+            bShoot = true;
+        }
+        else
+        {
+            eShootPattern = BossShoot.BOSS_SHOOT6;
+            //bShoot = true;
+        }
+        UnityEngine.Debug.Log(eShootPattern);
+    }
     protected void SetShootPattern()
     {
         fPatternTick = 0;
@@ -180,17 +232,21 @@ public class BossBehavior : MonoBehaviour
             return;
         }
 
-        float Rand = UnityEngine.Random.Range(0, 200.0f);
-        if (Rand < 75.0f)
+        float[] percentage = new float[5];
+        // {테트리스, 표창, 광선, 몹 소환, 돌진}
+        switch (iPhase)
         {
-            if (eShootPattern != BossShoot.BOSS_SHOOT1)
-                eShootPattern = BossShoot.BOSS_SHOOT1;
+            case 1:
+                percentage = new float[5] { 70.0f, 100.0f, 0.0f, 0.0f, 0.0f };
+                break;
+            case 2:
+                percentage = new float[5] { 50.0f, 70.0f, 90.0f, 100.0f, 0.0f };
+                break;
+            case 3:
+                percentage = new float[5] { 40.0f, 60.0f, 80.0f, 90.0f, 100.0f };
+                break;
         }
-        else
-        {
-            eShootPattern = BossShoot.BOSS_SHOOT2;
-            bShoot = true;
-        }
+        SetShootPatternByPhase(percentage);
     }
     void CheckBarrier()
     {
@@ -208,14 +264,14 @@ public class BossBehavior : MonoBehaviour
     {
         transform.Translate(new Vector3(0, -fMoveSpeed * Time.deltaTime * 1.5f, 0), Space.Self);
         fMoveTick += Time.deltaTime;
-        if (transform.position.y < -1.15f)
+        if (transform.position.y < vMovingPos[iCurrentMoveIndex].y)
         {
-            transform.position = new Vector3(transform.position.x, -1.15f, 0);
+            transform.position = new Vector3(transform.position.x, vMovingPos[iCurrentMoveIndex].y, 0);
             vTempPos = transform.position;
             eMoveState = BossMoveState.BOSS_MOVE_SHOOTMOVE;
             fMoveTick = 0;
-            eShootPattern = BossShoot.BOSS_SHOOT1;
             CheckPlayerPosRow();
+            SetShootPattern();
             StartCoroutine("Move_Shoot1");
         }
     }
@@ -254,13 +310,13 @@ public class BossBehavior : MonoBehaviour
             iMoveNum++;
             if (iMoveNum % 2 == 0 && fShootTick > 50)
             {
-                if (!CurrentBullet)
+                if (!CurrentBullet && eShootPattern == BossShoot.BOSS_SHOOT1)
                 {
                     fShootTick = 0;
                     bShoot = true;
                 }
             }
-            if (iMoveNum % 4 == 0 && fShootTick > 60)
+            if (iMoveNum % 4 == 0 && fShootTick > 60 )
             {
                 if (CurrentBullet)
                 {
@@ -273,18 +329,21 @@ public class BossBehavior : MonoBehaviour
 
             }
         }
-        else if (iCurrentMoveIndex < iDestMoveIndex)
+        else if (iCurrentMoveIndex < iDestMoveIndex )
         {
             iCurrentMoveIndex++;
+            if (iCurrentMoveIndex > 25) iCurrentMoveIndex = 25;
         }
         else
         {
             iCurrentMoveIndex--;
+            if (iCurrentMoveIndex <0) iCurrentMoveIndex = 0;
         }
         transform.position = new Vector3(CurrentPos.x, vMovingPos[iCurrentMoveIndex].y, 0);
         fShootTick += 5;
         yield return new WaitForSeconds(0.15f);
-        StartCoroutine("Move_Shoot1");
+        if(eMoveState != BossMoveState.BOSS_MOVE_DYING)
+             StartCoroutine("Move_Shoot1");
     }
 
     protected void ShootPattern1()
@@ -310,11 +369,38 @@ public class BossBehavior : MonoBehaviour
             sound.PlaySkill2();
             bShoot = false;
         }
-        if (fPatternTick > 8.0f)
+        if (fPatternTick > 5.0f)
             SetShootPattern();
     }
 
     protected void ShootPattern3()
+    {
+        if (fPatternTick > 5.0f)
+            SetShootPattern();
+    }
+    private void ShootPattern4()
+    {
+       
+        if (fPatternTick > 5.0f)
+            SetShootPattern();
+
+    }
+
+    private void ShootPattern5()
+    { 
+        if(bShoot)
+        {
+            for (int i = 0; i < 5; i++)
+                Instantiate(TeddyJunior, transform.position, Quaternion.identity);
+              
+            sound.PlaySkill2();
+            bShoot = false;
+        }
+        if (fPatternTick > 5.0f)
+            SetShootPattern();
+    }
+
+    private void ShootPattern6()
     {
         if (fPatternTick > 5.0f)
             SetShootPattern();
@@ -342,7 +428,7 @@ public class BossBehavior : MonoBehaviour
     public void GetDamage(int iGetDamage)
     {
         if (eMoveState == BossMoveState.BOSS_MOVE_DYING || eMoveState == BossMoveState.BOSS_MOVE_APPEAR) return;
-        iCurrentHP -= 1;
+        iCurrentHP -= iGetDamage;
         if (iCurrentHP <= 0)
         {
             sound.PlayHurt();

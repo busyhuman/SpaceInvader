@@ -11,6 +11,7 @@ abstract public class MonsterBehavior : MonoBehaviour
     public float ShootingTick = 0;
     public float ShootingLoop = 0;
     public float alertDist = 20;
+    public int ParticleNum = 30;
     public GameObject player;
 
     protected float fAge = 0;
@@ -27,7 +28,7 @@ abstract public class MonsterBehavior : MonoBehaviour
         fAge += Time.deltaTime;
         if(curHP <= 0)
         {
-            ParticleMgr.GetInstance().CreateDestroyedParticles(gameObject);
+            ParticleMgr.GetInstance().CreateDestroyedParticles(gameObject, ParticleNum);
             GameObject.Destroy(gameObject);
             if(Obstacle)
             {

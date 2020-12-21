@@ -16,6 +16,7 @@ public class PlayerAtt : MonoBehaviour
     public GameObject Bullet;
     protected CooltimeRender CoolTimer;
     protected AudioSource audioSource;
+    public bool bWin = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +38,7 @@ public class PlayerAtt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (bWin) return;
         if(CoolTimer.bActivating)
         {
             Skill();

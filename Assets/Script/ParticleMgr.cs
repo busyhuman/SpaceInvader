@@ -30,7 +30,7 @@ public class ParticleMgr : MonoBehaviour
     {
     }
 
-    public void CreateDestroyedParticles(GameObject obj) // obj : 부딪힌 몬스터
+    public void CreateDestroyedParticles(GameObject obj, int ParticleNum ) // obj : 부딪힌 몬스터
     {
         Texture2D tex = obj.GetComponent<SpriteRenderer>().sprite.texture;
         Color[] pixs;
@@ -45,7 +45,7 @@ public class ParticleMgr : MonoBehaviour
                 GameObject particle = Instantiate(square, new Vector3(obj.transform.position.x, obj.transform.position.y), Quaternion.identity );
                 particle.GetComponent<SpriteRenderer>().color = pixs[i];
             }
-            i += 30; // 개수 조절을 위해
+            i += ParticleNum; // 개수 조절을 위해
         }
         Destroy(obj);
     }
