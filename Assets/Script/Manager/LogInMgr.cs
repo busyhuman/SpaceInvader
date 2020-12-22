@@ -6,7 +6,7 @@ public class LogInMgr : MonoBehaviour
 {
     public GameObject username;
     public GameObject password;
-
+    public SceneChanger sc;
     public void StartLogin()
     {
         StartCoroutine(LogIn());
@@ -32,6 +32,7 @@ public class LogInMgr : MonoBehaviour
             TokenMgr.Instance.SetToken(JsonUtility.FromJson<TokenData>(msg).key);
             Debug.Log(msg);
         }
+        
 
         yield return null;
     }
@@ -54,6 +55,8 @@ public class LogInMgr : MonoBehaviour
                 break;
             }
         }
+        //메인메뉴 전환
+        sc.TurnToMainMenu();
 
         yield return null;
     }
