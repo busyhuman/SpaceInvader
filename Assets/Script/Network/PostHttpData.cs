@@ -14,11 +14,16 @@ public class PostHttpData : MonoBehaviour
     IEnumerator postRequest(string url, WWWForm form)
     {
         UnityWebRequest request = new UnityWebRequest();
-
+        string token = TokenMgr.Instance.GetToken();
 
         using (request = UnityWebRequest.Post(url, form))
         {
-      //      request.SetRequestHeader("Authorization", "Token " + TokenMgr.Instance.GetToken());
+
+            if (token != "")
+            {
+                request.SetRequestHeader("Authorization", "Token " + token);
+            }
+
 
             yield return request.SendWebRequest();
 

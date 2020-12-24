@@ -6,14 +6,9 @@ public class LogInMgr : MonoBehaviour
 {
     public GameObject Username;
     public GameObject Password;
-    
-    private SceneChanger sc;
 
-    void Start()
-    {
-        sc = GameObject.Find("Main Camera").GetComponent<SceneChanger>();
-    }
-
+    public GameObject LoginObj;
+    public Text Msg;
     public void StartLogin()
     {
         StartCoroutine(LogIn());
@@ -30,20 +25,21 @@ public class LogInMgr : MonoBehaviour
 
         postHttpData.PostData(ServerURL.BaseUrl + "rest-auth/login/", form);
 
+        // 서버로부터 메시지 기다림
         yield return StartCoroutine(WaitMessage(postHttpData, 5.0f));
-
+        
         string msg = postHttpData.getMessage();
+        if (postHttpData.getErrorMessage() != postHttpData.DefaultErrorMessage)
+        {
+            Msg.text = msg;
+        }
 
         if (postHttpData.getErrorMessage() == postHttpData.DefaultErrorMessage && postHttpData.getMessage() != postHttpData.DefaultMessage)
         {
             TokenMgr.Instance.SetToken(JsonUtility.FromJson<TokenData>(msg).key);
             Debug.Log(TokenMgr.Instance.GetToken());
 
-            if(sc != null)
-            {
-                sc.TurnToMainMenu();
-            }
-
+            LoginObj.SetActive(false);
         }
 
     }

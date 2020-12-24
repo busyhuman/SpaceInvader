@@ -7,14 +7,10 @@ public class SignUpMgr : MonoBehaviour
     public GameObject Username;
     public GameObject Password1;
     public GameObject Password2;
-   
-    private SceneChanger sc;
 
-    void Start()
-    {
-        sc = GameObject.Find("Main Camera").GetComponent<SceneChanger>();
-    }
-
+    public GameObject LoginObj;
+    public GameObject SignUpObj;
+    public Text Msg;
 
     public void StartRegisterAccount()
     {
@@ -33,16 +29,23 @@ public class SignUpMgr : MonoBehaviour
 
         postHttpData.PostData(ServerURL.BaseUrl + "rest-auth/registration/", form);
 
+        // 서버로부터 메시지 기다림
         yield return StartCoroutine(WaitMessage(postHttpData, 5.0f));
-        
+
+        string msg = postHttpData.getMessage();
+        if (postHttpData.getErrorMessage() != postHttpData.DefaultErrorMessage)
+        {
+            Msg.text = msg;
+        }
+
+
         if (postHttpData.getErrorMessage() == postHttpData.DefaultErrorMessage && postHttpData.getMessage() != postHttpData.DefaultMessage)
         {
             yield return StartCoroutine(RegisterUserList());
 
-            if (sc != null)
-            {
-                sc.TurnToMainMenu();
-            }
+            SignUpObj.SetActive(false);
+            LoginObj.SetActive(true);
+
         }
     }
 
