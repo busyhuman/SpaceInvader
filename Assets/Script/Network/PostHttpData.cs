@@ -18,7 +18,7 @@ public class PostHttpData : MonoBehaviour
 
         using (request = UnityWebRequest.Post(url, form))
         {
-            request.SetRequestHeader("Authorization", "Token " + "012b93aec84be6b0508b0a64864a0c35576c2dbf");
+      //      request.SetRequestHeader("Authorization", "Token " + TokenMgr.Instance.GetToken());
 
             yield return request.SendWebRequest();
 

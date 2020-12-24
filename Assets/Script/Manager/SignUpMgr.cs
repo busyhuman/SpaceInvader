@@ -2,11 +2,19 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SignInMgr : MonoBehaviour
+public class SignUpMgr : MonoBehaviour
 {
-    public GameObject username;
-    public GameObject password1;
-    public GameObject password2;
+    public GameObject Username;
+    public GameObject Password1;
+    public GameObject Password2;
+   
+    private SceneChanger sc;
+
+    void Start()
+    {
+        sc = GameObject.Find("Main Camera").GetComponent<SceneChanger>();
+    }
+
 
     public void StartRegisterAccount()
     {
@@ -19,20 +27,23 @@ public class SignInMgr : MonoBehaviour
         PostHttpData postHttpData = phd.GetComponent<PostHttpData>();
         WWWForm form = new WWWForm();
         
-        form.AddField("username", username.GetComponent<InputField>().text);
-        form.AddField("password1", password1.GetComponent<InputField>().text);
-        form.AddField("password2", password2.GetComponent<InputField>().text);
+        form.AddField("username", Username.GetComponent<InputField>().text);
+        form.AddField("password1", Password1.GetComponent<InputField>().text);
+        form.AddField("password2", Password2.GetComponent<InputField>().text);
 
-        postHttpData.PostData("https://busyhuman.pythonanywhere.com/rest-auth/registration/", form);
+        postHttpData.PostData(ServerURL.BaseUrl + "rest-auth/registration/", form);
 
         yield return StartCoroutine(WaitMessage(postHttpData, 5.0f));
         
         if (postHttpData.getErrorMessage() == postHttpData.DefaultErrorMessage && postHttpData.getMessage() != postHttpData.DefaultMessage)
         {
             yield return StartCoroutine(RegisterUserList());
-        }
 
-        yield return null;
+            if (sc != null)
+            {
+                sc.TurnToMainMenu();
+            }
+        }
     }
 
     IEnumerator WaitMessage(PostHttpData postHttpData, float time)
@@ -64,10 +75,10 @@ public class SignInMgr : MonoBehaviour
         PostHttpData postHttpData = phd.GetComponent<PostHttpData>();
         WWWForm form = new WWWForm();
 
-        form.AddField("ID", username.GetComponent<InputField>().text);
+        form.AddField("ID", Username.GetComponent<InputField>().text);
 
-        postHttpData.PostData("https://busyhuman.pythonanywhere.com/users/", form);
+        postHttpData.PostData(ServerURL.BaseUrl + "users/", form);
 
-        yield return null;
+        yield return new WaitForSeconds(1.0f);
     }
 }

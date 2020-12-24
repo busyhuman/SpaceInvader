@@ -31,7 +31,7 @@ public class RankMgr : MonoBehaviour
         form.AddField("Stage", stage);
         form.AddField("Score", score);
 
-        postHttpData.PostData("https://busyhuman.pythonanywhere.com/records/", form);
+        postHttpData.PostData(ServerURL.BaseUrl + "records/", form);
         yield return new WaitForSeconds(2.0f);
         yield return StartCoroutine(ConfirmRecords());
     }
@@ -40,7 +40,7 @@ public class RankMgr : MonoBehaviour
     {
         GameObject phd = (GameObject)Instantiate(Resources.Load("HttpData/GetHttpData"));
         GetHttpData getHttpData = phd.GetComponent<GetHttpData>();
-        getHttpData.GetData("https://busyhuman.pythonanywhere.com/records/?format=json");
+        getHttpData.GetData(ServerURL.BaseUrl + "records/?format=json");
 
         while (true)
         {

@@ -4,9 +4,16 @@ using UnityEngine.UI;
 
 public class LogInMgr : MonoBehaviour
 {
-    public GameObject username;
-    public GameObject password;
-    public SceneChanger sc;
+    public GameObject Username;
+    public GameObject Password;
+    
+    private SceneChanger sc;
+
+    void Start()
+    {
+        sc = GameObject.Find("Main Camera").GetComponent<SceneChanger>();
+    }
+
     public void StartLogin()
     {
         StartCoroutine(LogIn());
@@ -18,10 +25,10 @@ public class LogInMgr : MonoBehaviour
         PostHttpData postHttpData = phd.GetComponent<PostHttpData>();
         WWWForm form = new WWWForm();
 
-        form.AddField("username", username.GetComponent<InputField>().text);
-        form.AddField("password", password.GetComponent<InputField>().text);
+        form.AddField("username", Username.GetComponent<InputField>().text);
+        form.AddField("password", Password.GetComponent<InputField>().text);
 
-        postHttpData.PostData("https://busyhuman.pythonanywhere.com/rest-auth/login/", form);
+        postHttpData.PostData(ServerURL.BaseUrl + "rest-auth/login/", form);
 
         yield return StartCoroutine(WaitMessage(postHttpData, 5.0f));
 
@@ -30,11 +37,15 @@ public class LogInMgr : MonoBehaviour
         if (postHttpData.getErrorMessage() == postHttpData.DefaultErrorMessage && postHttpData.getMessage() != postHttpData.DefaultMessage)
         {
             TokenMgr.Instance.SetToken(JsonUtility.FromJson<TokenData>(msg).key);
-            Debug.Log(msg);
-        }
-        
+            Debug.Log(TokenMgr.Instance.GetToken());
 
-        yield return null;
+            if(sc != null)
+            {
+                sc.TurnToMainMenu();
+            }
+
+        }
+
     }
 
     IEnumerator WaitMessage(PostHttpData postHttpData, float time)
@@ -55,8 +66,7 @@ public class LogInMgr : MonoBehaviour
                 break;
             }
         }
-        //메인메뉴 전환
-        sc.TurnToMainMenu();
+
 
         yield return null;
     }
