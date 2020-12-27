@@ -90,7 +90,6 @@
     <Compile Include="Assets\Script\Manager\ItemSpawner.cs" />
     <Compile Include="Assets\Sound\UISFX.cs" />
     <Compile Include="Assets\ParticleDestroyer.cs" />
-    <Compile Include="Assets\Script\Manager\TokenMgr.cs" />
     <Compile Include="Assets\Script\Utils\EngToKor.cs" />
     <Compile Include="Assets\Script\Monster\Boss\TetrisBlock.cs" />
     <Compile Include="Assets\Script\Network\DTO\PlayerData.cs" />
@@ -131,9 +130,10 @@
     <Compile Include="Assets\Script\Monster\Boss\BossBullet2.cs" />
     <Compile Include="Assets\PlayerSpawn.cs" />
     <Compile Include="Assets\RenderUserRank.cs" />
+    <Compile Include="Assets\Script\Utils\ServerURL.cs" />
     <Compile Include="Assets\Script\UIScript\CooltimeRender.cs" />
     <Compile Include="Assets\Script\Monster\Stage1Normal\Meringue4.cs" />
-    <Compile Include="Assets\Script\Utils\ServerURL.cs" />
+    <Compile Include="Assets\Script\Manager\LogOutMgr.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

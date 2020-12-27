@@ -30,7 +30,7 @@ public class SignUpMgr : MonoBehaviour
         postHttpData.PostData(ServerURL.BaseUrl + "rest-auth/registration/", form);
 
         // 서버로부터 메시지 기다림
-        yield return StartCoroutine(WaitMessage(postHttpData, 5.0f));
+        yield return StartCoroutine(WaitMessage(postHttpData, 7.0f));
 
         string msg = postHttpData.getMessage();
         if (postHttpData.getErrorMessage() != postHttpData.DefaultErrorMessage)
