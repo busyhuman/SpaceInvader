@@ -852,6 +852,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1288668604}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: TurnToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &284613711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4562,7 +4574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LoadingBGM: {fileID: 8300000, guid: 6a3b49a4948fa33479d86b26fa11f9f9, type: 3}
   Stage1BossBGM: {fileID: 8300000, guid: 3efc29349a1c13845bfd9ce5023c2ac2, type: 3}
-  Stage1NormalBGM: {fileID: 8300000, guid: 30c32b8e101a85f44a77d5de2e68fa51, type: 3}
+  Stage1NormalBGM: {fileID: 8300000, guid: 084221097797cb043bc4184b49b440c3, type: 3}
   RankingBGM: {fileID: 8300000, guid: db049dc936349174e802964d34569ccd, type: 3}
   BGMaudio: {fileID: 0}
   SFXaudio: {fileID: 0}

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1681236442068941659}
   - component: {fileID: 1681236442068941658}
   - component: {fileID: 1681236442068941661}
-  - component: {fileID: 1681236442068941660}
   - component: {fileID: 1294402667420527484}
   - component: {fileID: -880343559851363308}
   m_Layer: 0
@@ -75,7 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: -744650969
   m_SortingLayer: 4
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: d26b2b6d7289f7842897c466ea46a60c, type: 3}
+  m_Sprite: {fileID: 6957982072110406309, guid: 9b56df7fd2c26904692f6a5c47257dcf,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,7 +103,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 5.12, y: 5.1208334}
     newSize: {x: 0.02, y: 0.04}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -115,24 +115,6 @@ PolygonCollider2D:
       - {x: -0.0625, y: -0.125}
       - {x: 0.0625, y: -0.125}
       - {x: 0.0625, y: 0.125}
---- !u!114 &1681236442068941660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681236442068941663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7408db0ac79f7649be5002103082de0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameMgr: {fileID: 0}
-  Speed: 12
-  att: 5
-  bDeath: 0
-  player: {fileID: 0}
-  cam: {fileID: 0}
 --- !u!95 &1294402667420527484
 Animator:
   serializedVersion: 3
@@ -143,7 +125,7 @@ Animator:
   m_GameObject: {fileID: 1681236442068941663}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d99bcd357eedfb74899d7fed64274cec, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8cadd9ddc4968024fac51fb12b7a2490, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -170,4 +152,4 @@ MonoBehaviour:
   bDeath: 0
   player: {fileID: 0}
   cam: {fileID: 0}
-  Angle: 120
+  Angle: 100

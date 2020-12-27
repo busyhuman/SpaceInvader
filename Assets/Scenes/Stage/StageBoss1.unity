@@ -620,14 +620,17 @@ MonoBehaviour:
   - {fileID: 3155303709349714498, guid: 9e33030f913646945857163fd7532461, type: 3}
   Player: {fileID: 0}
   DyingParticle: {fileID: 724523689}
+  RayBullet: {fileID: 4439015837085363037, guid: 0b1a5c007304d7a49a180da38152da36,
+    type: 3}
   TeddyJunior: {fileID: 5200427780734807259, guid: 9898ecf327aed6e468b5501b3612998b,
     type: 3}
   fMoveSpeed: 5
   Barrier: {fileID: 7582442814476686520, guid: 3db58d189269160469e3e51fd16e06aa, type: 3}
   fPatternTick: 0
   fMoveTick: 0
+  Phcae3Anim: {fileID: 0}
   iCurrentHP: 0
-  iMaxHP: 2000
+  iMaxHP: 1000
   fShootSpeed: 1
   shootPoint: {fileID: 1232511418}
   iPhase: 1
@@ -9093,6 +9096,11 @@ PrefabInstance:
     - target: {fileID: 7649921993692424506, guid: 76fb8ffce81319645b3338018ac22c1a,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7649921993692424507, guid: 76fb8ffce81319645b3338018ac22c1a,
+        type: 3}
+      propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:

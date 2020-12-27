@@ -36,16 +36,22 @@ public class BossBehavior : MonoBehaviour
     public GameObject[] Bullets;
     public GameObject Player;
     public GameObject DyingParticle;
+    public GameObject RayBullet;
     public GameObject TeddyJunior;
     public float fMoveSpeed = 5.0f;
     public GameObject Barrier;
     // 움직임/공격 타이머
+    private int iRayCount = 0; // 광선 카운트
     private float fShootTick = 0;
     public float fPatternTick = 0;
+    private float fRayTick = 0;
     public float fMoveTick = 0;
     private Vector3 DyingPos;
 
     private Animator animator;
+
+    //Phace 애니메이션 ㅁ
+    public Animator Phcae3Anim;
 
     // 전투 스펙
     public int iCurrentHP;
@@ -95,6 +101,7 @@ public class BossBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         switch (eMoveState)
         {
             case BossMoveState.BOSS_MOVE_APPEAR:
@@ -116,10 +123,10 @@ public class BossBehavior : MonoBehaviour
                         ShootPattern3();
                         break;
                     case BossShoot.BOSS_SHOOT4:
-                        ShootPattern3();
+                        ShootPattern4();
                         break;
                     case BossShoot.BOSS_SHOOT5:
-                        ShootPattern3();
+                        ShootPattern5();
                         break;
                 }
                 break;
@@ -164,12 +171,16 @@ public class BossBehavior : MonoBehaviour
                 if ((float)(iCurrentHP) / (float)(iMaxHP) < 0.8f)
                 {
                     iPhase = 2;
+
+                    animator.SetTrigger("Phace2");
                 }
                 break;
             case 2:
                 if ((float)(iCurrentHP) / (float)(iMaxHP) < 0.3f)
                 {
                     iPhase = 3;
+
+                    animator.SetTrigger("Phace3");
                 }
                 break;
             case 3:
@@ -204,7 +215,7 @@ public class BossBehavior : MonoBehaviour
         else if (Rand < percentage[2])
         {
             eShootPattern = BossShoot.BOSS_SHOOT4;
-           // bShoot = true;
+            bShoot = false;
         }
         else if(Rand < percentage[3])
         {
@@ -216,7 +227,7 @@ public class BossBehavior : MonoBehaviour
             eShootPattern = BossShoot.BOSS_SHOOT6;
             //bShoot = true;
         }
-        UnityEngine.Debug.Log(eShootPattern);
+
     }
     protected void SetShootPattern()
     {
@@ -247,6 +258,7 @@ public class BossBehavior : MonoBehaviour
                 break;
         }
         SetShootPatternByPhase(percentage);
+        if (CurrentBullet && eShootPattern != BossShoot.BOSS_SHOOT1) GameObject.Destroy(CurrentBullet);
     }
     void CheckBarrier()
     {
@@ -322,7 +334,8 @@ public class BossBehavior : MonoBehaviour
                 {
                     fShootTick = 0;
                     CurrentBullet.GetComponent<TetrisBlock>().Launch();
-                    GetComponent<Animator>().SetTrigger("Launch");
+                    animator.SetTrigger("Attack");
+
                     sound.PlaySkill1();
                     CurrentBullet = null;
                 }
@@ -340,7 +353,8 @@ public class BossBehavior : MonoBehaviour
             if (iCurrentMoveIndex <0) iCurrentMoveIndex = 0;
         }
         transform.position = new Vector3(CurrentPos.x, vMovingPos[iCurrentMoveIndex].y, 0);
-        fShootTick += 5;
+        if(eShootPattern == BossShoot.BOSS_SHOOT1)
+            fShootTick += 5;
         yield return new WaitForSeconds(0.15f);
         if(eMoveState != BossMoveState.BOSS_MOVE_DYING)
              StartCoroutine("Move_Shoot1");
@@ -380,9 +394,29 @@ public class BossBehavior : MonoBehaviour
     }
     private void ShootPattern4()
     {
-       
-        if (fPatternTick > 5.0f)
+        if(bShoot)
+        {
+            Instantiate(RayBullet, transform);
+            bShoot = false;
+            iRayCount += 1;
+        }
+        else
+        {
+            fRayTick += Time.deltaTime;
+            if(fRayTick > 1)
+            {
+                fRayTick = 0;
+                bShoot = true;
+
+            }
+        }
+
+        if (iRayCount > 2)
+        {
+            iRayCount = 0;
+            bShoot = false;
             SetShootPattern();
+        }
 
     }
 
@@ -390,6 +424,7 @@ public class BossBehavior : MonoBehaviour
     { 
         if(bShoot)
         {
+            animator.SetTrigger("CallJunior");
             for (int i = 0; i < 5; i++)
                 Instantiate(TeddyJunior, transform.position, Quaternion.identity);
               
@@ -410,7 +445,6 @@ public class BossBehavior : MonoBehaviour
     {
         iBulletNum = UnityEngine.Random.Range(0, Bullets.Length);
         CurrentBullet = Instantiate(Bullets[iBulletNum], shootPoint);
-        animator.SetTrigger("Attack");
         // bullet.GetComponent<BossBullet>().Initialize(fShootAngle, 10);
     }
 

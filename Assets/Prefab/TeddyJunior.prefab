@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Obstacle: {fileID: 0}
-  fMovingSpeed: 2
+  fMovingSpeed: 4
   iType: 0
   maxHP: 25
   ShootingTick: 0
@@ -194,7 +194,6 @@ MonoBehaviour:
   player: {fileID: 0}
   ShootingTransform: {fileID: 0}
   Bullet: {fileID: 0}
-  fSpeed: 3
 --- !u!50 &5200427780734807233
 Rigidbody2D:
   serializedVersion: 4

@@ -42,6 +42,7 @@ public class LogInMgr : MonoBehaviour
             LoginObj.SetActive(false);
         }
 
+
     }
 
     IEnumerator WaitMessage(PostHttpData postHttpData, float time)
