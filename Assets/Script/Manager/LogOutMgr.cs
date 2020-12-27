@@ -1,47 +1,34 @@
 ﻿using System.Collections;
+using System.Transactions;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LogInMgr : MonoBehaviour
+public class LogOutMgr : MonoBehaviour
 {
-    public GameObject Username;
-    public GameObject Password;
+    public GameObject SettingUIObj;
 
-    public GameObject LoginObj;
-    public Text Msg;
-    public void StartLogin()
+    public void StartLogOut()
     {
-        StartCoroutine(LogIn());
+        StartCoroutine(LogOut());
     }
 
-    IEnumerator LogIn()
+    IEnumerator LogOut()
     {
         GameObject phd = (GameObject)Instantiate(Resources.Load("HttpData/PostHttpData"));
         PostHttpData postHttpData = phd.GetComponent<PostHttpData>();
         WWWForm form = new WWWForm();
 
-        form.AddField("username", Username.GetComponent<InputField>().text);
-        form.AddField("password", Password.GetComponent<InputField>().text);
-
-        postHttpData.PostData(ServerURL.BaseUrl + "rest-auth/login/", form);
+        postHttpData.PostData(ServerURL.BaseUrl + "rest-auth/logout/", form);
 
         // 서버로부터 메시지 기다림
-        yield return StartCoroutine(WaitMessage(postHttpData, 7.0f));
-        
-        string msg = postHttpData.getMessage();
-        if (postHttpData.getErrorMessage() != postHttpData.DefaultErrorMessage)
-        {
-            Msg.text = msg;
-        }
+        yield return StartCoroutine(WaitMessage(postHttpData, 5.0f));
 
         if (postHttpData.getErrorMessage() == postHttpData.DefaultErrorMessage && postHttpData.getMessage() != postHttpData.DefaultMessage)
         {
-            PlayerPrefs.SetString("Token", JsonUtility.FromJson<TokenData>(msg).key);
-            Debug.Log(PlayerPrefs.GetString("Token"));
-
-            LoginObj.SetActive(false);
+            Debug.Log("Token(Before): " + PlayerPrefs.GetString("Token"));
+            PlayerPrefs.SetString("Token", "");
+            Debug.Log("Token(After): " + PlayerPrefs.GetString("Token"));
         }
-
 
     }
 
