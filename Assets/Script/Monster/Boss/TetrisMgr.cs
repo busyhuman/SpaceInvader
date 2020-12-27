@@ -70,6 +70,11 @@ public class TetrisMgr : MonoBehaviour
     {
         TetrisPos[_X, _Y].z = 1;
     }
+    public void SetDeletedTetris(int _X, int _Y)
+    {
+        TetrisPos[_X, _Y].z = 0;
+
+    }
     public bool CheckStacked(int _X, int _Y)
     {
         if (TetrisPos[_X - 1, _Y].z == 1) return true;

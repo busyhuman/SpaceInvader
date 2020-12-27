@@ -68,13 +68,21 @@ public class BossBullet : MonoBehaviour
     {
         bMove = false;
         GameObject TetrisMgr = GameObject.Find("ShootMgr");
-        TetrisMgr.GetComponent<TetrisMgr>().SetStopTetris(iXPos, iYPos);
+        TetMgr.GetComponent<TetrisMgr>().SetStopTetris(iXPos, iYPos);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        GameObject Col = collision.gameObject;
+        if (Col.tag == "Wall")
             bMove = false;
+        if(Col.tag == "Boss" && Col.GetComponent<BossBehavior>().GetIsRushing())
+        {
+            ParticleMgr.GetInstance().CreateDestroyedParticles(gameObject, 80);
+            TetMgr.GetComponent<TetrisMgr>().SetDeletedTetris(iXPos, iYPos);
+
+            GameObject.Destroy(gameObject);
+        }
     }
     public void DestroyBullet()
     {

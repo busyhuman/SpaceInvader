@@ -47,6 +47,8 @@ public class BossBehavior : MonoBehaviour
     private float fRayTick = 0;
     public float fMoveTick = 0;
     private Vector3 DyingPos;
+    private bool bMoving = true;
+    private bool bLeft = true;
 
     private Animator animator;
 
@@ -191,10 +193,16 @@ public class BossBehavior : MonoBehaviour
                 }
                 break;
         }
-                if (!bShiled)
+                if (!bShiled && eShootPattern != BossShoot.BOSS_SHOOT6)
                     CheckBarrier();
     }
 
+    public bool GetIsRushing()
+    {
+        if (eShootPattern == BossShoot.BOSS_SHOOT6 && bLeft)
+            return true;
+        else return false;
+    }
     public void SetShild(bool b)
     {
         bShiled = b;
@@ -225,6 +233,7 @@ public class BossBehavior : MonoBehaviour
         else
         {
             eShootPattern = BossShoot.BOSS_SHOOT6;
+            animator.SetTrigger("Rush");
             //bShoot = true;
         }
 
@@ -284,7 +293,7 @@ public class BossBehavior : MonoBehaviour
             fMoveTick = 0;
             CheckPlayerPosRow();
             SetShootPattern();
-            StartCoroutine("Move_Shoot1");
+            StartCoroutine("Move");
         }
     }
 
@@ -312,13 +321,18 @@ public class BossBehavior : MonoBehaviour
         }
 
     }
-    protected IEnumerator Move_Shoot1()
+    protected IEnumerator Move()
     {
 
         Vector3 CurrentPos = transform.position;
-        if (iCurrentMoveIndex == iDestMoveIndex)
+        bool bNormalMove = eShootPattern != BossShoot.BOSS_SHOOT6 || bMoving;
+        
+         if (iCurrentMoveIndex == iDestMoveIndex)
         {
             CheckPlayerPosRow();
+            if (bMoving && eShootPattern == BossShoot.BOSS_SHOOT6)
+                bMoving = false;
+
             iMoveNum++;
             if (iMoveNum % 2 == 0 && fShootTick > 50)
             {
@@ -328,7 +342,7 @@ public class BossBehavior : MonoBehaviour
                     bShoot = true;
                 }
             }
-            if (iMoveNum % 4 == 0 && fShootTick > 60 )
+            if (iMoveNum % 4 == 0 && fShootTick > 60)
             {
                 if (CurrentBullet)
                 {
@@ -342,22 +356,29 @@ public class BossBehavior : MonoBehaviour
 
             }
         }
-        else if (iCurrentMoveIndex < iDestMoveIndex )
+
+        else if (iCurrentMoveIndex < iDestMoveIndex && bNormalMove)
         {
             iCurrentMoveIndex++;
             if (iCurrentMoveIndex > 25) iCurrentMoveIndex = 25;
         }
-        else
+        else if(bNormalMove)
         {
             iCurrentMoveIndex--;
             if (iCurrentMoveIndex <0) iCurrentMoveIndex = 0;
         }
-        transform.position = new Vector3(CurrentPos.x, vMovingPos[iCurrentMoveIndex].y, 0);
+
+        if (bNormalMove)
+            transform.position = new Vector3(CurrentPos.x, vMovingPos[iCurrentMoveIndex].y, 0);
+
         if(eShootPattern == BossShoot.BOSS_SHOOT1)
             fShootTick += 5;
+
+
+
         yield return new WaitForSeconds(0.15f);
         if(eMoveState != BossMoveState.BOSS_MOVE_DYING)
-             StartCoroutine("Move_Shoot1");
+             StartCoroutine("Move");
     }
 
     protected void ShootPattern1()
@@ -394,7 +415,7 @@ public class BossBehavior : MonoBehaviour
     }
     private void ShootPattern4()
     {
-        if(bShoot)
+        if(bShoot && iRayCount < 3)
         {
             Instantiate(RayBullet, transform);
             bShoot = false;
@@ -413,9 +434,13 @@ public class BossBehavior : MonoBehaviour
 
         if (iRayCount > 2)
         {
-            iRayCount = 0;
             bShoot = false;
-            SetShootPattern();
+            if( fPatternTick > 3.9f)
+            {
+
+                SetShootPattern();
+                iRayCount = 0;
+            }
         }
 
     }
@@ -437,8 +462,26 @@ public class BossBehavior : MonoBehaviour
 
     private void ShootPattern6()
     {
-        if (fPatternTick > 5.0f)
-            SetShootPattern();
+        if (!bMoving)
+        {
+            if (bLeft)
+            {
+                transform.Translate(Vector3.left * Time.deltaTime * 9);
+                if (transform.position.x < -12)
+                    bLeft = false;
+            }
+            else
+            {
+
+                transform.Translate(Vector3.right * Time.deltaTime * 9);
+                if (transform.position.x > 9.42)
+                {
+                    bLeft = true;
+                    transform.position = new Vector3(9.42f, transform.position.y, transform.position.z);
+                    SetShootPattern();
+                }
+            }
+        }
     }
 
     private void CreateBullet()

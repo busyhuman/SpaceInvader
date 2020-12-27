@@ -3817,7 +3817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92701fee1b5075448a80e736b3381f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerType: 1
+  playerType: 2
   playerObjects:
   - {fileID: 1224331364783198144, guid: 78ce2676738567748abf32775202d75a, type: 3}
   - {fileID: 4421370703459312305, guid: 684ee1dbc345a2f4fa5f3ce7064e83a9, type: 3}

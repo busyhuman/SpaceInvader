@@ -30,13 +30,13 @@ public class PostHttpData : MonoBehaviour
             if (request.isNetworkError)
             {
                 ErrorMessage = request.error;
-                Debug.LogError("Error: " + Message + "\n" + request.error);
+                //Debug.LogError("Error: " + Message + "\n" + request.error);
             }
 
             else if (request.isHttpError)
             {
                 ErrorMessage = request.error;
-                Debug.LogError("Error: " + Message + "\n" + request.error);
+               // Debug.LogError("Error: " + Message + "\n" + request.error);
             }
 
 
