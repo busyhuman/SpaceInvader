@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAtt : MonoBehaviour
 {
+
     public AudioClip skillSFX;
     public AudioClip AttSFX;
     protected bool binstantiate = false;
@@ -38,7 +39,7 @@ public class PlayerAtt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (bWin) return;
+        if (bWin || GetComponent<PlayerMove>().iDieState != 0) return;
         if(CoolTimer.bActivating)
         {
             Skill();

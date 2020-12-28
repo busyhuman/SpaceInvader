@@ -8,6 +8,9 @@ public class BaseAtt : PlayerAtt
     {
         if (shootTimer > shootDelay) //쿨타임이 지났는지와, 공격키인 스페이스가 눌려있는지 검사합니다.
         {
+            audioSource.clip = skillSFX;
+            audioSource.Play();
+
             Vector3 pos = transform.position;
             audioSource.Play();
             for (int i = 0; i < 2; i++)

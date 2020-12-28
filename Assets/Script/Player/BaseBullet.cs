@@ -46,7 +46,7 @@ public class BaseBullet : BulletMove
 
         if (collision.tag == "BossBullet")
         {
-            collision.GetComponent<BossBullet>().DestroyBullet();
+            collision.GetComponent<BossBullet>().DestroyBullet(att);
             Destroy(gameObject);
         }
 

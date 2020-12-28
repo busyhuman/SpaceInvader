@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CooltimeRender : MonoBehaviour
 {
+    private AudioSource audio;
+
     public float CurActivetime = 0;
     public float CurCooltime = 0;
     private Material mat;
@@ -16,7 +18,7 @@ public class CooltimeRender : MonoBehaviour
     void Start()
     {
         mat = GetComponent<RawImage>().material;
-
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -58,6 +60,7 @@ public class CooltimeRender : MonoBehaviour
     {
         if(bCan)
         {
+            audio.Play();
             CurCooltime = 0;
             bCan = false;
             bActivating = true;

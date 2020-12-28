@@ -60,7 +60,7 @@ public class PangSkillBullet : BulletMove
 
         if (collision.tag == "BossBullet")
         {
-            collision.GetComponent<BossBullet>().DestroyBullet();
+            collision.GetComponent<BossBullet>().DestroyBullet(att);
             GetComponent<Animator>().speed = 0.6f;
             bDeath = true;
         }

@@ -42,7 +42,10 @@ public class CameraFade : MonoBehaviour
                     FadeIn_Out = true;
 
                     GameObject userInfo = GameObject.Find("UserData");
-                    UserInfo unfo = userInfo.GetComponent<UserInfo>();
+
+                    UserInfo unfo = new UserInfo();
+                    if(userInfo)
+                        unfo = userInfo.GetComponent<UserInfo>();
                     if(bWin)
                     {
                         if (unfo.GetStage() == 1)

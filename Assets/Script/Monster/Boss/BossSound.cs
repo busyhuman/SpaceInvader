@@ -9,6 +9,8 @@ public class BossSound : MonoBehaviour
     public AudioClip Hurt;
     public AudioClip skill1;
     public AudioClip skill2;
+    public AudioClip Bubble;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,12 @@ public class BossSound : MonoBehaviour
     {
         
     }
-
+    
+    public void PlayBubble()
+    {
+        audio.clip = Bubble;
+        audio.Play();
+    }
     public void PlayLaugh()
     {
         audio.clip = Laugh;

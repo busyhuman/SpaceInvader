@@ -102,6 +102,7 @@ MonoBehaviour:
   iDieState: 0
   bDie: 1
   AttackBehavior: {fileID: 0}
+  DieSound: {fileID: 8300000, guid: 42c6f462dc42f63489edaad799360700, type: 3}
   moveSpeed: 6
   winText: {fileID: 0}
   overText: {fileID: 0}
@@ -279,5 +280,6 @@ MonoBehaviour:
   BulletScale: 1
   bulletSpeed: 12
   Bullet: {fileID: 1018957960665680832, guid: 3ac8b35a3eee9fb42bfb593f65549788, type: 3}
+  bWin: 0
   skillbullet: {fileID: 1681236442068941663, guid: 93b90ce38522fa6428f0a497d88b63eb,
     type: 3}

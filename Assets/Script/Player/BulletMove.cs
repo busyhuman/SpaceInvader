@@ -63,7 +63,7 @@ public class BulletMove : MonoBehaviour
 
         if (collision.tag == "BossBullet")
         {
-            collision.GetComponent<BossBullet>().DestroyBullet();
+            collision.GetComponent<BossBullet>().DestroyBullet(att);
             bDeath = true;
             GetComponent<Animator>().speed = 1;
         }

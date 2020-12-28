@@ -102,6 +102,7 @@ MonoBehaviour:
   iDieState: 0
   bDie: 1
   AttackBehavior: {fileID: 0}
+  DieSound: {fileID: 8300000, guid: 42c6f462dc42f63489edaad799360700, type: 3}
   moveSpeed: 4.5
   winText: {fileID: 0}
   overText: {fileID: 0}
@@ -273,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293f69f1d9ff2644eb4efd6ed33e3fd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillSFX: {fileID: 0}
+  skillSFX: {fileID: 8300000, guid: 7e59f865bd864e144bd0d6446a1b9827, type: 3}
   AttSFX: {fileID: 8300000, guid: e95d67cf1393b3e449ad8931a2b675ea, type: 3}
   att: 6
   shootDelay: 0.2
@@ -281,3 +282,4 @@ MonoBehaviour:
   BulletScale: 1
   bulletSpeed: 10
   Bullet: {fileID: 2001645695706893855, guid: 4c5e39e8c01111942b5f6cf1e9860221, type: 3}
+  bWin: 0

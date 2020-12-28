@@ -16,6 +16,8 @@ public class PangAtt : PlayerAtt
     {
         if (!binstantiate)
         {
+            audioSource.clip = skillSFX;
+            audioSource.Play();
             Transform cam = GameObject.Find("Main Camera").transform;
             GameObject obj = Instantiate(skillbullet, transform);
             obj.transform.localPosition = new Vector3(2, 0, 0);

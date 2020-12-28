@@ -10,6 +10,7 @@ public class PlayerMove : MonoBehaviour
     private Vector3 DyingPos;
     public bool bDie = false;
     public PlayerAtt AttackBehavior;
+    public AudioClip DieSound;
 
     private float MovingTimer = 0.0f;
 
@@ -183,14 +184,19 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(bDie)
+        if(bDie && transform.childCount == 0)
         {
             if(collision.tag == "BossBullet" )
             {
                 if(iDieState == 0 && iWinState == 0)
                 {
-                    GameObject.Find("BOSS").GetComponent<BossSound>().PlayLaugh();
-                    iDieState = 1;
+                    //GameObject.Find("BOSS").GetComponent<BossSound>().PlayLaugh();
+                    
+
+                    iDieState = 1; 
+                    
+                    audioSource.clip = DieSound;
+                    audioSource.Play();
 
                     MovingTimer = 0;
                     DyingPos = transform.position;

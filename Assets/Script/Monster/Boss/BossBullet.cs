@@ -84,12 +84,12 @@ public class BossBullet : MonoBehaviour
             GameObject.Destroy(gameObject);
         }
     }
-    public void DestroyBullet()
+    public void DestroyBullet(int dam)
     {
     
         if (!bHold)
         {
-            gameObject.transform.parent.GetComponent<TetrisBlock>().GetDamage(10);
+            gameObject.transform.parent.GetComponent<TetrisBlock>().GetDamage(dam);
 
         }
     }

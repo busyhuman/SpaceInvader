@@ -32,6 +32,8 @@ enum BossMoveState
 
 public class BossBehavior : MonoBehaviour
 {
+
+
     // 속도
     public GameObject[] Bullets;
     public GameObject Player;
@@ -54,7 +56,6 @@ public class BossBehavior : MonoBehaviour
 
     //Phace 애니메이션 ㅁ
     public Animator Phcae3Anim;
-
     // 전투 스펙
     public int iCurrentHP;
     public int iMaxHP = 1000;
@@ -276,7 +277,7 @@ public class BossBehavior : MonoBehaviour
 
         if (distance < 8)
         {
-
+            sound.PlayBubble();
             Instantiate(Barrier, this.transform);
             bShiled = true;
         }
