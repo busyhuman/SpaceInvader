@@ -17,6 +17,7 @@ public class SignUpMgr : MonoBehaviour
         StartCoroutine(RegisterAccount());
     }
 
+
     IEnumerator RegisterAccount()
     {
         GameObject phd = (GameObject)Instantiate(Resources.Load("HttpData/PostHttpData"));

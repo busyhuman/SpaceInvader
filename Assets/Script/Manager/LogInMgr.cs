@@ -9,6 +9,14 @@ public class LogInMgr : MonoBehaviour
 
     public GameObject LoginObj;
     public Text Msg;
+
+    private SceneChanger sc;
+
+    private void Awake()
+    {
+        sc = GameObject.Find("Main Camera").GetComponent<SceneChanger>();
+    }
+
     public void StartLogin()
     {
         StartCoroutine(LogIn());
@@ -40,6 +48,7 @@ public class LogInMgr : MonoBehaviour
             Debug.Log(PlayerPrefs.GetString("Token"));
 
             LoginObj.SetActive(false);
+            sc.TurnToMainMenu();
         }
 
 
