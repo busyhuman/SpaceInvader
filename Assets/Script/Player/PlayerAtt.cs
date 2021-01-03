@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAtt : MonoBehaviour
 {
 
+    public bool bTrigger = false;
     public AudioClip skillSFX;
     public AudioClip AttSFX;
     protected bool binstantiate = false;
@@ -42,6 +43,12 @@ public class PlayerAtt : MonoBehaviour
         if (bWin || GetComponent<PlayerMove>().iDieState != 0) return;
         if(CoolTimer.bActivating)
         {
+            if(!bTrigger)
+            {
+                if (gameObject.GetComponent<Animator>())
+                    gameObject.GetComponent<Animator>().SetTrigger("skill");
+                bTrigger = true;
+            }
             Skill();
         }
         else

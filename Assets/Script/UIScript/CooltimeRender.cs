@@ -40,8 +40,6 @@ public class CooltimeRender : MonoBehaviour
             CooltimeUpdating();
         }
        
-
-        
         float angle = CurCooltime/Cooltime * 360;
         mat.SetFloat("_TimeSpeed", angle );
     }

@@ -6,6 +6,10 @@ using UnityEngine;
 public class LInearMoveBullet : MonsterBulletBehavior
 {
     public float Angle = 0;
+    public void Start()
+    {
+        transform.parent = null;
+    }
     protected override void MovingBehavior()
     {
 
